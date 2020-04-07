@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+
 export default function title({ title, center }) {
   return (
     <TitleWrapper className="row" center={center}>

@@ -1,15 +1,11 @@
 import React, { Component } from "react";
 import ProfileCard from "../Cards/profileCard";
-// import ListGroup from "../common/listGroup";
 import DeleteCard from "../Cards/deleteCard";
 import PasswordCard from "../Cards/passwordCard";
-import { deleteCustomer, getCustomer } from "../../services/userService";
-import auth from "../../services/authService";
-// import DataLoading from "../common/dataLoading";
 import Loader from "./../common/loader";
-// import Modal from "./../common/modal";
-// import { ProductContext } from "./../../context";
 import MenuBar from "./../common/menuBar";
+import auth from "../../services/authService";
+import { deleteCustomer, getCustomer } from "../../services/userService";
 import Swal from "sweetalert2";
 
 export default class myAccount extends Component {
@@ -68,11 +64,9 @@ export default class myAccount extends Component {
   };
 
   render() {
-    // const { open, show, close, size } = this.context;
     const { customer, loading, categories } = this.state;
     console.log(categories);
     if (loading) {
-      //   return <DataLoading />;
       return <Loader />;
     }
 
@@ -80,15 +74,6 @@ export default class myAccount extends Component {
       <div className="container">
         <div className="row">
           <div className="col-sm-4 mb-5" style={{ position: "fixed" }}>
-            {/* <ListGroup
-              title="General"
-              item1="Profile"
-              item2="Password"
-              item3="Delete Account"
-              link1="myAccount"
-              link2="myAccount"
-              link3="myAccount"
-            /> */}
             <MenuBar />
           </div>
           <div className="col" style={{ marginLeft: "130px" }}>
@@ -104,7 +89,7 @@ export default class myAccount extends Component {
             />
           </div>
         </div>
-        {/* <br /> */}
+
         <div className="row">
           <div className="col-sm-4"></div>
 

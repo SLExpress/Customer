@@ -6,18 +6,6 @@ import styled from "styled-components";
 const searchBox = ({ handleChange, search, placeholder }) => {
   return (
     <MDBCol md="6">
-      {/* <form className="form-inline"> */}
-      {/* <MDBIcon icon="search" style={{ color: "var(--lightGrey)" }} /> */}
-      {/* <input
-          className="form-control form-control-sm ml-3 w-75"
-          type="text"
-          placeholder="Search"
-          aria-label="Search"
-          name="search"
-          id="search"
-          onChange={handleChange}
-          value={search}
-        /> */}
       <center>
         <Inputfield
           icon="search"
@@ -30,7 +18,6 @@ const searchBox = ({ handleChange, search, placeholder }) => {
           value={search}
         />
       </center>
-      {/* </form> */}
     </MDBCol>
   );
 };

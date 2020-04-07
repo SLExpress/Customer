@@ -1,6 +1,5 @@
 import React from "react";
 import { Loader } from "semantic-ui-react";
-
 import styled from "styled-components";
 
 const loader = () => {

@@ -11,11 +11,9 @@ class menuBar extends Component {
     const { menuData } = this.context;
     return (
       <Menu vertical style={{ marginLeft: "-180px" }}>
-        {/* */}
         {menuData.map(menu => (
           <Menu.Item key={menu.header}>
             <Menu.Header>{menu.header}</Menu.Header>
-
             <Menu.Menu>
               {menu.list.map(item => (
                 <Menu.Item key={item.name}>

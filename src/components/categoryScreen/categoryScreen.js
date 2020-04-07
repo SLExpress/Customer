@@ -1,9 +1,8 @@
 import React from "react";
-import styled from "styled-components";
-// import Title from "../common/title";
-import { ProductConsumer } from "../../context";
 import SingleCategory from "./singleCategory";
 import SearchBox from "../../components/common/searchBox";
+import { ProductConsumer } from "../../context";
+import styled from "styled-components";
 
 const CategoryScreen = () => {
   return (
@@ -30,7 +29,6 @@ const CategoryScreen = () => {
                 <MainContent>
                   <FieldContent>
                     {sortedCategories.map((item, index) => {
-                      // console.log(index);
                       return index % 3 === 0 ? (
                         <SingleCategory key={item._id} siteCategory={item} />
                       ) : null;
@@ -39,7 +37,6 @@ const CategoryScreen = () => {
 
                   <FieldContent>
                     {sortedCategories.map((item, index) => {
-                      // console.log(index);
                       return index % 3 === 1 ? (
                         <SingleCategory key={item._id} siteCategory={item} />
                       ) : null;
@@ -48,23 +45,11 @@ const CategoryScreen = () => {
 
                   <FieldContent>
                     {sortedCategories.map((item, index) => {
-                      // console.log(index);
                       return index % 3 === 2 ? (
                         <SingleCategory key={item._id} siteCategory={item} />
                       ) : null;
                     })}
                   </FieldContent>
-
-                  {/* <FieldContent>
-                  {value.siteCategoryData2.map(item => {
-                    return <SingleCategory key={item.id} siteCategory={item} />;
-                  })}
-                </FieldContent>
-                <FieldContent>
-                  {value.siteCategoryData3.map(item => {
-                    return <SingleCategory key={item.id} siteCategory={item} />;
-                  })}
-                </FieldContent> */}
                 </MainContent>
               )}
             </MainHeaderWrapper>

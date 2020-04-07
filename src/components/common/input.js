@@ -15,11 +15,7 @@ const Input = ({ name, label, value, onChange, error, type }) => {
         label={label}
         type={type}
       />
-
       {error && (
-        // <div className="alert alert-danger" style={{ width: "250px" }}>
-        //   {error}
-        // </div>
         <Label basic color="red" pointing prompt>
           {error}
         </Label>

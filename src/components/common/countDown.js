@@ -34,7 +34,6 @@ class CountDown extends Component {
     }
   }
   componentDidMount() {
-    // this.deadline = new Date("jan 13, 2020 12:00:00").getTime();
     this.deadline = new Date(this.props.deadline).getTime();
 
     this.x = setInterval(this.count, 1000);
@@ -70,12 +69,6 @@ class CountDown extends Component {
             </span>
           </div>
         </div>
-
-        {/* <center>
-          <p id="demo" style={{ color: "var(--mainBlue)" }}>
-            {time_up}
-          </p>
-        </center> */}
       </div>
     );
   }

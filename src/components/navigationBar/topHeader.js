@@ -1,12 +1,12 @@
 import React from "react";
-import LogoDark from "../../images/LogoDark.png";
-import { FaCartPlus } from "react-icons/fa";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
 import ToggleDropDown from "./toggleDropDown";
 import { ProductConsumer } from "../../context";
+import { FaCartPlus } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import LogoDark from "../../images/LogoDark.png";
+import styled from "styled-components";
 
-const topHeader = ({ currentUser, firstName, lastName }) => {
+const topHeader = ({ firstName, lastName }) => {
   return (
     <ProductConsumer>
       {value => {

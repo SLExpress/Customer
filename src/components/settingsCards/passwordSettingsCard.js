@@ -1,7 +1,7 @@
 import React from "react";
-import Joi from "joi-browser";
 import Form from "../common/form";
 import { getCustomer, updatePassword } from "../../services/userService";
+import Joi from "joi-browser";
 
 class passwordSettingsCard extends Form {
   state = {

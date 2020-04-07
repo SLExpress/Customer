@@ -33,19 +33,9 @@ const Inputfield = styled(Input)`
 `;
 
 export const Status = () => {
-  // if (!liked)
-  //   return (
-  //     <Icon name="delete" onClick={onSubmit} style={{ color: "#e60000" }} />
-  //   );
-  // else
   return <Icon name="checkmark" style={{ color: "#21ba45" }} />;
 };
 
 export const UnSuccessful = () => {
-  // if (!liked)
-  //   return (
-  //     <Icon name="delete" onClick={onSubmit} style={{ color: "#e60000" }} />
-  //   );
-  // else
   return <Icon name="close" style={{ color: "#e60000" }} />;
 };

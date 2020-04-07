@@ -7,7 +7,6 @@ import "./index.css";
 import App from "./App";
 import { ProductProvider } from "./context";
 import { TableProvider } from "./context/tableContext";
-
 // reactbootstrap
 import "bootstrap/dist/css/bootstrap.min.css";
 // mdb React
@@ -17,11 +16,6 @@ import "mdbreact/dist/css/mdb.css";
 // Bootstrap
 import "bootstrap/dist/css/bootstrap.css";
 // Semantic UI
-// import "semantic-ui-css/components/menu.min.css";
-// import "semantic-ui-css/components/grid.min.css";
-// import "semantic-ui-css/components/table.min.css";
-// import "semantic-ui-css/components/input.min.css";
-// import "semantic-ui-css/components/icon.min.css";
 import "semantic-ui-css/semantic.min.css";
 
 // Sentry Log Service

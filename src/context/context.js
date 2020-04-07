@@ -1,14 +1,6 @@
 import React, { Component } from "react";
 import { socialData } from "./socialData";
-import {
-  siteCategoryData,
-  siteCategoryData1,
-  siteCategoryData2,
-  siteCategoryData3
-} from "./siteCategoryData";
 import { pricingData } from "./pricingData";
-// import { siteData } from "./siteData";
-// import { mySiteData } from "./mySiteData";
 import { menuData } from "./menuData";
 import {
   getCategories,
@@ -17,24 +9,14 @@ import {
   createWebsite
 } from "./../services/siteCategoryService";
 import auth from "./../services/authService";
-import {
-  getTickets,
-  viewInquiries
-  // replyTickets
-} from "./../services/inquiryService";
-
+import { getTickets, viewInquiries } from "./../services/inquiryService";
 import _ from "lodash";
 import { toast } from "react-toastify";
-// import Moment from "react-moment";
 
 const ProductContext = React.createContext();
 class ProductProvider extends Component {
   state = {
     socialLinks: socialData,
-    siteCategoryData: siteCategoryData,
-    siteCategoryData1: siteCategoryData1,
-    siteCategoryData2: siteCategoryData2,
-    siteCategoryData3: siteCategoryData3,
     pricingData: pricingData,
     siteData: [],
     filteredSites: [],
@@ -57,7 +39,6 @@ class ProductProvider extends Component {
     menuData: menuData,
     sortedSites: [],
     search: "",
-    // price: 0,
     min: 0,
     max: 0,
     open: false,
@@ -78,8 +59,6 @@ class ProductProvider extends Component {
     try {
       if (auth.getCurrentUser()) {
         const { data: categories } = await getCategories();
-        // const categories = [...data, { _id: "1", name: "All" }];
-
         this.setState({
           categories,
           sortedCategories: categories
@@ -118,7 +97,6 @@ class ProductProvider extends Component {
         const { data: siteData } = await getSites();
         console.log(siteData);
         this.setState({ siteData, sortedSites: siteData });
-        // console.log(this.state.siteData);
       }
     } catch (ex) {}
   }
@@ -133,9 +111,6 @@ class ProductProvider extends Component {
       localStorage.setItem("siteCreatedTime", this.state.siteCreatedTime);
       localStorage.setItem("serverTime", this.state.serverTime);
     } catch (ex) {}
-
-    // console.log(this.state.siteCreatedTime + "Hii");
-    // console.log(this.state.serverTime + "Hii");
   };
 
   componentDidMount = async () => {
@@ -148,7 +123,6 @@ class ProductProvider extends Component {
       {
         singleSite: this.getStorageSite(),
         filteredSites: this.getStorageFilteredSites(),
-        // cart: this.getStorageCart(),
         singleMySiteSettingsScript: this.getsingleMySiteSettingsScript(),
         singleSiteDeveloper: this.getStorageSiteDeveloper(),
         singleMySiteSettings: this.getsingleMySiteSettings(),
@@ -199,7 +173,7 @@ class ProductProvider extends Component {
     const sites = tempSites.filter(item =>
       item.categories.some(c => c === category)
     );
-    // const sites = tempSites.filter(item => item.category === category);
+
     localStorage.setItem("filteredSites", JSON.stringify(sites));
 
     this.setState({ filteredSites: sites }, () =>
@@ -209,14 +183,7 @@ class ProductProvider extends Component {
 
   filterSitesAll = category => {
     const { siteData } = this.state;
-    // if (category === "All") {
-    //   let tempSites = [...siteData];
-    //   localStorage.setItem("filteredSites", JSON.stringify(tempSites));
 
-    //   this.setState({ filteredSites: tempSites }, () =>
-    //     console.log(this.state.filteredSites)
-    //   );
-    // }
     if (category === "1") {
       let tempSites = [...siteData];
       localStorage.setItem("filteredSites", JSON.stringify(tempSites));
@@ -229,7 +196,6 @@ class ProductProvider extends Component {
 
   setSingleSite = id => {
     const { siteData } = this.state;
-    // let site = siteData.find(item => item.id === id);
     let site = siteData.find(item => item._id === id);
     localStorage.setItem("singleSite", JSON.stringify(site));
     localStorage.setItem("singleSiteDeveloper", JSON.stringify(site.developer));
@@ -245,7 +211,6 @@ class ProductProvider extends Component {
 
   setSingleSiteSettings = id => {
     const { mySiteData } = this.state;
-    // let site = mySiteData.find(item => item.id === id);
     let site = mySiteData.find(item => item._id === id);
     localStorage.setItem("singleMySiteSettings", JSON.stringify(site));
     localStorage.setItem(
@@ -264,7 +229,6 @@ class ProductProvider extends Component {
 
   setSingleSiteSettingsCreate = id => {
     const { siteData } = this.state;
-    // let site = mySiteData.find(item => item.id === id);
     let site = siteData.find(item => item._id === id);
     localStorage.setItem("singleMySiteSettingsCreate", JSON.stringify(site));
     this.setState(
@@ -274,20 +238,6 @@ class ProductProvider extends Component {
       () => console.log(this.state.singleMySiteSettingsCreate)
     );
   };
-  // setSingleSiteSettingsCreate = (id, unique) => {
-  //   const { siteData } = this.state;
-  //   // let site = mySiteData.find(item => item.id === id);
-  //   let site = siteData.find(item => item._id === id);
-  //   localStorage.setItem("singleMySiteSettingsCreate", JSON.stringify(site));
-  //   localStorage.setItem("unique", unique);
-  //   this.setState(
-  //     {
-  //       singleMySiteSettingsCreate: { ...site }
-  //     },
-  //     () => console.log(this.state.singleMySiteSettingsCreate)
-  //   );
-  // };
-  //////////////////////////////////////////////////////////////////////////////////////////////////
 
   getStorageCart = () => {
     let cart;
@@ -308,12 +258,11 @@ class ProductProvider extends Component {
     let cartItems = this.state.cart.length;
     this.state.cart.forEach(item => {
       subTotal += parseFloat(item.price);
-      // cartItems += item.count;
     });
     subTotal = parseFloat(subTotal.toFixed(2));
     let tax = subTotal * 0.1;
     tax = parseFloat(tax.toFixed(2));
-    // let total = subTotal + tax;
+
     let total = subTotal;
     total = parseFloat(total.toFixed(2));
     return {
@@ -322,23 +271,6 @@ class ProductProvider extends Component {
       tax,
       total
     };
-    // let subTotal = 0;
-    // let cartItems = 0;
-    // this.state.cart.forEach(item => {
-    //   subTotal += item.total;
-    //   cartItems += item.count;
-    // });
-    // subTotal = parseFloat(subTotal.toFixed(2));
-    // let tax = subTotal * 0.1;
-    // tax = parseFloat(tax.toFixed(2));
-    // let total = subTotal + tax;
-    // total = parseFloat(total.toFixed(2));
-    // return {
-    //   cartItems,
-    //   subTotal,
-    //   tax,
-    //   total
-    // };
   };
 
   addTotals = () => {
@@ -356,16 +288,13 @@ class ProductProvider extends Component {
     );
   };
 
-  // Add To Cart
   addToCart = id => {
     let tempCart = [...this.state.cart];
     let tempSites = [...this.state.siteData];
-    // let tempItem = tempCart.find(item => item.id === id);
     let tempItem = tempCart.find(item => item._id === id);
     if (!tempItem) {
-      // tempItem = tempSites.find(item => item.id === id);
       tempItem = tempSites.find(item => item._id === id);
-      // let total = tempItem.price;
+
       let total = parseFloat(tempItem.price);
       let cartItem = { ...tempItem, count: 1, total };
       tempCart = [...tempCart, cartItem];
@@ -390,11 +319,7 @@ class ProductProvider extends Component {
 
   removeItem = id => {
     let tempCart = [...this.state.cart];
-    // tempCart = tempCart.filter(item => {
-    //   return item.id !== id;
-    // });
     tempCart = tempCart.filter(item => {
-      // return item._id !== id;
       return item._id !== id;
     });
 
@@ -458,23 +383,6 @@ class ProductProvider extends Component {
     this.setState({
       sortedCategories: tempCategories
     });
-
-    // const { filteredSites, search } = this.state;
-    // let tempSites = [...filteredSites];
-
-    // if (search.length > 0) {
-    //   tempSites = tempSites.filter(item => {
-    //     let tempSearch = search.toLowerCase();
-    //     let tempTitle = item.title.toLowerCase().slice(0, search.length);
-
-    //     if (tempSearch === tempTitle) {
-    //       return item;
-    //     }
-    //   });
-    // }
-    // this.setState({
-    //   sortedSites: tempSites
-    // });
   };
 
   // handle site change
@@ -498,9 +406,6 @@ class ProductProvider extends Component {
     const { siteData, search } = this.state;
     let tempSites = [...siteData];
 
-    // // filter by price
-    // tempSites = tempSites.filter(item => item.price <= price);
-
     if (search.length > 0) {
       tempSites = tempSites.filter(item => {
         let tempSearch = search.toLowerCase();
@@ -515,14 +420,6 @@ class ProductProvider extends Component {
       sortedSites: tempSites
     });
   };
-
-  // filterCategoryName = category => {
-  //   const { categories } = this.state;
-  //   let tempCategories = [...categories];
-
-  //   const cat = tempCategories.some(r => category.includes(r._id));
-  //   console.log(cat);
-  //  };
 
   // handle mysites change
   handleMySiteChange = event => {
@@ -632,8 +529,6 @@ class ProductProvider extends Component {
 
   show = size => () => this.setState({ size, open: true });
   close = () => this.setState({ open: false });
-
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   async ticketsList() {
     if (auth.getCurrentUser()) {

@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-import ProfileSettingsCard from "../settingsCards/profileSettingsCard";
-import PasswordSettingsCard from "../settingsCards/passwordSettingsCard";
-// import ListGroup from "../common/listGroup";
-import { ProductContext } from "../../context";
 import Loader from "./../common/loader";
 import MenuBar from "./../common/menuBar";
+import ProfileSettingsCard from "../settingsCards/profileSettingsCard";
+import PasswordSettingsCard from "../settingsCards/passwordSettingsCard";
+import { ProductContext } from "../../context";
 
 export default class accountSettings extends Component {
   static contextType = ProductContext;
@@ -17,13 +16,6 @@ export default class accountSettings extends Component {
       <div className="container">
         <div className="row">
           <div className="col-sm-4" style={{ position: "fixed" }}>
-            {/* <ListGroup
-              title="General"
-              item1="Profile"
-              item2="Password"
-              link1="myAccount"
-              link2="myAccount"
-            /> */}
             <MenuBar />
           </div>
           <div className="col" style={{ marginLeft: "130px" }}>

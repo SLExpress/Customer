@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import PaymentCard from "../Cards/paymentCard";
-// import ListGroup from "../common/listGroup";
 import MenuBar from "./../common/menuBar";
 
 export default class myPayments extends Component {
@@ -9,15 +8,6 @@ export default class myPayments extends Component {
       <div className="container" style={{ height: "700px" }}>
         <div className="row">
           <div className="col-sm-4" style={{ position: "fixed" }}>
-            {/* <ListGroup
-              title="Billing"
-              item1="Payments"
-              item2="Billing History"
-              item3="Domains"
-              link1="myPayments"
-              link2="billingHistory"
-              link3="domainList"
-            /> */}
             <MenuBar />
           </div>
           <div className="col" style={{ marginLeft: "130px" }}>

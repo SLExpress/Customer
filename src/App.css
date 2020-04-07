@@ -14,7 +14,6 @@
 }
 
 /* Top Header */
-
 .topHeaderBackGround {
   background-color: var(--mainBlue) !important;
 }
@@ -35,7 +34,6 @@
 .topHeaderNavTitle :hover {
   color: var(--mainWhite) !important;
 }
-
 /* End of  Top Header */
 
 /* Main Card */
@@ -43,16 +41,12 @@
   margin-left: 200px;
   margin-right: 200px;
 }
-
 /*End of Main Card */
 
 /* Text Styles */
 .text-title {
-  /* font-family: "Montserrat", sans-serif; */
-  /* font-family: "Ibarra Real Nova", serif; */
   font-weight: bold;
   font-size: 3rem;
-  /* letter-spacing: var(--mainSpacing); */
   text-transform: capitalize;
   color: var(--darkGrey);
 }
@@ -79,9 +73,7 @@
 
 .textBold {
   font-weight: bold;
-  /* color: #636e72; */
 }
-
 /*  End of Text Styles */
 
 /* Vertical line */
@@ -89,7 +81,6 @@
   border-left: 6px solid#dfe6e9;
   height: 500px;
 }
-
 /*End of  Vertical line */
 
 /* Pricing Page Styles */
@@ -113,10 +104,8 @@ html {
 .card-deck .card {
   min-width: 220px;
 }
-
 /* site */
 
-/* do not delete */
 .price-top {
   position: absolute;
   top: 0;
@@ -138,7 +127,7 @@ html {
   background: rgba(0, 0, 0, 0.51) !important;
   opacity: 0.3;
 }
-/* do not delete */
+
 .img-container:hover {
   background: rgba(0, 0, 0, 0.51);
 }
@@ -195,8 +184,8 @@ html {
   }
 }
 /* end of sitelist */
-/* featured sites */
 
+/* featured sites */
 .featured-sites {
   padding: 5rem 0;
 }
@@ -235,17 +224,11 @@ html {
 #clockdiv > div {
   padding: 8px;
   border-radius: 3px;
-  /* border-color: blue; */
-  /* background: #00bf96; */
   display: inline-block;
   margin: 15px;
-  /* color: #000; */
-  /* width: 100px;
-  height: 100px;
-  border-radius: 50px; */
 }
+
 #clockdiv div > span {
-  /* padding: 30px; */
   padding-top: 35px;
   padding-bottom: 10px;
   border-radius: 3px;

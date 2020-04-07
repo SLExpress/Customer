@@ -10,9 +10,6 @@ const cartColumns = () => {
         <div className="col-10 mx-auto col-lg-2 card-header">
           <p className="text-uppercase">url</p>
         </div>
-        {/* <div className="col-10 mx-auto col-lg-2 card-header">
-          <p className="text-uppercase">name of site</p>
-        </div> */}
         <div className="col-10 mx-auto col-lg-2 card-header">
           <p className="text-uppercase">price</p>
         </div>

@@ -112,8 +112,6 @@ export function logout() {
   localStorage.removeItem("payment");
   localStorage.removeItem("paymentWebsite");
   localStorage.removeItem("paymentWebsiteUrl");
-
-  // localStorage.removeItem("cart");
 }
 
 export default {

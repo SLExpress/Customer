@@ -1,6 +1,6 @@
 import React from "react";
-import { ProductConsumer } from "../../context";
 import SinglePricingCard from "./../pricing/singlePricingCard";
+import { ProductConsumer } from "../../context";
 
 const pricingScreen = () => {
   return (

@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import { Button, Modal } from "semantic-ui-react";
-// import { Buttons } from "./../table/buttons";
-// import { Link } from "react-router-dom";
 
 class modal extends Component {
   render() {

@@ -1,6 +1,6 @@
 import React from "react";
-import Joi from "joi-browser";
 import Form from "../common/form";
+import Joi from "joi-browser";
 
 class paymentsSettingsCard extends Form {
   state = {
@@ -35,7 +35,6 @@ class paymentsSettingsCard extends Form {
 
   doSubmit = () => {
     // Call the server
-
     console.log("Updated Payments");
   };
 

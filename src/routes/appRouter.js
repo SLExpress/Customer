@@ -31,15 +31,12 @@ import Payment from "../components/pages/payment";
 import ReturnPage from "../components/pages/returnPage";
 import SocialLinksFooter from "./../components/navigationBar/socialLinksFooter";
 import BreadcrumbPage from "./../components/common/breadcrumbPage";
-import Test from "./../components/pages/test";
 import AllThemes from "./../components/pages/allThemes";
 import ResendEmail from "../components/pages/resendEmail";
 import BillingHistory from "../components/pages/billingHistory";
 import DomainList from "../components/pages/domainList";
 import SiteSettingsCreate from "../components/pages/siteSettingsCreate";
-import Testing from "../components/pages/testing";
 import AddDomain from "./../components/pages/addDomain";
-// import Inquiries from "./../components/pages/inquiries ";
 import SinglePaymentHistory from "./../components/pages/singlePaymentHistory";
 import UserInquiries from "../components/pages/userInquiries";
 import Tickets from "./../components/Inquiries/tickets";
@@ -81,14 +78,8 @@ export default class AppRouter extends Component {
           <Route path="/forgotPassword" component={ForgotPassword} />
           <Route path="/resendEmail" component={ResendEmail} />
           <Route path="/allThemes" component={AllThemes} />
-          <Route path="/test" component={Test} />
-          <Route path="/testing" component={Testing} />
           <ProtectedRoute path="/billingHistory" component={BillingHistory} />
           <ProtectedRoute path="/domainList" component={DomainList} />
-          {/* <Route
-            path="/payment/:id"
-            render={props => <Payment value={userId} {...props} />}
-          ></Route> */}
           <ProtectedRoute
             path="/payment/:id"
             render={props => <Payment value={userId} {...props} />}

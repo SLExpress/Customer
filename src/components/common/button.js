@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const button = ({ buttonName, buttonType, color }) => {
+const button = ({ buttonName, buttonType }) => {
   if (buttonType === "blue") {
     return (
       <BlueButton>
@@ -21,16 +21,6 @@ const button = ({ buttonName, buttonType, color }) => {
       </RedButton>
     );
   }
-
-  // return buttonType === "blue" ? (
-  //   <BlueButton>
-  //     <BlueText>{buttonName}</BlueText>
-  //   </BlueButton>
-  // ) :  (
-  //   <AshButton>
-  //     <AshText>{buttonName}</AshText>
-  //   </AshButton>
-  // );
 };
 
 export default button;

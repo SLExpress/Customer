@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import Joi from "joi-browser";
 import Input from "./input";
-import { Buttons } from "../table/buttons";
 import AddDomainInput from "./../addDomain/addDomainInput";
 import FormInput from "./formInput";
+import { Buttons } from "../table/buttons";
+import Joi from "joi-browser";
 
 class Form extends Component {
   state = {
@@ -30,15 +30,11 @@ class Form extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-
-    // const errors = this.validate();
-
     this.validate();
-
+    this.doSubmit();
+    // const errors = this.validate();
     // this.setState({ errors: errors || {} });
     // if (errors) return;
-
-    this.doSubmit();
   };
 
   handleChange = ({ currentTarget: input }) => {
@@ -54,14 +50,7 @@ class Form extends Component {
   };
 
   renderButton(label) {
-    return (
-      // <button className="btn btn-primary">{label}</button>
-      // <Button disabled={this.validate()} buttonName={label} buttonType="blue">
-      //   {label}
-      // </Button>
-
-      <Buttons name={label} color="#40a3dc" disabled={this.validate()} />
-    );
+    return <Buttons name={label} color="#40a3dc" disabled={this.validate()} />;
   }
 
   renderInput(name, label, type = "text") {

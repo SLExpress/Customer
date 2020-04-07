@@ -1,9 +1,9 @@
 import React from "react";
-import Joi from "joi-browser";
 import Form from "../common/form";
-import { Link } from "react-router-dom";
 import * as registerUser from "../../services/registerService";
+import { Link } from "react-router-dom";
 import { MDBAnimation } from "mdbreact";
+import Joi from "joi-browser";
 import Swal from "sweetalert2";
 
 class RegisterForm extends Form {
@@ -85,13 +85,10 @@ class RegisterForm extends Form {
             if (param === "username") {
               errors.username = msg;
             }
-            // errors.contactNo = ex.response.data.error;
+
             this.setState({ errors });
           });
           console.log(ex.response);
-          // errors.contactNo = ex.response.data.errors[0].msg;
-          // errors.contactNo = ex.response.data.error;
-          // this.setState({ errors });
         }
       }
     } else {

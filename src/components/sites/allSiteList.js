@@ -1,70 +1,26 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-// import Button from "../common/button";
-import { Buttons } from "./../table/buttons";
-import styled from "styled-components";
-import { ProductContext } from "../../context";
-// import { FaCartPlus } from "react-icons/fa";
-import Loading from "../common/loading";
-// import Title from "../common/title";
-// import { MDBView } from "mdbreact";
 import SearchBox from "../common/searchBox";
-import { createWebsite } from "../../services/siteCategoryService";
+import { Buttons } from "./../table/buttons";
+import { Link } from "react-router-dom";
 import { apiUrl } from "./../../config/config.json";
+import { ProductContext } from "../../context";
+import styled from "styled-components";
 
 class allSiteList extends Component {
   // Accessing context API
   static contextType = ProductContext;
 
-  state = {
-    loading: false,
-    time: 90
-  };
-
-  fetchData = () => {
-    this.setState({ loading: true });
-  };
-
-  async reduceTimer(id) {
-    await setInterval(async () => {
-      if (this.state.time !== 0) {
-        this.setState(prevState => {
-          return { time: prevState.time - 1 };
-        });
-      } else {
-        // window.location = `/siteSettings/${id}`;
-        window.location = `/siteCreateSettings/${id}`;
-      }
-    }, 1000);
-  }
-
-  handlecreateWebsite = async (domain, id) => {
-    await createWebsite(domain, id);
-  };
   render() {
     const url = apiUrl;
     const {
-      // addToCart,
       setSingleSite,
-      // setSingleSiteSettings,
-      // setSingleSiteSettingsCreate,
-      // filteredSites,
-      // siteData,
-      // handleCreateWebsite,
       handleSiteChange,
       search,
       sortedSites
     } = this.context;
-    // const { path } = this.props;
-    const { loading } = this.state;
-
-    if (loading) {
-      return <Loading time={this.state.time} />;
-    }
 
     return (
       <div>
-        {/* <Title title="Premium Themes" center="true" /> */}
         <section className="featured-sites">
           <center className="mb-5">
             <SearchBox
@@ -150,32 +106,3 @@ const ProductWrapper = styled.div`
     width: 330px;
   }
 `;
-
-// const ProductWrapper = styled.div`
-//   .card {
-//     transition: var(--mainTransition);
-//     padding-top: 15px;
-//     padding-left: 15px;
-//     padding-right: 15px;
-//     padding-bottom: 15px;
-//   }
-
-//   .cart-btn {
-//     position: absolute;
-//     bottom: 0;
-//     right: 0;
-//     padding: 0.2rem 0.4rem;
-//     background: var(--primaryColor);
-//     border: none;
-//     color: var(--mainWhite);
-//     font-size: 1.4rem;
-//     border-radius: 0.5rem 0 0 0;
-//     transform: translate(100%, 100%);
-//     transition: all 1s linear;
-//   }
-
-//   .cart-btn:hover {
-//     color: var(--darkBlue);
-//     cursor: pointer;
-//   }
-// `;

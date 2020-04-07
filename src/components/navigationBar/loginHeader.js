@@ -48,54 +48,6 @@ export default function Header({ currentUser }) {
                             </Phone>
                           </div>
                           <div className="col-md-3 offset-md-3  col-sm-6 col-xs-6">
-                            {/* {!currentUser && (
-                              <div id="phone-number">
-                                <i className="fa fa-lock" />
-                                <Link
-                                  style={{
-                                    color: "#fff",
-                                    textDecoration: "none"
-                                  }}
-                                  to="/login"
-                                >
-                                  <span className="login-register">
-                                    Login / Register
-                                  </span>
-                                </Link>
-                              </div>
-                            )} */}
-                            {/* {currentUser && (
-                              <div id="phone-number">
-                                <i className="fa fa-lock" />
-                                <Link
-                                  style={{
-                                    color: "#fff",
-                                    textDecoration: "none"
-                                  }}
-                                  to="/logout"
-                                >
-                                  <span className="login-register">
-                                    {currentUser} / Logout
-                                  </span>
-                                </Link>
-                                <span id="middle-border">&nbsp;</span>
-                                <Link
-                                  to="/cartCheckOut"
-                                  style={{
-                                    color: "#fff",
-                                    textDecoration: "none"
-                                  }}
-                                >
-                                  <div className="nav-cart">
-                                    <FaCartPlus className="nav-icon" />
-
-                                    <div className="cart-items">
-                                      {cartItems}
-                                    </div>
-                                  </div>
-                                </Link>
-                              </div>
-                            )} */}
                             <div id="phone-number">
                               <i className="fa fa-lock" />
                               <Link
@@ -209,7 +161,7 @@ export default function Header({ currentUser }) {
                                   }}
                                   to="/inquiries "
                                 >
-                                  INQUERIES
+                                  INQUIRIES
                                 </Link>
                               </li>
                             </ul>
@@ -229,7 +181,6 @@ export default function Header({ currentUser }) {
 }
 
 // Styled Components
-
 const HeaderWrapper = styled.div`
   .loginHeader {
     margin-bottom: 50px !important;

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Cart from "../cart/cart";
-import { ProductContext } from "../../context";
 import Loader from "./../common/loader";
+import { ProductContext } from "../../context";
 
 class cartCheckout extends Component {
   static contextType = ProductContext;
@@ -14,10 +14,7 @@ class cartCheckout extends Component {
     return (
       <React.Fragment>
         <div
-          // className="card"
           style={{
-            // marginBottom: "150px",
-            // marginTop: "150px",
             marginLeft: "150px",
             marginRight: "150px"
           }}
@@ -32,25 +29,3 @@ class cartCheckout extends Component {
 }
 
 export default cartCheckout;
-
-// const cartCheckOut = () => {
-//   return (
-//     <React.Fragment>
-//       <div
-//         // className="card"
-//         style={{
-//           // marginBottom: "150px",
-//           // marginTop: "150px",
-//           marginLeft: "150px",
-//           marginRight: "150px"
-//         }}
-//       >
-//         <div className="card-body">
-//           <Cart />
-//         </div>
-//       </div>
-//     </React.Fragment>
-//   );
-// };
-
-// export default cartCheckOut;

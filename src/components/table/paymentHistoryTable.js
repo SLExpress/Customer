@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Buttons } from "./buttons";
 import Tables from "./tables";
+import { Buttons } from "./buttons";
 import { Status } from "./icon";
 import { Link } from "react-router-dom";
 
@@ -30,17 +30,6 @@ class paymentHistoryTable extends Component {
         </Link>
       )
     }
-
-    // {
-    //   key: "buttonU",
-    //   content: category => (
-    //     <Buttons
-    //       onSubmit={() => this.props.onDelete(category)}
-    //       name="Delete"
-    //       color="#e60000"
-    //     />
-    //   )
-    // }
   ];
   render() {
     const { purchases, onSort, sortColumn, currentPage } = this.props;

@@ -10,16 +10,11 @@ const FormInput = ({ name, label, value, onChange, error, type }) => {
         value={value}
         onChange={onChange}
         name={name}
-        // autoFocus
         id={name}
         label={label}
         type={type}
       />
-
       {error && (
-        // <div className="alert alert-danger" style={{ width: "250px" }}>
-        //   {error}
-        // </div>
         <Label basic color="red" pointing prompt>
           {error}
         </Label>

@@ -1,8 +1,7 @@
 import React from "react";
-// import SingleMySite from "./singleMySite";
-import { ProductConsumer } from "../../context";
 import SingleMySiteNew from "./singleMySiteNew";
 import SearchBox from "./../common/searchBox";
+import { ProductConsumer } from "../../context";
 
 const mySiteList = () => {
   return (
@@ -40,8 +39,6 @@ const mySiteList = () => {
               )}
             </section>
           </div>
-
-          // </div>
         );
       }}
     </ProductConsumer>

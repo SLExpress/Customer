@@ -1,23 +1,13 @@
 import React from "react";
-// import SingleMySite from "./singleMySite";
-import { ProductConsumer } from "../../context/context";
 import SingleMySiteNew from "./singleMySiteNew";
 import SearchBox from "../common/searchBox";
+import { ProductConsumer } from "../../context/context";
 
 const notPaidMySiteList = () => {
   return (
     <ProductConsumer>
       {value => {
-        const {
-          handleNotPaidMySiteChange,
-          sortedCart,
-          // mySiteData,
-          // cart,
-          // sortedMySites,
-          // handleMySiteChange,
-          search
-          // paidMySites
-        } = value;
+        const { handleNotPaidMySiteChange, sortedCart, search } = value;
 
         return (
           <div>
@@ -49,8 +39,6 @@ const notPaidMySiteList = () => {
               )}
             </section>
           </div>
-
-          // </div>
         );
       }}
     </ProductConsumer>

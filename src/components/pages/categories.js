@@ -12,10 +12,6 @@ export default class categories extends Component {
       return <Loader />;
     }
     return (
-      // <div>
-      //   <CategoryMenu />
-      //   <CategoryScreen />
-      // </div>
       <div className="container">
         <div className="row">
           <div className="col-sm-4 mt-4">

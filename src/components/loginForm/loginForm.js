@@ -1,11 +1,10 @@
 import React from "react";
-import Joi from "joi-browser";
-import { Redirect, Link } from "react-router-dom";
-import { toast } from "react-toastify";
 import Form from "../common/form";
 import auth from "../../services/authService";
+import { Redirect, Link } from "react-router-dom";
 import { MDBAnimation } from "mdbreact";
 import Swal from "sweetalert2";
+import Joi from "joi-browser";
 
 class LoginForm extends Form {
   state = {
@@ -37,7 +36,6 @@ class LoginForm extends Form {
     try {
       const { data } = this.state;
       await auth.login(data.email, data.password, data.type);
-      toast.success("Sucessufully Logged In ");
       Swal.fire({
         icon: "success",
         title: "Login Successfull",

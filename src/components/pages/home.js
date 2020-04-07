@@ -1,9 +1,9 @@
 import React from "react";
-import styled from "styled-components";
+import ServicesBanner from "./../banner/servicesBanner";
 import Banner from "../banner/banner";
 import auth from "../../services/authService";
 import { Redirect } from "react-router-dom";
-import ServicesBanner from "./../banner/servicesBanner";
+import styled from "styled-components";
 
 const home = () => {
   if (auth.getCurrentUser()) return <Redirect to="/landingPage" />;

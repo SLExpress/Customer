@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import styled from "styled-components";
 import { FaDolly, FaRedo, FaDollarSign } from "react-icons/fa";
+import styled from "styled-components";
+
 export default class servicesBanner extends Component {
   state = {
     services: [

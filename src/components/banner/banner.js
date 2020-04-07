@@ -1,7 +1,7 @@
 import React from "react";
+import homePageImage from "../../images/homePageImage.png";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import homePageImage from "../../images/homePageImage.png";
 
 const Banner = () => {
   return (

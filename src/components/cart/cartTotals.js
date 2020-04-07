@@ -1,9 +1,7 @@
 import React from "react";
-import { ProductConsumer } from "../../context";
-// import PayPalButton from "./payPalButton";
-// import Button from "../common/button";
-import { Link } from "react-router-dom";
 import { Buttons } from "../table/buttons";
+import { Link } from "react-router-dom";
+import { ProductConsumer } from "../../context";
 
 const cartTotals = () => {
   return (
@@ -16,35 +14,21 @@ const cartTotals = () => {
 
             return (
               <div className="col my-4 ">
-                {/* <button
-                  className="btn btn-outline-danger text-capitalize mb-4"
-                  onClick={clearCart}
-                >
-                  clear cart
-                </button> */}
-
                 <div className="float-right">
                   <table class="table">
                     <tbody>
                       <tr>
-                        <td className="textBold">
-                          subtotal : ${cartSubTotal}
-                          {/* <p className="textBold">subtotal : ${cartSubTotal}</p> */}
-                        </td>
+                        <td className="textBold">subtotal : ${cartSubTotal}</td>
                       </tr>
-                      {/* <tr>
-                        <td className="textBold">tax : ${cartTax}</td>
-                      </tr> */}
+
                       <tr>
                         <td className="textBold">total : ${cartTotal}</td>
                       </tr>
                     </tbody>
                   </table>
                   <Link style={{ textDecoration: "none" }} onClick={clearCart}>
-                    {/* <Button buttonName="clear cart" /> */}
                     <Buttons name="clear cart" color="#e60000" />
                   </Link>
-                  {/* <PayPalButton clearCart={clearCart} cartTotal={cartTotal} /> */}
                 </div>
               </div>
             );

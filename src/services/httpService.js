@@ -31,31 +31,3 @@ export default {
   patch: axios.patch,
   setJwt
 };
-
-// axios({
-//   url: "http://slexpress.tk:3000/sites/getCategories",
-//   method: "get",
-//   headers: {
-//     "Content-Type": "application/json",
-//     Authorization:
-//       "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZTFiMzc0ZTAxZmE1NTc4MDgwMjdhOTIiLCJ0eXBlIjoiY3VzdG9tZXIiLCJpYXQiOjE1NzkzMTk5MTgsImV4cCI6MTU3OTMyMzUxOH0.9quwn_VY58crhd3kHOS6Wox6uIeB3kH0j_5FXELbkjg"
-//   }
-// })
-//   .then(response => console.log(response))
-//   .catch(error => {
-//     console.log(error);
-//   });
-
-// axios({
-//   url: "http://slexpress.tk:3000/user/getUser",
-//   method: "get",
-//   headers: {
-//     "Content-Type": "application/json",
-//     Authorization:
-//       "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZTFiMzc0ZTAxZmE1NTc4MDgwMjdhOTIiLCJ0eXBlIjoiY3VzdG9tZXIiLCJpYXQiOjE1NzkzMTk5MTgsImV4cCI6MTU3OTMyMzUxOH0.9quwn_VY58crhd3kHOS6Wox6uIeB3kH0j_5FXELbkjg"
-//   }
-// })
-//   .then(response => console.log(response))
-//   .catch(error => {
-//     console.log(error);
-//   });

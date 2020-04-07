@@ -1,14 +1,13 @@
 import React from "react";
-import styled from "styled-components";
-import { ProductConsumer } from "../../context";
 import SearchBox from "./../common/searchBox";
+import { ProductConsumer } from "../../context";
+import styled from "styled-components";
 
 const allSitesFilter = () => {
   return (
     <ProductConsumer>
       {value => {
         const { search, min, max, price, handleSiteChange } = value;
-
         return (
           <div className="row my-5">
             <div className="col-10 mx-auto">
@@ -17,7 +16,6 @@ const allSitesFilter = () => {
                   <SearchBox handleChange={handleSiteChange} search={search} />
                 </div>
 
-                {/* price range */}
                 <div>
                   <label htmlFor="price">
                     <p className="mb-2">
@@ -35,7 +33,6 @@ const allSitesFilter = () => {
                     onChange={handleSiteChange}
                   />
                 </div>
-                {/* price range */}
               </FilterWrapper>
             </div>
           </div>

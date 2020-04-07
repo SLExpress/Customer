@@ -1,13 +1,11 @@
 import React from "react";
-import { Grid, Message, Icon, Form, Card } from "semantic-ui-react";
-// import { TitleWapper } from "../../../Common/CommonStyle";
-import styled from "styled-components";
-import { ProductContext } from "./../../context";
-// import _ from "lodash";
 import Forms from "./../common/form";
-import Joi from "joi-browser";
+import { Grid, Message, Icon, Form, Card } from "semantic-ui-react";
 import { CButtons } from "./../table/buttons";
+import { ProductContext } from "./../../context";
 import * as inquiryService from "./../../services/inquiryService";
+import Joi from "joi-browser";
+import styled from "styled-components";
 
 class userInquiries extends Forms {
   static contextType = ProductContext;
@@ -31,9 +29,6 @@ class userInquiries extends Forms {
       const AdminMsg = this.state.data;
       console.log("dd", AdminMsg._id);
       await inquiryService.replyTickets(AdminMsg);
-      //this.context.handleReply(this.state.data);
-      //   const { state } = this.props.location;
-      // window.location = state ? state.from.pathname : "/developertickets";
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         const errors = { ...this.state.errors };
@@ -47,15 +42,10 @@ class userInquiries extends Forms {
     console.log("Single", this.state.data);
 
     return (
-      <Grid.Column
-        mobile={13}
-        tablet={13}
-        computer={13}
-        // style={{ background: "#e9ecef;" }}
-      >
+      <Grid.Column mobile={13} tablet={13} computer={13}>
         <br />
         <br />
-        {/* <TitleWapper>Developer Inquiries</TitleWapper> */}
+
         <br />
         <br />
         <Grid>
@@ -134,11 +124,6 @@ class userInquiries extends Forms {
 }
 
 export default userInquiries;
-
-// const StyledTextarea = styled(Form.TextArea)`
-//   width: 125%;
-//   height: 100% !important;
-// `;import Forms from './../../../Common/forms';
 
 const StyledForm = styled(Form)`
   display: flex;

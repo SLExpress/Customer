@@ -1,8 +1,8 @@
 import React from "react";
-import Joi from "joi-browser";
 import Form from "../common/form";
-import { getCustomer, updateCustomer } from "../../services/userService";
 import auth from "../../services/authService";
+import { getCustomer, updateCustomer } from "../../services/userService";
+import Joi from "joi-browser";
 
 class profileSettingsCard extends Form {
   state = {

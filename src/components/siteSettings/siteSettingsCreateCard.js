@@ -1,11 +1,10 @@
 import React from "react";
-import { ProductConsumer } from "../../context";
 import CountDown from "../common/countDown";
-import { apiUrl } from "./../../config/config.json";
-// import auth from "./../../services/authService";
-import moment from "moment";
 import { Buttons } from "./../table/buttons";
 import { Link } from "react-router-dom";
+import { ProductConsumer } from "../../context";
+import { apiUrl } from "./../../config/config.json";
+import moment from "moment";
 
 const siteSettingsCreateCard = ({ subdomain }) => {
   const domain = subdomain;
@@ -24,17 +23,6 @@ const siteSettingsCreateCard = ({ subdomain }) => {
         const dateString = time.toDateString();
         const timeString = time.toLocaleTimeString();
 
-        // const serverTime = localStorage.getItem("serverTime");
-        // const serverCorrectTime = new Date(serverTime * 1000);
-        // console.log(serverCorrectTime);
-
-        // const unique = localStorage.getItem("unique");
-        // const username = auth.getCurrentUser();
-        // console.log(time);
-        // console.log(correctTime);
-        // console.log(serverTime);
-
-        // Deadline Prop
         const deadline = new Date(correctTime).getTime();
 
         return (
@@ -74,8 +62,6 @@ const siteSettingsCreateCard = ({ subdomain }) => {
                         {" "}
                         <Buttons color="#40a3dc" name="Pay Now" />
                       </Link>
-
-                      {/* <p className="text-color-ash">Password Admin123</p> */}
                     </div>
                   </div>
                 </div>

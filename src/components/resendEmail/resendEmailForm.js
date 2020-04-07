@@ -27,9 +27,6 @@ class resendEmailForm extends Form {
       await resendConfirmationEmail(data.email, data.userType);
       this.setState({ isSend: true });
       this.reduceTimer();
-      // setTimeout(() => {
-      //   this.setState({ isResend: true });
-      // }, 60000);
     } catch (ex) {
       if (ex.response && ex.response.status === 422) {
         const errors = { ...this.state.errors };
@@ -46,7 +43,6 @@ class resendEmailForm extends Form {
           return { time: prevState.time - 1 };
         });
       } else {
-        // this.setState({ isResend: true });
         window.location = "/resendEmail";
       }
     }, 1000);
@@ -67,21 +63,6 @@ class resendEmailForm extends Form {
     }
   };
 
-  // setResendLink = () => {
-  //   if (this.state.isResend === true) {
-  //     return (
-  //       <Link
-  //         style={{ textDecoration: "none" }}
-  //         to="/resendEmail"
-  //         target="_blank"
-  //         rel="noopener noreferrer"
-  //       >
-  //         <p style={{ marginBottom: "20px" }}>Resend Confirmation Email </p>
-  //       </Link>
-  //     );
-  //   }
-  // };
-
   render() {
     // Redirect User To Categories Page If The user Is Already Login
     if (auth.getCurrentUser()) return <Redirect to="/categories" />;
@@ -94,7 +75,6 @@ class resendEmailForm extends Form {
           {this.renderButton("Resend")}
           <br />
           {this.successMessage()}
-          {/* {this.setResendLink()} */}
         </form>
       </div>
     );

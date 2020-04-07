@@ -1,7 +1,5 @@
-// import React, { Component } from "react";
 import React from "react";
 import PayForm from "../common/payForm";
-import Joi from "joi-browser";
 import { getPayment } from "./../../services/paymentService";
 import Payhere from "../../images/Payhere.png";
 import AmericanExpress from "../../images/AmericanExpress.png";
@@ -10,6 +8,7 @@ import Discover from "../../images/Discover.png";
 import Maestro from "../../images/Maestro.png";
 import MasterCard from "../../images/MasterCard.png";
 import Visa from "../../images/Visa.png";
+import Joi from "joi-browser";
 
 class paymentForm extends PayForm {
   state = {
@@ -101,7 +100,7 @@ class paymentForm extends PayForm {
   async componentDidMount() {
     const { orderId } = this.props;
     console.log(orderId);
-    // this.setState({ order_id: orderId });
+
     await this.populatePayment();
   }
 
@@ -188,14 +187,7 @@ class paymentForm extends PayForm {
               {this.renderInput("items", "", "hidden")}
               {this.renderInput("currency", "", "hidden")}
               {this.renderInput("amount", "", "hidden")}
-              {/* {this.renderInput("first_name", "first_name")}
-              {this.renderInput("last_name", "last_name")}
-              {this.renderInput("email", "email")}
-              {this.renderInput("phone", "phone")}
-              {this.renderInput("address", "address")}
-              {this.renderInput("city", "city")}
-              {this.renderInput("country", "country")} */}
-              {/* {this.renderButton("Pay Now")} */}
+
               <input
                 name="submit"
                 type="image"
@@ -213,8 +205,3 @@ class paymentForm extends PayForm {
 }
 
 export default paymentForm;
-
-//  5e2adfb155e7ec2b72864de5
-// 5e29e24ffee0ef7944319071
-//  5e29683e8918d73949dcc5a6
-// 5e29642f16489836d1e421e3

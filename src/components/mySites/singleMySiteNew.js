@@ -1,13 +1,12 @@
 import React from "react";
-import { MDBView } from "mdbreact";
+import { Status } from "./../table/icon";
 import { Buttons } from "./../table/buttons";
-import styled from "styled-components";
 import { ProductConsumer } from "../../context";
+import { deleteWebsite } from "./../../services/siteCategoryService";
+import { MDBView } from "mdbreact";
 import { MdUpdate } from "react-icons/md";
 import { Link } from "react-router-dom";
-import { Status } from "./../table/icon";
-import { deleteWebsite } from "./../../services/siteCategoryService";
-// import img from "./../../images/QueensVilla.png";
+import styled from "styled-components";
 import Swal from "sweetalert2";
 
 const singleMySiteNew = ({ site }) => {
@@ -51,22 +50,17 @@ const singleMySiteNew = ({ site }) => {
         const { setSingleSiteSettings } = value;
         const datetime = new Date(site.createdDate);
         const dateString = datetime.toDateString();
-        // const timeString = datetime.toLocaleTimeString();
 
         return (
           <ProductWrapper>
             <div className="card">
               <MDBView hover zoom>
                 <article className="mysite">
-                  {/* Image container */}
                   <div className="myimg-container">
-                    {/* Setting up a default image */}
                     <img
                       src={`http://slexpress.tk:3000/images/sc/${site.script.image}`}
                       alt="site"
                     />
-
-                    {/* Link to the page */}
 
                     <Link
                       style={{ textDecoration: "none" }}
@@ -85,8 +79,6 @@ const singleMySiteNew = ({ site }) => {
                       <Buttons name="Delete" color="#40a3dc" />
                     </Link>
                   </div>
-
-                  {/* name of the site*/}
 
                   <p className="mysite-info">
                     <MdUpdate />

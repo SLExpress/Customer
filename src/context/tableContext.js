@@ -1,9 +1,7 @@
 import React, { Component } from "react";
+import auth from "./../services/authService";
 import { siteCategoryData } from "./siteCategoryData";
 import { getPurchaseHistory } from "./../services/paymentService";
-import auth from "./../services/authService";
-// import _ from "lodash";
-// import singlePaymentHistory from "./../components/pages/singlePaymentHistory";
 
 const TableContext = React.createContext();
 class TableProvider extends Component {
@@ -23,7 +21,7 @@ class TableProvider extends Component {
     try {
       if (auth.getCurrentUser()) {
         const { data: paymentHistory } = await getPurchaseHistory();
-        // console.log(paymentHistory);
+
         this.setState({
           paymentHistory: paymentHistory.purchases
         });
@@ -42,39 +40,7 @@ class TableProvider extends Component {
         singlePaymentHistoryWebsite: this.getsinglePaymentHistoryWebsite(),
         singlePaymentHistoryWebsiteUrl: this.getsinglePaymentHistoryWebsiteUrl()
       });
-      // if (auth.getCurrentUser()) {
-      //   const { data: paymentHistory } = await getPurchaseHistory();
-      //   // console.log(paymentHistory);
-      //   this.setState({
-      //     paymentHistory: paymentHistory.purchases,
-
-      //   });
-
-      //   console.log(this.state.paymentHistory);
-      // }
     } catch (error) {}
-
-    // const { data: categories } = await getCategories();
-    // this.setState({ categories: categories.categories });
-    // console.log("categories", categories);
-  };
-
-  handleDelete = async category => {
-    console.log("Deleted");
-    // const categories = this.state.categories.filter(
-    //   d => d._id !== category._id
-    // );
-    // this.setState({ categories });
-
-    // try {
-    //   console.log(category._id);
-    //   await deleteCategory(category._id);
-    // } catch (ex) {
-    //   if (ex.response && ex.response.status === 404)
-    //     toast.error("This site has already been deleted.");
-
-    //   //this.setState({categories});
-    // }
   };
 
   getsinglePaymentHistory = () => {
@@ -133,7 +99,6 @@ class TableProvider extends Component {
   };
 
   handleSearch = query => {
-    // console.log("search wada");
     this.setState({ searchQuery: query, currentPage: 1 });
   };
 

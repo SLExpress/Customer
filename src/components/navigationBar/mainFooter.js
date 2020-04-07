@@ -1,5 +1,4 @@
 import React from "react";
-// import Footer from "./footer";
 import SocialLinksFooter from "./socialLinksFooter";
 
 const mainFooter = ({ currentUser }) => {
@@ -12,7 +11,6 @@ const mainFooter = ({ currentUser }) => {
       )}
       {!currentUser && (
         <div>
-          {/* <Footer /> */}
           <SocialLinksFooter />
         </div>
       )}

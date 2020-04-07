@@ -23,10 +23,7 @@ class categoryMenu extends Component {
                   style={{ textDecoration: "none" }}
                   to={`/themes/${item.name}`}
                   onClick={() => {
-                    // filterSites(item.name);
-                    // filterSitesAll(item.name);
                     filterSites(item._id);
-                    // filterSitesAll(item._id);
                   }}
                 >
                   <p className="text-color-ash">{item.name}</p>

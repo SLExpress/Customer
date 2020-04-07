@@ -15,7 +15,6 @@ class Forms extends Component {
     const options = { abortEarly: false };
     const { error } = Joi.validate(this.state.data, this.schema, options);
     if (!error) return null;
-
     const errors = {};
     for (let item of error.details) errors[item.path[0]] = item.message;
     return errors;
@@ -30,15 +29,12 @@ class Forms extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-
-    // const errors = this.validate();
-
     this.validate();
+    this.doSubmit();
 
     // this.setState({ errors: errors || {} });
     // if (errors) return;
-
-    this.doSubmit();
+    // const errors = this.validate();
   };
 
   handleChange = ({ currentTarget: input }) => {
@@ -46,22 +42,13 @@ class Forms extends Component {
     const errorMessage = this.validateProperty(input);
     if (errorMessage) errors[input.name] = errorMessage;
     else delete errors[input.name];
-
     const data = { ...this.state.data };
     data[input.name] = input.value;
-
     this.setState({ data, errors });
   };
 
   renderButton(label) {
-    return (
-      // <button className="btn btn-primary">{label}</button>
-      // <Button disabled={this.validate()} buttonName={label} buttonType="blue">
-      //   {label}
-      // </Button>
-
-      <Buttons name={label} color="#40a3dc" disabled={this.validate()} />
-    );
+    return <Buttons name={label} color="#40a3dc" disabled={this.validate()} />;
   }
 
   renderInput(name, label, type = "text") {

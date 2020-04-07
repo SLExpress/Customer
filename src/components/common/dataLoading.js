@@ -3,6 +3,23 @@ import styled from "styled-components";
 import { css } from "@emotion/core";
 import { SyncLoader } from "react-spinners";
 
+const LoadingScreen = ({ text }) => {
+  return (
+    <LoadingWrapper>
+      <SyncLoader
+        css={override}
+        sizeUnit="px"
+        size={20}
+        color="#123abc"
+        loading
+      />
+      <CreatingText>{text}</CreatingText>
+    </LoadingWrapper>
+  );
+};
+
+export default LoadingScreen;
+
 const LoadingWrapper = styled.div`
   background-color: #ffffff;
   min-height: calc(100vh - 190px);
@@ -18,8 +35,6 @@ const override = css`
   border-color: red;
 `;
 
-
-
 const CreatingText = styled.p`
   font-size: 2rem;
   color: #00000054;
@@ -28,20 +43,3 @@ const CreatingText = styled.p`
   font-family: sans-serif;
   text-align: center;
 `;
-
-const LoadingScreen = ({text}) => {
-  return (
-    <LoadingWrapper>
-      <SyncLoader
-        css={override}
-        sizeUnit="px"
-        size={20}
-        color="#123abc"
-        loading
-      />
-<CreatingText>{text}</CreatingText>
-    </LoadingWrapper>
-  );
-};
-
-export default LoadingScreen;

@@ -1,6 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { Buttons } from "./../table/buttons";
+import { Link } from "react-router-dom";
 
 const singlePricingCard = ({ cardInfo }) => {
   return (
@@ -20,11 +20,6 @@ const singlePricingCard = ({ cardInfo }) => {
         </ul>
         <Link to={cardInfo.url} style={{ textDecoration: "none" }}>
           <center>
-            {/* <Button
-              className="center"
-              buttonName="Get Started"
-              buttonType="blue"
-            /> */}
             <Buttons color="#40a3dc" name="Start" className="center" />
           </center>
         </Link>

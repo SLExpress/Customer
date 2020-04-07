@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { Container, Row, Col } from "react-bootstrap";
 import LoginForm from "../loginForm/loginForm";
 import RegisterForm from "../registerForm/registerForm";
+import { Container, Row, Col } from "react-bootstrap";
 
 export default class login extends Component {
   render() {
@@ -19,7 +19,6 @@ export default class login extends Component {
           </Col>
           <div className="vl"></div>
           <Col style={{ paddingLeft: "7rem", paddingRight: "1rem" }}>
-            {/* User  Registration Form */}
             <RegisterForm />
           </Col>
         </Row>

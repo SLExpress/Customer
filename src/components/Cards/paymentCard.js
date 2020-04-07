@@ -1,7 +1,6 @@
 import React from "react";
-// import Button from "../common/button";
-import { Link } from "react-router-dom";
 import { Buttons } from "../table/buttons";
+import { Link } from "react-router-dom";
 
 const paymentCard = ({ title, buttonName }) => {
   return (
@@ -14,7 +13,6 @@ const paymentCard = ({ title, buttonName }) => {
         <h6 className="card-title text-color-ash">Exp Date:</h6>
         <h6 className="card-title text-color-ash">Cvv:</h6>
         <Link to="/paymentSettings" style={{ textDecoration: "none" }}>
-          {/* <Button buttonName={buttonName} buttonType={buttonType} /> */}
           <Buttons color="#40a3dc" name={buttonName} />
         </Link>
       </div>

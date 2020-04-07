@@ -32,10 +32,7 @@ const mySitesCard = () => {
     }
   ];
   return (
-    // <div className="mt-5 mb-5">
     <Tab panes={panes} style={{ width: "1400px", marginLeft: "-150px" }} />
-
-    // </div>
   );
 };
 
