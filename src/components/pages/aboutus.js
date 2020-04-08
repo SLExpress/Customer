@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Title from "../common/title";
 import {
   Button,
   Container,
@@ -12,7 +13,8 @@ import {
 export default class aboutus extends Component {
   render() {
     return (
-      <div>
+      <div className="mt-5">
+        <Title title="About Us" center="true" />
         <Segment style={{ padding: "8em 0em" }} vertical>
           <Container text>
             <Divider

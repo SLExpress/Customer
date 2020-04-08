@@ -1,8 +1,8 @@
 import React, { Component } from "react";
+import Title from "../common/title";
 import {
   Button,
   Container,
-  Divider,
   Grid,
   Header,
   Image,
@@ -12,17 +12,10 @@ import {
 class termsOfService extends Component {
   render() {
     return (
-      <div>
+      <div className="mt-5">
+        <Title title="Contact Us" center="true" />
         <Segment style={{ padding: "8em 0em" }} vertical>
           <Container text>
-            <Divider
-              as="h4"
-              className="header"
-              horizontal
-              style={{ margin: "3em 0em", textTransform: "uppercase" }}
-            >
-              <a href="/aboutus">Our Vision</a>
-            </Divider>
             <Header as="h3" style={{ fontSize: "2em" }}>
               Breaking The Grid, Grabs Your Attention
             </Header>
@@ -35,15 +28,6 @@ class termsOfService extends Component {
             <Button as="a" size="large">
               Read More
             </Button>
-
-            <Divider
-              as="h4"
-              className="header"
-              horizontal
-              style={{ margin: "3em 0em", textTransform: "uppercase" }}
-            >
-              <a href="/aboutus">Our Mission</a>
-            </Divider>
 
             <Header as="h3" style={{ fontSize: "2em" }}>
               Did We Tell You About Our Bananas?

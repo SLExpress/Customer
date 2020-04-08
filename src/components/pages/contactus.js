@@ -1,10 +1,12 @@
 import React, { Component } from "react";
+import Title from "../common/title";
 import { Button, Grid, Header, Image, Segment } from "semantic-ui-react";
 
 export default class contactus extends Component {
   render() {
     return (
-      <div>
+      <div className="mt-5">
+        <Title title="Contact Us" center="true" />
         <Segment style={{ padding: "8em 0em" }} vertical>
           <Grid container stackable verticalAlign="middle">
             <Grid.Row>
