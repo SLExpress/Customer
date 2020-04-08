@@ -1,12 +1,10 @@
 import React, { Component } from "react";
 import auth from "./../services/authService";
-import { siteCategoryData } from "./siteCategoryData";
 import { getPurchaseHistory } from "./../services/paymentService";
 
 const TableContext = React.createContext();
 class TableProvider extends Component {
   state = {
-    categories: siteCategoryData,
     paymentHistory: [],
     currentPage: 1,
     pageSize: 5,
@@ -14,7 +12,7 @@ class TableProvider extends Component {
     sortColumn: { path: "title", order: "asc" },
     singlePaymentHistory: {},
     singlePaymentHistoryWebsite: {},
-    singlePaymentHistoryWebsiteUrl: {}
+    singlePaymentHistoryWebsiteUrl: {},
   };
 
   async populatePurchases() {
@@ -23,7 +21,7 @@ class TableProvider extends Component {
         const { data: paymentHistory } = await getPurchaseHistory();
 
         this.setState({
-          paymentHistory: paymentHistory.purchases
+          paymentHistory: paymentHistory.purchases,
         });
 
         console.log(this.state.paymentHistory);
@@ -38,7 +36,7 @@ class TableProvider extends Component {
       this.setState({
         singlePaymentHistory: this.getsinglePaymentHistory(),
         singlePaymentHistoryWebsite: this.getsinglePaymentHistoryWebsite(),
-        singlePaymentHistoryWebsiteUrl: this.getsinglePaymentHistoryWebsiteUrl()
+        singlePaymentHistoryWebsiteUrl: this.getsinglePaymentHistoryWebsiteUrl(),
       });
     } catch (error) {}
   };
@@ -61,10 +59,10 @@ class TableProvider extends Component {
       : {};
   };
 
-  setSinglePaymentHistory = payment => {
+  setSinglePaymentHistory = (payment) => {
     const { paymentHistory } = this.state;
 
-    let payments = paymentHistory.find(item => item._id === payment._id);
+    let payments = paymentHistory.find((item) => item._id === payment._id);
     localStorage.setItem("payment", JSON.stringify(payments));
     localStorage.setItem("paymentWebsite", JSON.stringify(payments.website));
     localStorage.setItem(
@@ -76,29 +74,29 @@ class TableProvider extends Component {
       {
         singlePaymentHistory: { ...payments },
         singlePaymentHistoryWebsite: payments.website,
-        singlePaymentHistoryWebsiteUrl: payments.website.url
+        singlePaymentHistoryWebsiteUrl: payments.website.url,
       },
       () => console.log(this.state.singlePaymentHistory)
     );
   };
 
-  handlePageChange = page => {
+  handlePageChange = (page) => {
     this.setState({ currentPage: page });
   };
 
-  handlePreviousPageChange = page => {
+  handlePreviousPageChange = (page) => {
     this.setState({ currentPage: page - 1 });
   };
 
-  handleNextPageChange = page => {
+  handleNextPageChange = (page) => {
     this.setState({ currentPage: page + 1 });
   };
 
-  handleSort = sortColumn => {
+  handleSort = (sortColumn) => {
     this.setState({ sortColumn });
   };
 
-  handleSearch = query => {
+  handleSearch = (query) => {
     this.setState({ searchQuery: query, currentPage: 1 });
   };
 
@@ -113,7 +111,7 @@ class TableProvider extends Component {
           handleSort: this.handleSort,
           handleSearch: this.handleSearch,
           handleDelete: this.handleDelete,
-          setSinglePaymentHistory: this.setSinglePaymentHistory
+          setSinglePaymentHistory: this.setSinglePaymentHistory,
         }}
       >
         {this.props.children}
