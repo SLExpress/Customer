@@ -13,7 +13,7 @@ export default class myAccount extends Component {
   state = {
     customer: {},
     isDeleted: false,
-    loading: true
+    loading: true,
   };
 
   handleDelete = async () => {
@@ -25,8 +25,8 @@ export default class myAccount extends Component {
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!"
-      }).then(result => {
+        confirmButtonText: "Yes, delete it!",
+      }).then((result) => {
         if (result.value) {
           this.deleteProfile();
           Swal.fire("Deleted!", "Your account has been deleted.", "success");
@@ -57,7 +57,7 @@ export default class myAccount extends Component {
     if (this.state.isDeleted === true) {
       return (
         <div className="alert alert-danger" style={{ width: "250px" }}>
-          Account Succussfully Deleted
+          Account Successfully Deleted
         </div>
       );
     }

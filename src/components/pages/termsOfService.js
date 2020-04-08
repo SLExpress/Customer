@@ -9,7 +9,7 @@ import {
   Segment,
 } from "semantic-ui-react";
 
-export default class aboutus extends Component {
+class termsOfService extends Component {
   render() {
     return (
       <div>
@@ -87,3 +87,5 @@ export default class aboutus extends Component {
     );
   }
 }
+
+export default termsOfService;

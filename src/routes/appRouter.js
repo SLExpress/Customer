@@ -40,6 +40,8 @@ import AddDomain from "./../components/pages/addDomain";
 import SinglePaymentHistory from "./../components/pages/singlePaymentHistory";
 import UserInquiries from "../components/pages/userInquiries";
 import Tickets from "./../components/Inquiries/tickets";
+import AddPaymentDetails from "./../components/pages/addPaymentDetails";
+import TermsOfService from "./../components/pages/termsOfService";
 
 export default class AppRouter extends Component {
   // To Get Current User Details
@@ -71,6 +73,7 @@ export default class AppRouter extends Component {
           <Route exact path="/" component={Index} />
           <Route path="/aboutus" component={AboutUs} />
           <Route path="/contactus" component={ContactUs} />
+          <Route path="/termsOfService" component={TermsOfService} />
           <Route path="/pricing" component={Pricing} />
           <Route path="/categories" component={Categories} />
           <Route path="/login" component={Login} />
@@ -82,7 +85,7 @@ export default class AppRouter extends Component {
           <ProtectedRoute path="/domainList" component={DomainList} />
           <ProtectedRoute
             path="/payment/:id"
-            render={props => <Payment value={userId} {...props} />}
+            render={(props) => <Payment value={userId} {...props} />}
           />
           <ProtectedRoute path="/returnPage" component={ReturnPage} />
           <ProtectedRoute path="/landingPage" component={LandingPage} />
@@ -93,6 +96,10 @@ export default class AppRouter extends Component {
           <ProtectedRoute path="/myPayments" component={MyPayments} />
           <ProtectedRoute path="/mySites" component={MySites} />
           <ProtectedRoute path="/paymentSettings" component={PaymentSettings} />
+          <ProtectedRoute
+            path="/addPaymentDetails"
+            component={AddPaymentDetails}
+          />
           <ProtectedRoute path="/site" component={Site} />
           <ProtectedRoute path="/siteSettings/:id" component={SiteSettings} />
           <ProtectedRoute

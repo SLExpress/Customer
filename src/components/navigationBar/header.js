@@ -61,7 +61,7 @@ export default function Header() {
                           style={{
                             color: "#fff",
                             textDecoration: "none",
-                            fontWeight: "bold"
+                            fontWeight: "bold",
                           }}
                         >
                           SLExpress
@@ -104,6 +104,14 @@ export default function Header() {
                         to="/contactus"
                       >
                         CONTACT US
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        style={{ color: "#fff", textDecoration: "none" }}
+                        to="/termsOfService"
+                      >
+                        TERMS OF SERVICE
                       </Link>
                     </li>
                   </ul>
