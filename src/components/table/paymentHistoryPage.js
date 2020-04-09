@@ -22,14 +22,14 @@ class paymentHistoryPage extends Component {
       handleSearch,
       sortColumn,
       handleDelete,
-      setSinglePaymentHistory
+      setSinglePaymentHistory,
     } = this.context;
 
     const { length: count } = paymentHistory;
 
     let filtered = paymentHistory;
     if (searchQuery)
-      filtered = paymentHistory.filter(c =>
+      filtered = paymentHistory.filter((c) =>
         c.website.url.defaultUrl
           .toLowerCase()
           .startsWith(searchQuery.toLowerCase())
@@ -43,11 +43,11 @@ class paymentHistoryPage extends Component {
 
     return (
       <>
-        <div className="container">
+        <div className="container" style={{ marginTop: "-850px" }}>
           {count === 0 ? (
-            <p>There are no entries in the database.</p>
+            <p>There are no transactions done so far.</p>
           ) : (
-            <p>Showing {totalCount} entries in the database.</p>
+            <p>Showing {totalCount} successful transactions with slexpress.</p>
           )}
 
           <SearchBar value={searchQuery} onChange={handleSearch} />

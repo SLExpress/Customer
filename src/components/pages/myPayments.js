@@ -79,13 +79,16 @@ export default class myPayments extends Component {
       return <Loader />;
     }
     return (
-      <div className="container" style={{ height: "700px" }}>
+      <div className="container">
         <div className="row">
-          <div className="col-sm-4" style={{ position: "fixed" }}>
+          <div className="col-sm-4">
             <MenuBar />
           </div>
           {!error && (
-            <div className="col" style={{ marginLeft: "130px" }}>
+            <div
+              className="col"
+              style={{ marginLeft: "-300px", marginTop: "0px" }}
+            >
               <h4 className="textBold">Payments & Billing</h4>
               <p className="card-text text-color-ash mb-5">
                 Your Payment Information
@@ -104,7 +107,10 @@ export default class myPayments extends Component {
           <div className="col-sm-4"></div>
 
           {!error && (
-            <div className="col" style={{ marginLeft: "-250px" }}>
+            <div
+              className="col"
+              style={{ marginLeft: "-300px", marginTop: "-420px" }}
+            >
               <h4 className="textBold">Delete Info</h4>
               <p className="card-text text-color-ash">
                 Irreversible and destructive actions
@@ -124,7 +130,12 @@ export default class myPayments extends Component {
             <div>
               <Segment
                 placeholder
-                style={{ width: "800px", height: "550px", marginLeft: "200px" }}
+                style={{
+                  width: "800px",
+                  height: "550px",
+                  marginLeft: "200px",
+                  marginTop: "-810px",
+                }}
               >
                 <Link to="/addPaymentDetails">
                   <Button

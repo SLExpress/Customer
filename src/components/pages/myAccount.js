@@ -73,10 +73,10 @@ export default class myAccount extends Component {
     return (
       <div className="container">
         <div className="row">
-          <div className="col-sm-4 mb-5" style={{ position: "fixed" }}>
+          <div className="col-sm-4 mb-5">
             <MenuBar />
           </div>
-          <div className="col" style={{ marginLeft: "130px" }}>
+          <div className="col" style={{ marginLeft: "-300px" }}>
             <h4 className="textBold">Profile</h4>
             <p className="card-text text-color-ash">
               Your Personal Information
@@ -95,7 +95,7 @@ export default class myAccount extends Component {
 
           <div
             className="col"
-            style={{ marginLeft: "-250px", marginTop: "30px" }}
+            style={{ marginLeft: "-300px", marginTop: "-500px" }}
           >
             <h4 className="textBold">Password</h4>
             <p className="card-text text-color-ash">
@@ -112,7 +112,10 @@ export default class myAccount extends Component {
         <div className="row">
           <div className="col-sm-4"></div>
 
-          <div className="col" style={{ marginLeft: "-250px" }}>
+          <div
+            className="col"
+            style={{ marginLeft: "-300px", marginTop: "-275px" }}
+          >
             <h4 className="textBold">Delete Account</h4>
             <p className="card-text text-color-ash">
               Irreversible and destructive actions

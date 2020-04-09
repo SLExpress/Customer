@@ -15,10 +15,13 @@ export default class accountSettings extends Component {
     return (
       <div className="container">
         <div className="row">
-          <div className="col-sm-4" style={{ position: "fixed" }}>
+          <div className="col-sm-4">
             <MenuBar />
           </div>
-          <div className="col" style={{ marginLeft: "130px" }}>
+          <div
+            className="col"
+            style={{ marginLeft: "130px", marginTop: "-810px" }}
+          >
             <h4 className="textBold">Profile</h4>
             <p className="card-text text-color-ash">
               Your Personal Information
@@ -30,7 +33,10 @@ export default class accountSettings extends Component {
         <div className="row">
           <div className="col-sm-4"></div>
 
-          <div className="col" style={{ marginLeft: "130px" }}>
+          <div
+            className="col"
+            style={{ marginLeft: "130px", marginTop: "-295px" }}
+          >
             <h4 className="textBold">Password</h4>
             <p className="card-text text-color-ash">Reset Password</p>
             <PasswordSettingsCard />

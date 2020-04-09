@@ -6,12 +6,12 @@ class singlePaymentHistory extends Component {
   state = {};
   render() {
     return (
-      <div className="container mb-5" style={{ height: "600px" }}>
+      <div className="container mb-5">
         <div className="row mb-5">
-          <div className="col-sm-4 mb-5" style={{ position: "fixed" }}>
+          <div className="col-sm-4 mb-5">
             <MenuBar />
           </div>
-          <div className="col mb-5" style={{ marginLeft: "130px" }}>
+          <div className="col mb-5" style={{ marginLeft: "-300px" }}>
             <PaymentHistoryScreen />
           </div>
         </div>

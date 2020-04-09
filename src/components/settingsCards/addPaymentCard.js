@@ -18,8 +18,8 @@ class addPaymentCard extends Form {
   schema = {
     nameOnCard: Joi.string().required().label("NameOnCard"),
     expDate: Joi.string().required().label("ExpDate"),
-    cardNo: Joi.string().min(4).required().label("CardNo"),
-    cvv: Joi.string().required().label("Cvv"),
+    cardNo: Joi.number().min(16).required().label("CardNo"),
+    cvv: Joi.number().min(3).required().label("Cvv"),
   };
 
   doSubmit = async () => {

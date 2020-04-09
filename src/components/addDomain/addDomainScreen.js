@@ -1,7 +1,8 @@
 import React from "react";
 import Form from "./../common/form";
 import Loading from "./../common/loading";
-import { Divider, Grid, Header, Icon, Segment } from "semantic-ui-react";
+import MenuBar from "./../common/menuBar";
+import { Header, Icon, Segment } from "semantic-ui-react";
 import { ProductContext } from "./../../context";
 import { createWebsite } from "./../../services/siteCategoryService";
 import Swal from "sweetalert2";
@@ -17,7 +18,7 @@ class addDomainScreen extends Form {
     loading: false,
     time: 90,
     siteCreatedTime: "",
-    serverTime: ""
+    serverTime: "",
   };
 
   fetchData = () => {
@@ -27,7 +28,7 @@ class addDomainScreen extends Form {
   async reduceTimer(id) {
     await setInterval(async () => {
       if (this.state.time !== 0) {
-        this.setState(prevState => {
+        this.setState((prevState) => {
           return { time: prevState.time - 1 };
         });
       } else {
@@ -37,13 +38,8 @@ class addDomainScreen extends Form {
   }
 
   schema = {
-    subdomain: Joi.string()
-      .required()
-      .min(4)
-      .label("Subdomain"),
-    script: Joi.string()
-      .required()
-      .label("Script")
+    subdomain: Joi.string().required().min(4).label("Subdomain"),
+    script: Joi.string().required().label("Script"),
   };
 
   doSubmit = async () => {
@@ -53,7 +49,7 @@ class addDomainScreen extends Form {
       const { data: info } = await createWebsite(data.subdomain, data.script);
       this.setState({
         siteCreatedTime: info.createdDate,
-        serverTime: info.serverTimestamp
+        serverTime: info.serverTimestamp,
       });
       localStorage.setItem("siteCreatedTime", this.state.siteCreatedTime);
       localStorage.setItem("serverTime", this.state.serverTime);
@@ -65,7 +61,7 @@ class addDomainScreen extends Form {
         Swal.fire({
           icon: "info",
           title: ex.response.data.error,
-          showConfirmButton: true
+          showConfirmButton: true,
         });
       }
     }
@@ -78,27 +74,54 @@ class addDomainScreen extends Form {
       return <Loading time={this.state.time} />;
     }
     return (
-      <Segment placeholder size="small" style={{ height: "600px" }}>
-        <Grid columns={2} stackable textAlign="center">
-          <Divider vertical></Divider>
+      // <Segment placeholder size="small" style={{ height: "600px" }}>
+      //   <Grid columns={2} stackable textAlign="center">
+      //     <Divider vertical></Divider>
 
-          <Grid.Row verticalAlign="middle">
-            <Grid.Column>
-              <p style={{ fontSize: "4rem" }}>Find Your Perfect Domain Name</p>
-            </Grid.Column>
+      //     <Grid.Row verticalAlign="middle">
+      //       <Grid.Column>
+      //         <p style={{ fontSize: "4rem" }}>Find Your Perfect Domain Name</p>
+      //       </Grid.Column>
 
-            <Grid.Column>
+      //       <Grid.Column>
+      //         <Header icon>
+      //           <Icon name="search" />
+      //           Find Domain
+      //         </Header>
+      //         <form onSubmit={this.handleSubmit}>
+      //           <center>{this.renderAddDomainInput("subdomain")}</center>
+      //         </form>
+      //       </Grid.Column>
+      //     </Grid.Row>
+      //   </Grid>
+      // </Segment>
+      <div style={{ marginBottom: "270px" }}>
+        <div className="col-sm-4" style={{ marginLeft: "200px" }}>
+          <MenuBar />
+        </div>
+        <Segment
+          placeholder
+          style={{
+            width: "1100px",
+            height: "550px",
+            marginLeft: "340px",
+            marginTop: "-810px",
+          }}
+        >
+          <form onSubmit={this.handleSubmit}>
+            <center>
               <Header icon>
                 <Icon name="search" />
-                Find Domain
               </Header>
-              <form onSubmit={this.handleSubmit}>
-                <center>{this.renderAddDomainInput("subdomain")}</center>
-              </form>
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
-      </Segment>
+              {this.renderAddDomainInput("subdomain")}
+            </center>
+          </form>
+          <br />
+          <center>
+            <p>Find your perfect domain</p>
+          </center>
+        </Segment>
+      </div>
     );
   }
 }

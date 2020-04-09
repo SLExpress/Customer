@@ -7,7 +7,7 @@ import { ProductConsumer } from "../../context";
 export default function Header({ currentUser }) {
   return (
     <ProductConsumer>
-      {value => {
+      {(value) => {
         const { cartItems } = value;
         return (
           <div>
@@ -24,7 +24,7 @@ export default function Header({ currentUser }) {
                                 href="tel:077 714 5020"
                                 style={{
                                   color: "#fff",
-                                  textDecoration: "none"
+                                  textDecoration: "none",
                                 }}
                               >
                                 <i className="fa fa-phone" />
@@ -37,7 +37,7 @@ export default function Header({ currentUser }) {
                                 href="mailto:admin@slexpress.lk"
                                 style={{
                                   color: "#fff",
-                                  textDecoration: "none"
+                                  textDecoration: "none",
                                 }}
                               >
                                 <i className="fa fa-envelope" />
@@ -53,7 +53,7 @@ export default function Header({ currentUser }) {
                               <Link
                                 style={{
                                   color: "#fff",
-                                  textDecoration: "none"
+                                  textDecoration: "none",
                                 }}
                                 to="/logout"
                               >
@@ -66,7 +66,7 @@ export default function Header({ currentUser }) {
                                 to="/cartCheckOut"
                                 style={{
                                   color: "#fff",
-                                  textDecoration: "none"
+                                  textDecoration: "none",
                                 }}
                               >
                                 <div className="nav-cart">
@@ -96,7 +96,7 @@ export default function Header({ currentUser }) {
                                     style={{
                                       color: "#fff",
                                       textDecoration: "none",
-                                      fontWeight: "bold"
+                                      fontWeight: "bold",
                                     }}
                                   >
                                     SLExpress
@@ -113,7 +113,7 @@ export default function Header({ currentUser }) {
                                 <Link
                                   style={{
                                     color: "#fff",
-                                    textDecoration: "none"
+                                    textDecoration: "none",
                                   }}
                                   to="/myAccount"
                                 >
@@ -124,7 +124,7 @@ export default function Header({ currentUser }) {
                                 <Link
                                   style={{
                                     color: "#fff",
-                                    textDecoration: "none"
+                                    textDecoration: "none",
                                   }}
                                   to="/myPayments"
                                 >
@@ -135,7 +135,7 @@ export default function Header({ currentUser }) {
                                 <Link
                                   style={{
                                     color: "#fff",
-                                    textDecoration: "none"
+                                    textDecoration: "none",
                                   }}
                                   to="/mySites"
                                 >
@@ -146,7 +146,7 @@ export default function Header({ currentUser }) {
                                 <Link
                                   style={{
                                     color: "#fff",
-                                    textDecoration: "none"
+                                    textDecoration: "none",
                                   }}
                                   to="/categories"
                                 >
@@ -157,9 +157,9 @@ export default function Header({ currentUser }) {
                                 <Link
                                   style={{
                                     color: "#fff",
-                                    textDecoration: "none"
+                                    textDecoration: "none",
                                   }}
-                                  to="/inquiries "
+                                  to="/inquiries"
                                 >
                                   INQUIRIES
                                 </Link>

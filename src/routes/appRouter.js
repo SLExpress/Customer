@@ -75,27 +75,43 @@ export default class AppRouter extends Component {
           <Route path="/contactus" component={ContactUs} />
           <Route path="/termsOfService" component={TermsOfService} />
           <Route path="/pricing" component={Pricing} />
-          <Route path="/categories" component={Categories} />
           <Route path="/login" component={Login} />
           <Route path="/logout" component={Logout} />
           <Route path="/forgotPassword" component={ForgotPassword} />
           <Route path="/resendEmail" component={ResendEmail} />
-          <Route path="/allThemes" component={AllThemes} />
-          <ProtectedRoute path="/billingHistory" component={BillingHistory} />
-          <ProtectedRoute path="/domainList" component={DomainList} />
+          <ProtectedRoute exact path="/allThemes" component={AllThemes} />
+          <ProtectedRoute exact path="/categories" component={Categories} />
+          <ProtectedRoute
+            exact
+            path="/billingHistory"
+            component={BillingHistory}
+          />
+          <ProtectedRoute exact path="/domainList" component={DomainList} />
           <ProtectedRoute
             path="/payment/:id"
             render={(props) => <Payment value={userId} {...props} />}
           />
           <ProtectedRoute path="/returnPage" component={ReturnPage} />
-          <ProtectedRoute path="/landingPage" component={LandingPage} />
-          <ProtectedRoute path="/accountSettings" component={AccountSettings} />
+          <ProtectedRoute exact path="/landingPage" component={LandingPage} />
+          <ProtectedRoute
+            exact
+            path="/accountSettings"
+            component={AccountSettings}
+          />
           <ProtectedRoute exact path="/cartCheckOut" component={CartCheckOut} />
-          <ProtectedRoute path="/domainSettings" component={DomainSettings} />
-          <ProtectedRoute path="/myAccount" component={MyAccount} />
-          <ProtectedRoute path="/myPayments" component={MyPayments} />
-          <ProtectedRoute path="/mySites" component={MySites} />
-          <ProtectedRoute path="/paymentSettings" component={PaymentSettings} />
+          <ProtectedRoute
+            exact
+            path="/domainSettings"
+            component={DomainSettings}
+          />
+          <ProtectedRoute exact path="/myAccount" component={MyAccount} />
+          <ProtectedRoute exact path="/myPayments" component={MyPayments} />
+          <ProtectedRoute exact path="/mySites" component={MySites} />
+          <ProtectedRoute
+            exact
+            path="/paymentSettings"
+            component={PaymentSettings}
+          />
           <ProtectedRoute
             path="/addPaymentDetails"
             component={AddPaymentDetails}
@@ -108,7 +124,7 @@ export default class AppRouter extends Component {
             component={SiteSettingsCreate}
           />
           <ProtectedRoute path="/themes/:id" component={Themes} />
-          <ProtectedRoute path="/inquiries " component={Tickets} />
+          <ProtectedRoute exact path="/inquiries" component={Tickets} />
           <ProtectedRoute path="/userInquiries/:id" component={UserInquiries} />
           <ProtectedRoute
             path="/singlePaymentHistory/:id"

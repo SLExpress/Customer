@@ -5,13 +5,13 @@ import MenuBar from "./../common/menuBar";
 class billingHistory extends Component {
   render() {
     return (
-      <div style={{ marginBottom: "250px" }}>
+      <div>
         <div className="container">
           <div className="row">
-            <div className="col-sm-4 mb-5" style={{ position: "fixed" }}>
+            <div className="col-sm-4 mb-5">
               <MenuBar />
             </div>
-            <div className="col mt-3" style={{ marginLeft: "130px" }}>
+            <div className="col mt-3" style={{ marginLeft: "80px" }}>
               <PaymentHistoryPage />
             </div>
           </div>
