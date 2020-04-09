@@ -9,24 +9,21 @@ export default class servicesBanner extends Component {
         id: 1,
         icon: <FaDolly />,
         title: "free website",
-        text:
-          "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Est, voluptate!"
+        text: "create your dream website free for seven days",
       },
       {
         id: 2,
         icon: <FaRedo />,
         title: "7 days to check quality",
-        text:
-          "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Est, voluptate!"
+        text: "we offer seven days to check the quality of our websites",
       },
       {
         id: 3,
         icon: <FaDollarSign />,
         title: "secured payment",
-        text:
-          "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Est, voluptate!"
-      }
-    ]
+        text: "secured payment through payhere payment gateway",
+      },
+    ],
   };
 
   render() {
@@ -34,7 +31,7 @@ export default class servicesBanner extends Component {
       <ServicesWrapper className="py-5">
         <div className="container">
           <div className="row">
-            {this.state.services.map(item => {
+            {this.state.services.map((item) => {
               return (
                 <div
                   className="col-10 mx-auto col-sm-6 col-md-4 text-center my-3"

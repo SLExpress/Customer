@@ -14,59 +14,72 @@ class siteList extends Component {
     const {
       setSingleSite,
 
-      filteredSites
+      filteredSites,
     } = this.context;
 
     return (
       <section className="featured-sites">
-        <div className="featured-sites-center">
-          {filteredSites.map(item => {
-            return (
-              <ProductWrapper key={item._id}>
-                <div className="card">
-                  <div className="flip-card">
-                    <div className="flip-card-inner">
-                      <div class="flip-card-front">
-                        <article className="site">
-                          <div className="img-container">
-                            <img src={`${url}${item.image}`} alt="site" />
-                          </div>
-                          <p className="site-info">{item.name} </p>
-                        </article>
-                      </div>
-                      <div className="flip-card-back ">
-                        <Link
-                          to={`/addDomain/${item._id}`}
-                          style={{ textDecoration: "none" }}
-                          className="site-link1"
-                        >
-                          <Buttons name="Create" color="#40a3dc" />
-                        </Link>
-                        <a
-                          style={{ textDecoration: "none" }}
-                          href={`http://${item.demoUrl}/`}
-                          className="site-link2"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <Buttons name="Demo" color="#40a3dc" />
-                        </a>
-                        <Link
-                          style={{ textDecoration: "none" }}
-                          className="site-link3"
-                          to={`/siteInfo/${item._id}`}
-                          onClick={() => setSingleSite(item._id)}
-                        >
-                          <Buttons name="Info" color="#40a3dc" />
-                        </Link>
+        {filteredSites.length === 0 ? (
+          <div
+            className="col  text-color-ash text-center "
+            style={{
+              fontSize: "20px",
+              marginTop: "20px",
+              marginBottom: "500px",
+            }}
+          >
+            sorry, no items available at this moment
+          </div>
+        ) : (
+          <div className="featured-sites-center">
+            {filteredSites.map((item) => {
+              return (
+                <ProductWrapper key={item._id}>
+                  <div className="card">
+                    <div className="flip-card">
+                      <div className="flip-card-inner">
+                        <div class="flip-card-front">
+                          <article className="site">
+                            <div className="img-container">
+                              <img src={`${url}${item.image}`} alt="site" />
+                            </div>
+                            <p className="site-info">{item.name} </p>
+                          </article>
+                        </div>
+                        <div className="flip-card-back ">
+                          <Link
+                            to={`/addDomain/${item._id}`}
+                            style={{ textDecoration: "none" }}
+                            className="site-link1"
+                          >
+                            <Buttons name="Create" color="#40a3dc" />
+                          </Link>
+                          <a
+                            style={{ textDecoration: "none" }}
+                            href={`http://${item.demoUrl}/`}
+                            className="site-link2"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <Buttons name="Demo" color="#40a3dc" />
+                          </a>
+                          <Link
+                            style={{ textDecoration: "none" }}
+                            className="site-link3"
+                            to={`/siteInfo/${item._id}`}
+                            onClick={() => setSingleSite(item._id)}
+                          >
+                            <Buttons name="Info" color="#40a3dc" />
+                          </Link>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </ProductWrapper>
-            );
-          })}
-        </div>
+                </ProductWrapper>
+              );
+            })}
+          </div>
+        )}
       </section>
     );
   }

@@ -14,7 +14,7 @@ export default class themes extends Component {
     console.log(path);
 
     return (
-      <div>
+      <div style={{ height: "700px" }}>
         <SiteList path={path} />
       </div>
     );
