@@ -42,6 +42,8 @@ import UserInquiries from "../components/pages/userInquiries";
 import Tickets from "./../components/Inquiries/tickets";
 import AddPaymentDetails from "./../components/pages/addPaymentDetails";
 import TermsOfService from "./../components/pages/termsOfService";
+import openNewTicket from "./../components/pages/openNewTicket";
+import Expired from "../components/pages/expired";
 
 export default class AppRouter extends Component {
   // To Get Current User Details
@@ -79,6 +81,7 @@ export default class AppRouter extends Component {
           <Route path="/logout" component={Logout} />
           <Route path="/forgotPassword" component={ForgotPassword} />
           <Route path="/resendEmail" component={ResendEmail} />
+          <Route path="/expired" component={Expired} />
           <ProtectedRoute exact path="/allThemes" component={AllThemes} />
           <ProtectedRoute exact path="/categories" component={Categories} />
           <ProtectedRoute
@@ -130,6 +133,7 @@ export default class AppRouter extends Component {
             path="/singlePaymentHistory/:id"
             component={SinglePaymentHistory}
           />
+          <ProtectedRoute path="/openNewTicket" component={openNewTicket} />
           <ProtectedRoute path="/themes/:id" component={Themes} />
           <ProtectedRoute path="/siteInfo/:id" component={SingleSiteInfo} />
           <ProtectedRoute exact path="/addDomain/:id" component={AddDomain} />

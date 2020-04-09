@@ -10,12 +10,12 @@ class menuBar extends Component {
   render() {
     const { menuData } = this.context;
     return (
-      <Menu vertical style={{ marginLeft: "-180px" }}>
-        {menuData.map(menu => (
+      <Menu vertical style={{ marginLeft: "-180px" }} className="menuBar">
+        {menuData.map((menu) => (
           <Menu.Item key={menu.header}>
             <Menu.Header>{menu.header}</Menu.Header>
             <Menu.Menu>
-              {menu.list.map(item => (
+              {menu.list.map((item) => (
                 <Menu.Item key={item.name}>
                   <Link to={item.link}>
                     <p className="text-color-ash">{item.name}</p>

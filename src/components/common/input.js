@@ -1,8 +1,8 @@
 import React from "react";
 import { MDBInput } from "mdbreact";
-import { Label } from "semantic-ui-react";
+import { Label, TextArea } from "semantic-ui-react";
 
-const Input = ({ name, label, value, onChange, error, type }) => {
+export const Input = ({ name, label, value, onChange, error, type }) => {
   return (
     <div className="form-group">
       <MDBInput
@@ -24,4 +24,21 @@ const Input = ({ name, label, value, onChange, error, type }) => {
   );
 };
 
-export default Input;
+export const Area = ({ name, errors, ...rest }) => {
+  return (
+    <>
+      <TextArea
+        rows={10}
+        placeholder="Type a Message..."
+        {...rest}
+        name={name}
+        style={{ minHeight: 100 }}
+      />
+      {errors && (
+        <Label basic color="red" pointing prompt>
+          {errors}
+        </Label>
+      )}
+    </>
+  );
+};

@@ -1,14 +1,14 @@
 import React, { Component } from "react";
-import Input from "./input";
+import { Input, Area } from "./input";
+import { Buttons } from "../table/buttons";
 import AddDomainInput from "./../addDomain/addDomainInput";
 import FormInput from "./formInput";
-import { Buttons } from "../table/buttons";
 import Joi from "joi-browser";
 
 class Form extends Component {
   state = {
     data: {},
-    errors: {}
+    errors: {},
   };
 
   validate = () => {
@@ -28,7 +28,7 @@ class Form extends Component {
     return error ? error.details[0].message : null;
   };
 
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     e.preventDefault();
     this.validate();
     this.doSubmit();
@@ -91,6 +91,21 @@ class Form extends Component {
         label={label}
         onChange={this.handleChange}
         error={errors[name]}
+      />
+    );
+  }
+
+  renderTextArea(name, type = "text") {
+    const { data, errors } = this.state;
+
+    return (
+      <Area
+        name={name}
+        value={data[name]}
+        onChange={this.handleChange}
+        group
+        type={type}
+        errors={errors[name]}
       />
     );
   }

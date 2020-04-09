@@ -6,12 +6,11 @@ import {
   getCategories,
   getSitesByUser,
   getSites,
-  createWebsite
+  createWebsite,
 } from "./../services/siteCategoryService";
-import auth from "./../services/authService";
 import { getTickets, viewInquiries } from "./../services/inquiryService";
+import auth from "./../services/authService";
 import _ from "lodash";
-import { toast } from "react-toastify";
 
 const ProductContext = React.createContext();
 class ProductProvider extends Component {
@@ -47,12 +46,13 @@ class ProductProvider extends Component {
     siteCreatedTime: "",
     serverTime: "",
     singleMySiteSettingsScript: {},
+    cusMsg: [],
     tickets: [],
-    singleTicket: "",
+    openTicket: "",
     inquiry: [],
-    sortUserMsg: [],
+    sortCusMsg: [],
     sortAdminMsg: [],
-    sortAllMsg: []
+    sortAllMsg: [],
   };
 
   async populateCategories() {
@@ -61,7 +61,7 @@ class ProductProvider extends Component {
         const { data: categories } = await getCategories();
         this.setState({
           categories,
-          sortedCategories: categories
+          sortedCategories: categories,
         });
 
         console.log(categories);
@@ -73,8 +73,8 @@ class ProductProvider extends Component {
     try {
       if (auth.getCurrentUser()) {
         const { data } = await getSitesByUser();
-        const cart = data.filter(item => item.paid === false);
-        const paidMySites = data.filter(item => item.paid === true);
+        const cart = data.filter((item) => item.paid === false);
+        const paidMySites = data.filter((item) => item.paid === true);
         console.log(cart.length);
         this.setState({
           paidMySites,
@@ -83,7 +83,7 @@ class ProductProvider extends Component {
           mySiteData: data,
           sortedMySites: data,
           sortedPaidMySites: paidMySites,
-          sortedCart: cart
+          sortedCart: cart,
         });
         console.log(data);
         console.log(this.state.cart);
@@ -106,7 +106,7 @@ class ProductProvider extends Component {
       const { data } = await createWebsite(domain, id);
       this.setState({
         siteCreatedTime: data.createdDate,
-        serverTime: data.serverTimestamp
+        serverTime: data.serverTimestamp,
       });
       localStorage.setItem("siteCreatedTime", this.state.siteCreatedTime);
       localStorage.setItem("serverTime", this.state.serverTime);
@@ -127,7 +127,7 @@ class ProductProvider extends Component {
         singleSiteDeveloper: this.getStorageSiteDeveloper(),
         singleMySiteSettings: this.getsingleMySiteSettings(),
         singleMySiteSettingsCreate: this.getsingleMySiteSettingsCreate(),
-        loading: false
+        loading: false,
       },
       () => this.addTotals()
     );
@@ -166,12 +166,12 @@ class ProductProvider extends Component {
       ? JSON.parse(localStorage.getItem("filteredSites"))
       : {};
   };
-  filterSites = category => {
+  filterSites = (category) => {
     const { siteData } = this.state;
     let tempSites = [...siteData];
 
-    const sites = tempSites.filter(item =>
-      item.categories.some(c => c === category)
+    const sites = tempSites.filter((item) =>
+      item.categories.some((c) => c === category)
     );
 
     localStorage.setItem("filteredSites", JSON.stringify(sites));
@@ -181,7 +181,7 @@ class ProductProvider extends Component {
     );
   };
 
-  filterSitesAll = category => {
+  filterSitesAll = (category) => {
     const { siteData } = this.state;
 
     if (category === "1") {
@@ -194,25 +194,26 @@ class ProductProvider extends Component {
     }
   };
 
-  setSingleSite = id => {
+  setSingleSite = (id) => {
     const { siteData } = this.state;
-    let site = siteData.find(item => item._id === id);
+    let site = siteData.find((item) => item._id === id);
     localStorage.setItem("singleSite", JSON.stringify(site));
     localStorage.setItem("singleSiteDeveloper", JSON.stringify(site.developer));
 
     this.setState(
       {
         singleSite: { ...site },
-        singleSiteDeveloper: site.developer
+        singleSiteDeveloper: site.developer,
       },
       () => console.log(this.state.singleSite)
     );
   };
 
-  setSingleSiteSettings = id => {
+  setSingleSiteSettings = (id) => {
     const { mySiteData } = this.state;
-    let site = mySiteData.find(item => item._id === id);
+    let site = mySiteData.find((item) => item._id === id);
     localStorage.setItem("singleMySiteSettings", JSON.stringify(site));
+
     localStorage.setItem(
       "singleMySiteSettingsScript",
       JSON.stringify(site.script)
@@ -221,19 +222,19 @@ class ProductProvider extends Component {
     this.setState(
       {
         singleMySiteSettings: { ...site },
-        singleMySiteSettingsScript: site.script
+        singleMySiteSettingsScript: site.script,
       },
       () => console.log(this.state.singleMySiteSettings)
     );
   };
 
-  setSingleSiteSettingsCreate = id => {
+  setSingleSiteSettingsCreate = (id) => {
     const { siteData } = this.state;
-    let site = siteData.find(item => item._id === id);
+    let site = siteData.find((item) => item._id === id);
     localStorage.setItem("singleMySiteSettingsCreate", JSON.stringify(site));
     this.setState(
       {
-        singleMySiteSettingsCreate: { ...site }
+        singleMySiteSettingsCreate: { ...site },
       },
       () => console.log(this.state.singleMySiteSettingsCreate)
     );
@@ -256,7 +257,7 @@ class ProductProvider extends Component {
   getTotals = () => {
     let subTotal = 0;
     let cartItems = this.state.cart.length;
-    this.state.cart.forEach(item => {
+    this.state.cart.forEach((item) => {
       subTotal += parseFloat(item.price);
     });
     subTotal = parseFloat(subTotal.toFixed(2));
@@ -269,7 +270,7 @@ class ProductProvider extends Component {
       cartItems,
       subTotal,
       tax,
-      total
+      total,
     };
   };
 
@@ -281,19 +282,19 @@ class ProductProvider extends Component {
           cartItems: totals.cartItems,
           cartSubTotal: totals.subTotal,
           cartTax: totals.tax,
-          cartTotal: totals.total
+          cartTotal: totals.total,
         };
       },
       () => {}
     );
   };
 
-  addToCart = id => {
+  addToCart = (id) => {
     let tempCart = [...this.state.cart];
     let tempSites = [...this.state.siteData];
-    let tempItem = tempCart.find(item => item._id === id);
+    let tempItem = tempCart.find((item) => item._id === id);
     if (!tempItem) {
-      tempItem = tempSites.find(item => item._id === id);
+      tempItem = tempSites.find((item) => item._id === id);
 
       let total = parseFloat(tempItem.price);
       let cartItem = { ...tempItem, count: 1, total };
@@ -307,7 +308,7 @@ class ProductProvider extends Component {
     this.setState(
       () => {
         return {
-          cart: tempCart
+          cart: tempCart,
         };
       },
       () => {
@@ -317,16 +318,16 @@ class ProductProvider extends Component {
     );
   };
 
-  removeItem = id => {
+  removeItem = (id) => {
     let tempCart = [...this.state.cart];
-    tempCart = tempCart.filter(item => {
+    tempCart = tempCart.filter((item) => {
       return item._id !== id;
     });
 
     this.setState(
       () => {
         return {
-          cart: [...tempCart]
+          cart: [...tempCart],
         };
       },
       () => {
@@ -339,7 +340,7 @@ class ProductProvider extends Component {
   clearCart = () => {
     this.setState(
       {
-        cart: []
+        cart: [],
       },
       () => {
         this.addTotals();
@@ -349,7 +350,7 @@ class ProductProvider extends Component {
   };
 
   // handle change
-  handleChange = event => {
+  handleChange = (event) => {
     const name = event.target.name;
 
     const value =
@@ -358,7 +359,7 @@ class ProductProvider extends Component {
         : event.target.value;
     this.setState(
       {
-        [name]: value
+        [name]: value,
       },
       this.sortData
     );
@@ -368,7 +369,7 @@ class ProductProvider extends Component {
     let tempCategories = [...categories];
 
     if (search.length > 0) {
-      tempCategories = tempCategories.filter(item => {
+      tempCategories = tempCategories.filter((item) => {
         let tempSearch = search.toLowerCase();
         let tempTitle = item.name.toLowerCase().slice(0, search.length);
 
@@ -381,12 +382,12 @@ class ProductProvider extends Component {
       tempCategories = [...categories];
     }
     this.setState({
-      sortedCategories: tempCategories
+      sortedCategories: tempCategories,
     });
   };
 
   // handle site change
-  handleSiteChange = event => {
+  handleSiteChange = (event) => {
     const name = event.target.name;
 
     const value =
@@ -395,7 +396,7 @@ class ProductProvider extends Component {
         : event.target.value;
     this.setState(
       {
-        [name]: value
+        [name]: value,
       },
 
       this.sortSiteData
@@ -407,7 +408,7 @@ class ProductProvider extends Component {
     let tempSites = [...siteData];
 
     if (search.length > 0) {
-      tempSites = tempSites.filter(item => {
+      tempSites = tempSites.filter((item) => {
         let tempSearch = search.toLowerCase();
         let tempTitle = item.name.toLowerCase().slice(0, search.length);
         if (tempSearch === tempTitle) {
@@ -417,12 +418,12 @@ class ProductProvider extends Component {
       });
     }
     this.setState({
-      sortedSites: tempSites
+      sortedSites: tempSites,
     });
   };
 
   // handle mysites change
-  handleMySiteChange = event => {
+  handleMySiteChange = (event) => {
     const name = event.target.name;
 
     const value =
@@ -431,7 +432,7 @@ class ProductProvider extends Component {
         : event.target.value;
     this.setState(
       {
-        [name]: value
+        [name]: value,
       },
 
       this.sortMySiteData
@@ -443,7 +444,7 @@ class ProductProvider extends Component {
     let tempMySites = [...mySiteData];
 
     if (search.length > 0) {
-      tempMySites = tempMySites.filter(item => {
+      tempMySites = tempMySites.filter((item) => {
         let tempSearch = search.toLowerCase();
         let tempTitle = item.url.toLowerCase().slice(0, search.length);
         if (tempSearch === tempTitle) {
@@ -453,11 +454,11 @@ class ProductProvider extends Component {
       });
     }
     this.setState({
-      sortedMySites: tempMySites
+      sortedMySites: tempMySites,
     });
   };
 
-  handlePaidMySiteChange = event => {
+  handlePaidMySiteChange = (event) => {
     const name = event.target.name;
 
     const value =
@@ -466,7 +467,7 @@ class ProductProvider extends Component {
         : event.target.value;
     this.setState(
       {
-        [name]: value
+        [name]: value,
       },
 
       this.sortPaidMySiteData
@@ -478,7 +479,7 @@ class ProductProvider extends Component {
     let tempMySites = [...paidMySites];
 
     if (search.length > 0) {
-      tempMySites = tempMySites.filter(item => {
+      tempMySites = tempMySites.filter((item) => {
         let tempSearch = search.toLowerCase();
         let tempTitle = item.url.toLowerCase().slice(0, search.length);
         if (tempSearch === tempTitle) {
@@ -488,11 +489,11 @@ class ProductProvider extends Component {
       });
     }
     this.setState({
-      sortedPaidMySites: tempMySites
+      sortedPaidMySites: tempMySites,
     });
   };
 
-  handleNotPaidMySiteChange = event => {
+  handleNotPaidMySiteChange = (event) => {
     const name = event.target.name;
 
     const value =
@@ -501,7 +502,7 @@ class ProductProvider extends Component {
         : event.target.value;
     this.setState(
       {
-        [name]: value
+        [name]: value,
       },
 
       this.sortNotPaidMySiteData
@@ -513,7 +514,7 @@ class ProductProvider extends Component {
     let tempMySites = [...cart];
 
     if (search.length > 0) {
-      tempMySites = tempMySites.filter(item => {
+      tempMySites = tempMySites.filter((item) => {
         let tempSearch = search.toLowerCase();
         let tempTitle = item.url.toLowerCase().slice(0, search.length);
         if (tempSearch === tempTitle) {
@@ -523,47 +524,68 @@ class ProductProvider extends Component {
       });
     }
     this.setState({
-      sortedCart: tempMySites
+      sortedCart: tempMySites,
     });
   };
-
-  show = size => () => this.setState({ size, open: true });
-  close = () => this.setState({ open: false });
 
   async ticketsList() {
     if (auth.getCurrentUser()) {
       const { data: ticketsList } = await getTickets();
       this.setState({ tickets: ticketsList.tickets, loading: false });
-      const Tick = _.orderBy(this.state.tickets, ["time"], ["desc"]);
-      this.setState({ tickets: Tick });
+      const tempTickets = _.orderBy(this.state.tickets, ["time"], ["desc"]);
+      this.setState({ tickets: tempTickets });
     }
   }
 
-  handleInquiries = async t => {
+  handleInquiries = async (ticket) => {
     try {
-      const { data: inquiries } = await viewInquiries(t);
-      this.setState({ singleTicket: t });
+      const { data: inquiries } = await viewInquiries(ticket);
+      this.setState({ singleTicket: ticket });
       this.setState({ inquiry: inquiries.ticket, loading: false });
-      var DevMsg = _.orderBy(this.state.inquiry.userReplies, ["time"], ["asc"]);
+      var userReplies = this.state.inquiry.userReplies.map((reply) => {
+        return {
+          userReply: reply.replyId.userReply,
+          time: reply.replyId.time,
+        };
+      });
+
+      this.setState({ cusMsg: userReplies });
+      var CustMsg = _.orderBy(this.state.cusMsg, ["time"], ["asc"]);
       var AdminMsg = _.orderBy(
         this.state.inquiry.adminReplies,
         ["time"],
         ["asc"]
       );
-      this.setState({ sortUserMsg: DevMsg });
+      this.setState({ sortCusMsg: CustMsg });
       this.setState({ sortAdminMsg: AdminMsg });
-      const dev = this.state.sortUserMsg;
+      const cus = this.state.sortCusMsg;
       const admin = this.state.sortAdminMsg;
 
-      const concatArr = [...dev, ...admin];
+      const concatArr = [...cus, ...admin];
       console.log("concatArr", concatArr);
       var sortaMsg = _.orderBy(concatArr, ["replyId.time", "time"], ["asc"]);
       this.setState({ sortAllMsg: sortaMsg });
-      console.log("sortallMsg", sortaMsg);
-    } catch (ex) {
-      if (ex.response && ex.response.status === 404)
-        toast.error("This message has already been deleted.");
-    }
+      this.setOpen(this.state.openTicket);
+      // var UserMsg = _.orderBy(
+      //   this.state.inquiry.userReplies,
+      //   ["time"],
+      //   ["asc"]
+      // );
+      // var AdminMsg = _.orderBy(
+      //   this.state.inquiry.adminReplies,
+      //   ["time"],
+      //   ["asc"]
+      // );
+      // this.setState({ sortUserMsg: UserMsg });
+      // this.setState({ sortAdminMsg: AdminMsg });
+      // const user = this.state.sortUserMsg;
+      // const admin = this.state.sortAdminMsg;
+
+      // const concatArr = [...user, ...admin];
+      // console.log("concatArr", concatArr);
+      // var sortaMsg = _.orderBy(concatArr, ["replyId.time", "time"], ["asc"]);
+      // this.setState({ sortAllMsg: sortaMsg });
+    } catch (ex) {}
   };
 
   render() {
@@ -584,10 +606,8 @@ class ProductProvider extends Component {
           handleMySiteChange: this.handleMySiteChange,
           handlePaidMySiteChange: this.handlePaidMySiteChange,
           handleNotPaidMySiteChange: this.handleNotPaidMySiteChange,
-          show: this.show,
-          close: this.close,
           handleCreateWebsite: this.handleCreateWebsite,
-          handleInquiries: this.handleInquiries
+          handleInquiries: this.handleInquiries,
         }}
       >
         {this.props.children}

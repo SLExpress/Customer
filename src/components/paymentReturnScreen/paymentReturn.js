@@ -12,7 +12,7 @@ const paymentReturn = ({
   orderId,
   time,
   email,
-  onDownload
+  onDownload,
 }) => {
   return (
     <ReturnWrapper>
@@ -26,7 +26,7 @@ const paymentReturn = ({
               </h2>
               <hr />
               <p className="text-color-ash textBold">
-                Your order number is{" "}
+                Your order number is
                 <p className="text-color-black">{orderId}</p>
               </p>
               <hr />
@@ -60,11 +60,13 @@ const paymentReturn = ({
             </div>
           </div>
         </div>
-        <Link onClick={onDownload}>
-          <div className="mt-5 mb-5">
-            <Buttons color="#40a3dc" name="Download" className="center" />
-          </div>
-        </Link>
+        <center>
+          <Link onClick={onDownload}>
+            <div className="mt-5 mb-5">
+              <Buttons color="#40a3dc" name="Download" className="center" />
+            </div>
+          </Link>
+        </center>
       </div>
     </ReturnWrapper>
   );
@@ -82,6 +84,7 @@ const ReturnWrapper = styled.div`
 
   @media (max-width: 375px) {
     margin-left: 41%;
+
   }
 
   @media (max-width: 320px) {

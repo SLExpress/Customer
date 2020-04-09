@@ -7,18 +7,18 @@ import { ProductConsumer } from "../../context";
 import { Link } from "react-router-dom";
 import moment from "moment";
 
-const siteSettingsCard = () => {
+const siteSettingsCard = ({ deadline }) => {
   return (
     <ProductConsumer>
-      {value => {
+      {(value) => {
         const { singleMySiteSettings, singleMySiteSettingsScript } = value;
         const { url, createdDate, paid, price } = singleMySiteSettings;
         const { image, name } = singleMySiteSettingsScript;
         const time = new Date(createdDate);
-        const correctTime = moment(time)
-          .add(7, "days")
-          .toDate();
+        const correctTime = moment(time).add(7, "days").toDate();
         const deadline = new Date(correctTime).getTime();
+        localStorage.setItem("deadline", deadline);
+
         const dateString = time.toDateString();
         const timeString = time.toLocaleTimeString();
 

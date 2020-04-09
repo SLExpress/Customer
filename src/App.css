@@ -275,6 +275,12 @@ html {
 }
 
 @media only screen and (max-width: 1000px) {
+  .menuBar {
+    display: none !important;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
   .menu {
     display: none !important;
   }

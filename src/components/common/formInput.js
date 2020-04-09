@@ -6,7 +6,7 @@ const FormInput = ({ name, label, value, onChange, error, type }) => {
   return (
     <div className="form-group">
       <MDBInput
-        style={{ width: "900px" }}
+        style={{ width: "945px" }}
         value={value}
         onChange={onChange}
         name={name}

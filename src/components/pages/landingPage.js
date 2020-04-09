@@ -9,7 +9,7 @@ class landingPage extends Component {
         style={{
           paddingTop: "5rem",
           paddingBottom: "15rem",
-          paddingLeft: "3rem"
+          paddingLeft: "3rem",
         }}
       >
         <div className="row justify-content-md-center">
