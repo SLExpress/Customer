@@ -6,6 +6,7 @@ const apiEndpoint1 = apiUrl + "/tickets/getTickets";
 const apiEndpoint2 = apiUrl + "/tickets/getTicket";
 const apiEndpoint3 = apiUrl + "/tickets/userReply";
 const apiEndpoint4 = apiUrl + "/tickets/submitTicket";
+const apiEndpoint5 = apiUrl + "/tickets/closeTicket";
 
 export function getTickets() {
   return http.get(apiEndpoint1);
@@ -27,4 +28,8 @@ export function replyTickets(r) {
 
 export function submitTicket(title, ticketText) {
   return http.put(apiEndpoint4, { title, ticketText });
+}
+
+export function closeTicket(ticketId) {
+  return http.post(apiEndpoint5, { ticketId });
 }

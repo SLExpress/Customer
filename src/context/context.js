@@ -199,12 +199,25 @@ class ProductProvider extends Component {
     const { siteData } = this.state;
     let site = siteData.find((item) => item._id === id);
     localStorage.setItem("singleSite", JSON.stringify(site));
-    localStorage.setItem("singleSiteDeveloper", JSON.stringify(site.developer));
+
+    const developer = {
+      username: "Anonymous",
+      firstName: "Anonymous",
+    };
+    if (!site.developer === null) {
+      localStorage.setItem(
+        "singleSiteDeveloper",
+        JSON.stringify(site.developer)
+      );
+    } else {
+      localStorage.setItem("singleSiteDeveloper", JSON.stringify(developer));
+    }
 
     this.setState(
       {
         singleSite: { ...site },
-        singleSiteDeveloper: site.developer,
+        // singleSiteDeveloper: site.developer,
+        singleSiteDeveloper: localStorage.getItem("singleSiteDeveloper"),
       },
       () => console.log(this.state.singleSite)
     );

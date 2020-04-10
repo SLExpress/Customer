@@ -4,11 +4,54 @@ import Loader from "./../common/loader";
 import MenuBar from "./../common/menuBar";
 import { Grid, Card, Feed, Button } from "semantic-ui-react";
 import { Link } from "react-router-dom";
+import { closeTicket } from "./../../services/inquiryService";
 import { ProductContext } from "./../../context";
 import Moment from "react-moment";
+import Swal from "sweetalert2";
 
 class tickets extends Component {
   static contextType = ProductContext;
+
+  ticketclosed = () => {
+    Swal.fire({
+      icon: "info",
+      title: "Oops...",
+      text: "This ticket has been already closed!",
+      showConfirmButton: true,
+      timer: 1500,
+    });
+  };
+
+  ticketHandleclose = async (ticketId) => {
+    try {
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to reply to ticket again!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#008000",
+        confirmButtonText: "Yes, close it!",
+      }).then((result) => {
+        if (result.value) {
+          this.handleclose(ticketId);
+          Swal.fire({
+            icon: "success",
+            title: "Closed!",
+            text: "Ticket has been closed successfully",
+            showConfirmButton: true,
+            timer: 1500,
+          }).then(function () {
+            window.location = "/inquiries";
+          });
+        }
+      });
+    } catch (error) {}
+  };
+
+  async handleclose(ticketId) {
+    await closeTicket(ticketId);
+  }
 
   renderReplies = (user, admin) => {
     let count;
@@ -72,6 +115,35 @@ class tickets extends Component {
                         </Feed.Content>
                       </Feed.Event>
                     </Feed>
+
+                    <Card.Content extra>
+                      <div>
+                        <Link
+                          to={`/userInquiries/${ticket._id}`}
+                          onClick={() => handleInquiries(ticket._id)}
+                        >
+                          <Button basic color="green">
+                            View
+                          </Button>
+                        </Link>
+                        {ticket.open && (
+                          <Link
+                            onClick={() => this.ticketHandleclose(ticket._id)}
+                          >
+                            <Button basic color="red">
+                              Close
+                            </Button>
+                          </Link>
+                        )}
+                        {!ticket.open && (
+                          <Link onClick={this.ticketclosed}>
+                            <Button basic color="red">
+                              Closed
+                            </Button>
+                          </Link>
+                        )}
+                      </div>
+                    </Card.Content>
                   </Card.Content>
                 </Card>
               ))}

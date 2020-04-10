@@ -20,6 +20,21 @@ const paymentReturn = ({
       <div class="container">
         <div class="row justify-content-md-center ">
           <div className="card text-center payment-return w-50 mt-5 mb-5">
+            <div style={{ backgroundColor: "var(--mainBlue)", height: "80px" }}>
+              <SLexpresslk className="logo-and-nav">
+                <h1
+                  style={{
+                    marginTop: "25px",
+                    fontSize: "35px",
+                    textAlign: "left",
+                    marginLeft: "10px",
+                    color: "white",
+                  }}
+                >
+                  SLExpress
+                </h1>
+              </SLexpresslk>
+            </div>
             <div className="card-body">
               <img src={Success} alt="success" style={{ height: "200px" }} />
               <h2 className="text-muted" style={{ fontWeight: "bold" }}>
@@ -93,5 +108,13 @@ const ReturnWrapper = styled.div`
   }
 
  
+  }
+`;
+
+const SLexpresslk = styled.div`
+  h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    text-decoration: none;
   }
 `;

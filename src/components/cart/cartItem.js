@@ -3,8 +3,43 @@ import React from "react";
 import { Buttons } from "./../table/buttons";
 import { Link } from "react-router-dom";
 import { TiDeleteOutline } from "react-icons/ti";
+import { deleteWebsite } from "./../../services/siteCategoryService";
+import Swal from "sweetalert2";
 
 const cartItem = ({ cartItem, removeItem }) => {
+  const handleDeleteWebsite = async (websiteId) => {
+    try {
+      const data = { websiteId };
+      await deleteWebsite(data);
+    } catch (ex) {}
+  };
+
+  const onDeleteWebsite = async (websiteId) => {
+    try {
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      }).then((result) => {
+        if (result.value) {
+          handleDeleteWebsite(websiteId);
+          Swal.fire({
+            icon: "success",
+            title: "Deleted!",
+            text: "website has been deleted",
+            showConfirmButton: true,
+            timer: 1500,
+          }).then(function () {
+            window.location = "/cartCheckOut";
+          });
+        }
+      });
+    } catch (error) {}
+  };
   const { _id, price, createdDate, url } = cartItem;
   const { developer } = cartItem.script;
   const { image } = cartItem.script;
@@ -51,7 +86,8 @@ const cartItem = ({ cartItem, removeItem }) => {
         <TiDeleteOutline
           style={{ cursor: "pointer", color: "#e60000" }}
           className="text-danger cart-icon"
-          onClick={() => removeItem(_id)}
+          // onClick={() => removeItem(_id)}
+          onClick={() => onDeleteWebsite(_id)}
           size={20}
         />
       </div>
