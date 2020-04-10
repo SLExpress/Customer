@@ -1,3 +1,4 @@
+/*  N. R Yamasinghe  IT18233704 version - 01 */
 import React, { Component } from "react";
 
 class CountDown extends Component {
@@ -9,7 +10,7 @@ class CountDown extends Component {
       minutes: 0,
       hours: 0,
       secounds: 0,
-      time_up: ""
+      time_up: "",
     };
     this.x = null;
     this.deadline = null;
@@ -29,7 +30,7 @@ class CountDown extends Component {
         minutes: 0,
         hours: 0,
         seconds: 0,
-        time_up: "TIME IS UP"
+        time_up: "TIME IS UP",
       });
     }
   }

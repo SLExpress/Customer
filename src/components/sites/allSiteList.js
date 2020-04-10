@@ -1,3 +1,4 @@
+/*  N. R Yamasinghe  IT18233704 version - 01 */
 import React, { Component } from "react";
 import SearchBox from "../common/searchBox";
 import { Buttons } from "./../table/buttons";
@@ -16,7 +17,7 @@ class allSiteList extends Component {
       setSingleSite,
       handleSiteChange,
       search,
-      sortedSites
+      sortedSites,
     } = this.context;
 
     return (
@@ -35,14 +36,14 @@ class allSiteList extends Component {
               style={{
                 fontSize: "20px",
                 marginTop: "20px",
-                marginBottom: "500px"
+                marginBottom: "500px",
               }}
             >
               sorry, no items matched your search
             </div>
           ) : (
             <div className="featured-sites-center">
-              {sortedSites.map(item => {
+              {sortedSites.map((item) => {
                 return (
                   <ProductWrapper key={item._id}>
                     <div className="card">

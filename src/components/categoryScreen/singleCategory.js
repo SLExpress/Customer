@@ -1,3 +1,4 @@
+/*  N. R Yamasinghe  IT18233704 version - 01 */
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
@@ -6,7 +7,7 @@ import { ProductConsumer } from "../../context";
 const singleCategory = ({ siteCategory }) => {
   return (
     <ProductConsumer>
-      {value => {
+      {(value) => {
         const { filterSites } = value;
         return (
           <Link

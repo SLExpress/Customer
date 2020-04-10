@@ -1,3 +1,4 @@
+/*  N. R Yamasinghe  IT18233704 version - 01 */
 import React from "react";
 import SingleCategory from "./singleCategory";
 import SearchBox from "../../components/common/searchBox";
@@ -7,7 +8,7 @@ import styled from "styled-components";
 const CategoryScreen = () => {
   return (
     <ProductConsumer>
-      {value => {
+      {(value) => {
         const { handleChange, search, sortedCategories } = value;
 
         return (

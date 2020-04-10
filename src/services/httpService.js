@@ -1,6 +1,8 @@
+/*  N. R Yamasinghe  IT18233704 version - 01 */
 import axios from "axios";
 import logger from "./logService";
 import Swal from "sweetalert2";
+import auth from "./authService";
 
 axios.defaults.headers.common["Content-Type"] = "application/json";
 
@@ -44,7 +46,8 @@ axios.interceptors.response.use(null, (error) => {
       title: "404 Not Found",
     });
   } else if (error.response.status === 500) {
-    localStorage.removeItem("token");
+    auth.logout();
+    // localStorage.removeItem("token");
     window.location = "/expired";
   } else return Promise.reject(error);
 });

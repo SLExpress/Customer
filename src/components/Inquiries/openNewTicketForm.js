@@ -1,3 +1,4 @@
+/*  N. R Yamasinghe  IT18233704 version - 01 */
 import React from "react";
 import Forms from "./../common/form";
 import { submitTicket } from "./../../services/inquiryService";
@@ -25,7 +26,8 @@ class openNewTicketForm extends Forms {
       await submitTicket(data.title, data.ticketText);
       Swal.fire({
         icon: "success",
-        title: "Ticket open successfully",
+        title: "Successful",
+        text: "Ticket open successfully",
         showConfirmButton: false,
         timer: 1500,
       }).then(function () {
@@ -49,7 +51,7 @@ class openNewTicketForm extends Forms {
               {this.renderTextArea("ticketText", "Ticket Text")}
               <br />
               <br />
-              {this.renderButton("Save")}
+              {this.renderButton("Submit")}
             </Form>
           </Grid.Column>
         </Grid>

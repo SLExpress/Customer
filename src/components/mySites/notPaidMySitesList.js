@@ -1,3 +1,4 @@
+/*  N. R Yamasinghe  IT18233704 version - 01 */
 import React from "react";
 import SingleMySiteNew from "./singleMySiteNew";
 import SearchBox from "../common/searchBox";
@@ -6,7 +7,7 @@ import { ProductConsumer } from "../../context/context";
 const notPaidMySiteList = () => {
   return (
     <ProductConsumer>
-      {value => {
+      {(value) => {
         const { handleNotPaidMySiteChange, sortedCart, search } = value;
 
         return (
@@ -25,14 +26,14 @@ const notPaidMySiteList = () => {
                   style={{
                     fontSize: "20px",
                     marginTop: "20px",
-                    marginBottom: "500px"
+                    marginBottom: "500px",
                   }}
                 >
                   sorry, no items matched your search
                 </div>
               ) : (
                 <div className="featured-sites-center">
-                  {sortedCart.map(item => {
+                  {sortedCart.map((item) => {
                     return <SingleMySiteNew key={item._id} site={item} />;
                   })}
                 </div>

@@ -1,3 +1,4 @@
+/*  N. R Yamasinghe  IT18233704 version - 01 */
 import http from "./httpService";
 import { apiUrl } from "../config/config.json";
 import jwtDecode from "jwt-decode";
@@ -9,7 +10,7 @@ export async function login(email, password, type) {
   const { data } = await http.post(apiEndpoint, {
     email,
     password,
-    type
+    type,
   });
 
   localStorage.setItem("token", data.token);
@@ -122,5 +123,5 @@ export default {
   getCurrentUserFirstName,
   getCurrentUserLastName,
   getUserId,
-  checkTokenExpiration
+  checkTokenExpiration,
 };

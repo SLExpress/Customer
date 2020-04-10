@@ -1,3 +1,4 @@
+/*  N. R Yamasinghe  IT18233704 version - 01 */
 import React from "react";
 import Form from "./../common/form";
 import Loading from "./../common/loading";
@@ -60,7 +61,8 @@ class addDomainScreen extends Form {
       if (ex.response && ex.response.status === 422) {
         Swal.fire({
           icon: "info",
-          title: ex.response.data.error,
+          title: "Sorry",
+          text: ex.response.data.error,
           showConfirmButton: true,
         });
       }
@@ -74,27 +76,6 @@ class addDomainScreen extends Form {
       return <Loading time={this.state.time} />;
     }
     return (
-      // <Segment placeholder size="small" style={{ height: "600px" }}>
-      //   <Grid columns={2} stackable textAlign="center">
-      //     <Divider vertical></Divider>
-
-      //     <Grid.Row verticalAlign="middle">
-      //       <Grid.Column>
-      //         <p style={{ fontSize: "4rem" }}>Find Your Perfect Domain Name</p>
-      //       </Grid.Column>
-
-      //       <Grid.Column>
-      //         <Header icon>
-      //           <Icon name="search" />
-      //           Find Domain
-      //         </Header>
-      //         <form onSubmit={this.handleSubmit}>
-      //           <center>{this.renderAddDomainInput("subdomain")}</center>
-      //         </form>
-      //       </Grid.Column>
-      //     </Grid.Row>
-      //   </Grid>
-      // </Segment>
       <div style={{ marginBottom: "270px" }}>
         <div className="col-sm-4" style={{ marginLeft: "200px" }}>
           <MenuBar />

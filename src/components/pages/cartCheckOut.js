@@ -1,3 +1,4 @@
+/*  N. R Yamasinghe  IT18233704 version - 01 */
 import React, { Component } from "react";
 import Cart from "../cart/cart";
 import Loader from "./../common/loader";
@@ -16,7 +17,7 @@ class cartCheckout extends Component {
         <div
           style={{
             marginLeft: "150px",
-            marginRight: "150px"
+            marginRight: "150px",
           }}
         >
           <div className="card-body">

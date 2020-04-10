@@ -1,3 +1,4 @@
+/*  N. R Yamasinghe  IT18233704 version - 01 */
 import React from "react";
 import Form from "../common/form";
 import Joi from "joi-browser";
@@ -10,15 +11,12 @@ class resendEmailForm extends Form {
     data: { email: "", userType: "customer" },
     errors: {},
     isSend: false,
-    time: 90
+    time: 90,
   };
 
   schema = {
-    email: Joi.string()
-      .email()
-      .required()
-      .label("Email"),
-    type: Joi.string()
+    email: Joi.string().email().required().label("Email"),
+    type: Joi.string(),
   };
 
   doSubmit = async () => {
@@ -39,7 +37,7 @@ class resendEmailForm extends Form {
   async reduceTimer() {
     await setInterval(async () => {
       if (this.state.time !== 0) {
-        this.setState(prevState => {
+        this.setState((prevState) => {
           return { time: prevState.time - 1 };
         });
       } else {

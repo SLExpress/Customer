@@ -1,3 +1,4 @@
+/*  N. R Yamasinghe  IT18233704 version - 01 */
 import React from "react";
 import error404Image from "../../images/error404Image.png";
 import { Buttons } from "./../table/buttons";
@@ -27,7 +28,7 @@ const error404 = () => {
                     style={{
                       fontWeight: "bold",
                       color: "#fff",
-                      textDecoration: "none"
+                      textDecoration: "none",
                     }}
                   >
                     <Buttons color="#40a3dc" name="Home" className="center" />

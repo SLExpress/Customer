@@ -1,3 +1,4 @@
+/*  N. R Yamasinghe  IT18233704 version - 01 */
 import React from "react";
 import { Buttons } from "./../table/buttons";
 import Success from "../../images/success.png";

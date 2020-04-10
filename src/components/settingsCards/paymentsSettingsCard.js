@@ -1,41 +1,80 @@
+/*  N. R Yamasinghe  IT18233704 version - 01 */
 import React from "react";
 import Form from "../common/form";
+import {
+  updatePaymentDetails,
+  getPaymentDetails,
+} from "./../../services/paymentService";
 import Joi from "joi-browser";
+
+import Swal from "sweetalert2";
 
 class paymentsSettingsCard extends Form {
   state = {
     data: {
-      cardType: "",
       nameOnCard: "",
       cardNo: "",
       expDate: "",
-      cvv: ""
+      cvv: "",
     },
-    errors: {}
+    errors: {},
+    isUpdated: false,
+    loading: true,
   };
 
   schema = {
-    cardType: Joi.string()
-      .required()
-      .label("Card Type"),
-    nameOnCard: Joi.string()
-      .required()
-      .label("NameOnCard"),
-    expDate: Joi.string()
-      .required()
-      .label("ExpDate"),
-    cardNo: Joi.string()
-      .min(4)
-      .required()
-      .label("CardNo"),
-    cvv: Joi.string()
-      .required()
-      .label("Cvv")
+    nameOnCard: Joi.string().required().label("NameOnCard"),
+    expDate: Joi.string().required().label("ExpDate"),
+    cardNo: Joi.number().min(16).required().label("CardNo"),
+    cvv: Joi.number().min(3).required().label("Cvv"),
   };
 
-  doSubmit = () => {
-    // Call the server
-    console.log("Updated Payments");
+  async populatePaymentDetails() {
+    try {
+      const { data: payment } = await getPaymentDetails();
+
+      this.setState({ data: this.mapToViewModel(payment) });
+    } catch (ex) {}
+  }
+
+  async componentDidMount() {
+    await this.populatePaymentDetails();
+  }
+
+  mapToViewModel(payment) {
+    return {
+      nameOnCard: payment.cardName,
+      cardNo: payment.cardNumber,
+      expDate: payment.expiry,
+      cvv: payment.cvv,
+    };
+  }
+
+  doSubmit = async () => {
+    try {
+      const { data } = this.state;
+      await updatePaymentDetails(
+        data.cardNo,
+        data.nameOnCard,
+        data.cvv,
+        data.expDate
+      );
+      Swal.fire({
+        icon: "success",
+        title: "Successful",
+        text: "Your payment details updated successfully",
+        showConfirmButton: false,
+        timer: 1500,
+      }).then(function () {
+        window.location = "/myPayments";
+      });
+    } catch (ex) {
+      if (ex.response && ex.response.status === 422) {
+        const errors = { ...this.state.errors };
+        errors.cvv = ex.response.data.error;
+        this.setState({ errors });
+      }
+    }
   };
 
   render() {
@@ -46,7 +85,6 @@ class paymentsSettingsCard extends Form {
 
           <div className="card-body">
             <form onSubmit={this.handleSubmit}>
-              {this.renderFormInput("cardType", "CardType")}
               {this.renderFormInput("nameOnCard", "NameOnCard")}
               {this.renderFormInput("cardNo", "CardNo")}
               {this.renderFormInput("expDate", "ExpDate")}

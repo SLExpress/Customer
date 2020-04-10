@@ -1,3 +1,4 @@
+/*  N. R Yamasinghe  IT18233704 version - 01 */
 import React, { Component } from "react";
 import Joi from "joi-browser";
 import PaymentInput from "./paymentInput";
@@ -6,7 +7,7 @@ import Button from "./button";
 class payForm extends Component {
   state = {
     data: {},
-    errors: {}
+    errors: {},
   };
 
   validate = () => {
@@ -25,7 +26,7 @@ class payForm extends Component {
     return error ? error.details[0].message : null;
   };
 
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     this.validate();
     this.doSubmit();
 

@@ -1,8 +1,10 @@
+/*  N. R Yamasinghe  IT18233704 version - 01 */
 import React from "react";
 import Form from "../common/form";
 import auth from "../../services/authService";
 import { getCustomer, updateCustomer } from "../../services/userService";
 import Joi from "joi-browser";
+import Swal from "sweetalert2";
 
 class profileSettingsCard extends Form {
   state = {
@@ -11,33 +13,19 @@ class profileSettingsCard extends Form {
       lastname: "",
       username: "",
       email: "",
-      contactNo: ""
+      contactNo: "",
     },
     errors: {},
-    isUpdated: false
+    isUpdated: false,
   };
 
   schema = {
     id: Joi.string(),
-    firstname: Joi.string()
-      .min(4)
-      .required()
-      .label("Firstname"),
-    lastname: Joi.string()
-      .min(4)
-      .required()
-      .label("Lastname"),
-    username: Joi.string()
-      .min(4)
-      .required()
-      .label("Username"),
-    email: Joi.string()
-      .email()
-      .required()
-      .label("Email"),
-    contactNo: Joi.number()
-      .required()
-      .label("ContactNo")
+    firstname: Joi.string().min(4).required().label("Firstname"),
+    lastname: Joi.string().min(4).required().label("Lastname"),
+    username: Joi.string().min(4).required().label("Username"),
+    email: Joi.string().email().required().label("Email"),
+    contactNo: Joi.number().required().label("ContactNo"),
   };
 
   async populateCustomer() {
@@ -60,7 +48,7 @@ class profileSettingsCard extends Form {
       username: customer.username,
       email: customer.email,
       password: customer.password,
-      contactNo: customer.phone
+      contactNo: customer.phone,
     };
   }
 
@@ -80,11 +68,18 @@ class profileSettingsCard extends Form {
 
       localStorage.setItem("lastname", data.lastname);
       localStorage.setItem("firstname", data.firstname);
-
       localStorage.setItem("username", data.username);
       this.setState({ isUpdated: true });
 
-      window.location = "/myAccount";
+      Swal.fire({
+        icon: "success",
+        title: "Successful",
+        text: "Your profile updated successfully",
+        showConfirmButton: false,
+        timer: 1500,
+      }).then(function () {
+        window.location = "/myAccount";
+      });
     } catch (ex) {}
   };
 
@@ -111,7 +106,7 @@ class profileSettingsCard extends Form {
               {this.renderFormInput("contactNo", "ContactNo")}
               {this.renderButton("Save")}
               <br />
-              {this.updateMessage()}
+              {/* {this.updateMessage()} */}
             </form>
           </div>
         </div>

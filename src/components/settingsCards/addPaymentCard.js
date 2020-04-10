@@ -1,3 +1,4 @@
+/*  N. R Yamasinghe  IT18233704 version - 01 */
 import React from "react";
 import Form from "../common/form";
 import { addPaymentDetails } from "./../../services/paymentService";
@@ -33,7 +34,8 @@ class addPaymentCard extends Form {
       );
       Swal.fire({
         icon: "success",
-        title: "Payment Info Added Successfully",
+        title: "Successful",
+        text: "Payment info added successfully",
         showConfirmButton: false,
         timer: 1500,
       }).then(function () {
@@ -52,7 +54,7 @@ class addPaymentCard extends Form {
     return (
       <div>
         <div className="card">
-          <div className="card-header textBold">Edit Payments </div>
+          <div className="card-header textBold">Add Payment Details</div>
 
           <div className="card-body">
             <form onSubmit={this.handleSubmit}>

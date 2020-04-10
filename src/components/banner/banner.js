@@ -1,3 +1,4 @@
+/*  N. R Yamasinghe  IT18233704 version - 01 */
 import React from "react";
 import homePageImage from "../../images/homePageImage.png";
 import styled from "styled-components";
@@ -39,7 +40,7 @@ const Banner = () => {
 
 export default Banner;
 
-// Styled Component
+// styled component
 const BannerWrapper = styled.div`
   width: 100%;
   min-height: calc(100vh - 190px);

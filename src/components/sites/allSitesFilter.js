@@ -1,3 +1,4 @@
+/*  N. R Yamasinghe  IT18233704 version - 01 */
 import React from "react";
 import SearchBox from "./../common/searchBox";
 import { ProductConsumer } from "../../context";
@@ -6,7 +7,7 @@ import styled from "styled-components";
 const allSitesFilter = () => {
   return (
     <ProductConsumer>
-      {value => {
+      {(value) => {
         const { search, min, max, price, handleSiteChange } = value;
         return (
           <div className="row my-5">

@@ -1,3 +1,4 @@
+/*  N. R Yamasinghe  IT18233704 version - 01 */
 import React from "react";
 import SingleMySiteNew from "./singleMySiteNew";
 import SearchBox from "./../common/searchBox";
@@ -6,7 +7,7 @@ import { ProductConsumer } from "../../context";
 const mySiteList = () => {
   return (
     <ProductConsumer>
-      {value => {
+      {(value) => {
         const { sortedMySites, handleMySiteChange, search } = value;
 
         return (
@@ -25,14 +26,14 @@ const mySiteList = () => {
                   style={{
                     fontSize: "20px",
                     marginTop: "20px",
-                    marginBottom: "500px"
+                    marginBottom: "500px",
                   }}
                 >
                   sorry, no items matched your search
                 </div>
               ) : (
                 <div className="featured-sites-center">
-                  {sortedMySites.map(item => {
+                  {sortedMySites.map((item) => {
                     return <SingleMySiteNew key={item._id} site={item} />;
                   })}
                 </div>

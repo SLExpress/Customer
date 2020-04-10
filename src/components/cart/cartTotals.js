@@ -1,3 +1,4 @@
+/*  N. R Yamasinghe  IT18233704 version - 01 */
 import React from "react";
 import { Buttons } from "../table/buttons";
 import { Link } from "react-router-dom";
@@ -8,7 +9,7 @@ const cartTotals = () => {
     <div className="container">
       <div className="row">
         <ProductConsumer>
-          {value => {
+          {(value) => {
             const { clearCart, cartSubTotal, cartTotal } = value;
             console.log(cartTotal);
 

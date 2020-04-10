@@ -1,3 +1,4 @@
+/*  N. R Yamasinghe  IT18233704 version - 01 */
 import React from "react";
 import { MDBCol } from "mdbreact";
 import { Input, Label } from "semantic-ui-react";
@@ -28,6 +29,7 @@ const addDomainInput = ({ name, value, onChange, type, error }) => {
 
 export default addDomainInput;
 
+// styled components
 const Inputfield = styled(Input)`
   &&.ui.input > input {
     border-radius: 500rem !important;

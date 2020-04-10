@@ -1,3 +1,4 @@
+/*  N. R Yamasinghe  IT18233704 version - 01 */
 import React, { Component } from "react";
 import Tables from "./tables";
 import { Buttons } from "./buttons";
@@ -16,11 +17,11 @@ class paymentHistoryTable extends Component {
     {
       key: "button",
       label: "Status",
-      content: s => <Status name="Details" color="#40a3dc" />
+      content: (s) => <Status name="Details" color="#40a3dc" />,
     },
     {
       key: "buttonD",
-      content: payment => (
+      content: (payment) => (
         <Link to={`/singlePaymentHistory/${payment._id}`}>
           <Buttons
             onSubmit={() => this.props.onSelect(payment)}
@@ -28,8 +29,8 @@ class paymentHistoryTable extends Component {
             color="#40a3dc"
           />
         </Link>
-      )
-    }
+      ),
+    },
   ];
   render() {
     const { purchases, onSort, sortColumn, currentPage } = this.props;

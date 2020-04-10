@@ -1,3 +1,4 @@
+/*  N. R Yamasinghe  IT18233704 version - 01 */
 import React from "react";
 import { Divider, Header, Segment, Label } from "semantic-ui-react";
 import { TableConsumer } from "./../../context/tableContext";
@@ -6,18 +7,18 @@ import Moment from "react-moment";
 const paymentHistoryScreen = () => {
   return (
     <TableConsumer>
-      {value => {
+      {(value) => {
         const {
           singlePaymentHistory,
           singlePaymentHistoryWebsite,
-          singlePaymentHistoryWebsiteUrl
+          singlePaymentHistoryWebsiteUrl,
         } = value;
         const {
           payment,
           payherePayment,
           datePurchased,
           payhereCurrency,
-          payhereOrder
+          payhereOrder,
         } = singlePaymentHistory;
         const { _id } = singlePaymentHistoryWebsite;
         const { defaultUrl } = singlePaymentHistoryWebsiteUrl;

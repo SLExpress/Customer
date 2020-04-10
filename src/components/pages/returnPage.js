@@ -1,3 +1,4 @@
+/*  N. R Yamasinghe  IT18233704 version - 01 */
 import React, { Component } from "react";
 import PaymentReturn from "../paymentReturnScreen/paymentReturn";
 import { getPaymentStatus } from "../../services/paymentService";
@@ -14,9 +15,9 @@ class returnPage extends Component {
       scriptName: "",
       payherePaymentId: "",
       processedDate: "",
-      orderId: ""
+      orderId: "",
     },
-    email: ""
+    email: "",
   };
 
   async componentDidMount() {
@@ -25,7 +26,7 @@ class returnPage extends Component {
       title: "Payment Successfull",
       text: "You will get email reciept shortly",
       showConfirmButton: false,
-      timer: 1500
+      timer: 1500,
     });
     const values = queryString.parse(this.props.location.search);
     console.log(values.order_id);
@@ -44,13 +45,13 @@ class returnPage extends Component {
       scriptName: status.scriptName,
       payherePaymentId: status.payherePaymentId,
       processedDate: status.processedDate,
-      orderId: status.orderId
+      orderId: status.orderId,
     };
   }
 
   printDocument() {
     const input = document.getElementById("divToPrint");
-    html2canvas(input).then(canvas => {
+    html2canvas(input).then((canvas) => {
       const imgData = canvas.toDataURL("image/png");
       const pdf = new jsPDF();
       pdf.addImage(imgData, "JPEG", -150, -50);

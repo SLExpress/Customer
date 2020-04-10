@@ -1,3 +1,4 @@
+/*  N. R Yamasinghe  IT18233704 version - 01 */
 import http from "./httpService";
 import { apiUrl } from "../config/config.json";
 
@@ -13,7 +14,7 @@ export function register(user) {
     email: user.email1,
     password: user.password1,
     phone: user.contactNo,
-    type: user.userType
+    type: user.userType,
   });
 }
 

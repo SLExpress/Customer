@@ -1,22 +1,21 @@
+/*  N. R Yamasinghe  IT18233704 version - 01 */
 import React from "react";
 import Form from "../common/form";
 import { getCustomer, updatePassword } from "../../services/userService";
 import Joi from "joi-browser";
+import Swal from "sweetalert2";
 
 class passwordSettingsCard extends Form {
   state = {
     data: {
-      password: "..................."
+      password: "...................",
     },
     errors: {},
-    isUpdated: false
+    isUpdated: false,
   };
 
   schema = {
-    password: Joi.string()
-      .required()
-      .min(8)
-      .label("Password")
+    password: Joi.string().required().min(8).label("Password"),
   };
 
   async populatePassword() {
@@ -32,7 +31,7 @@ class passwordSettingsCard extends Form {
 
   mapToViewModel(customer) {
     return {
-      password: customer.password
+      password: customer.password,
     };
   }
 
@@ -41,7 +40,16 @@ class passwordSettingsCard extends Form {
       const { data } = this.state;
       await updatePassword(data.password);
       this.setState({ isUpdated: true });
-      window.location = "/myAccount";
+
+      Swal.fire({
+        icon: "success",
+        title: "Successful",
+        text: "Your password updated successfully",
+        showConfirmButton: false,
+        timer: 1500,
+      }).then(function () {
+        window.location = "/myAccount";
+      });
     } catch (ex) {}
   };
 
@@ -64,7 +72,7 @@ class passwordSettingsCard extends Form {
               {this.renderFormInput("password", "Password", "password")}
               {this.renderButton("Reset")}
               <br />
-              {this.updateMessage()}
+              {/* {this.updateMessage()} */}
             </form>
           </div>
         </div>

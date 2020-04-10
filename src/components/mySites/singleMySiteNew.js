@@ -1,3 +1,4 @@
+/*  N. R Yamasinghe  IT18233704 version - 01 */
 import React from "react";
 import { Status } from "./../table/icon";
 import { Buttons } from "./../table/buttons";
@@ -10,14 +11,14 @@ import styled from "styled-components";
 import Swal from "sweetalert2";
 
 const singleMySiteNew = ({ site }) => {
-  const handleDeleteWebsite = async websiteId => {
+  const handleDeleteWebsite = async (websiteId) => {
     try {
       const data = { websiteId };
       await deleteWebsite(data);
     } catch (ex) {}
   };
 
-  const onDeleteWebsite = async websiteId => {
+  const onDeleteWebsite = async (websiteId) => {
     try {
       Swal.fire({
         title: "Are you sure?",
@@ -26,8 +27,8 @@ const singleMySiteNew = ({ site }) => {
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!"
-      }).then(result => {
+        confirmButtonText: "Yes, delete it!",
+      }).then((result) => {
         if (result.value) {
           handleDeleteWebsite(websiteId);
           Swal.fire({
@@ -35,8 +36,8 @@ const singleMySiteNew = ({ site }) => {
             title: "Deleted!",
             text: "website has been deleted",
             showConfirmButton: true,
-            timer: 1500
-          }).then(function() {
+            timer: 1500,
+          }).then(function () {
             window.location = "/mySites";
           });
         }
@@ -46,7 +47,7 @@ const singleMySiteNew = ({ site }) => {
 
   return (
     <ProductConsumer>
-      {value => {
+      {(value) => {
         const { setSingleSiteSettings } = value;
         const datetime = new Date(site.createdDate);
         const dateString = datetime.toDateString();

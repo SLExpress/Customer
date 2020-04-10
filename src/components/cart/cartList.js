@@ -1,3 +1,4 @@
+/*  N. R Yamasinghe  IT18233704 version - 01 */
 import React from "react";
 import CartItem from "./cartItem";
 import { ProductConsumer } from "../../context";
@@ -8,7 +9,7 @@ const cartList = () => {
       <div className="row">
         <div className="col">
           <ProductConsumer>
-            {value => {
+            {(value) => {
               const { cart, removeItem } = value;
               if (cart.length === 0) {
                 return (
@@ -19,7 +20,7 @@ const cartList = () => {
               }
               return (
                 <>
-                  {cart.map(item => (
+                  {cart.map((item) => (
                     <div>
                       <CartItem
                         key={item.id}

@@ -1,9 +1,10 @@
+/*  N. R Yamasinghe  IT18233704 version - 01 */
 import React, { Component } from "react";
 import { Table } from "semantic-ui-react";
 import { Up, Down } from "./icon";
 
 class tableHeader extends Component {
-  raiseSort = path => {
+  raiseSort = (path) => {
     const sortColumn = { ...this.props.sortColumn };
     if (sortColumn.path === path)
       sortColumn.order = sortColumn.order === "asc" ? "desc" : "asc";
@@ -14,7 +15,7 @@ class tableHeader extends Component {
     this.props.onSort(sortColumn);
   };
 
-  renderSortIcon = column => {
+  renderSortIcon = (column) => {
     const { sortColumn } = this.props;
 
     if (column.path !== sortColumn.path) return null;
@@ -28,7 +29,7 @@ class tableHeader extends Component {
       <Table.Header>
         <Table.Row>
           <Table.HeaderCell key="No">No</Table.HeaderCell>
-          {this.props.columns.map(column => (
+          {this.props.columns.map((column) => (
             <Table.HeaderCell
               key={column.path || column.key}
               onClick={() => this.raiseSort(column.path)}

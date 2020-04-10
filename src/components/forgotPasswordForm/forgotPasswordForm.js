@@ -1,3 +1,4 @@
+/*  N. R Yamasinghe  IT18233704 version - 01 */
 import React from "react";
 import Form from "../common/form";
 import Joi from "joi-browser";
@@ -7,19 +8,13 @@ import auth from "../../services/authService";
 class forgotPasswordForm extends Form {
   state = {
     data: { email: "", password: "", type: "customer" },
-    errors: {}
+    errors: {},
   };
 
   schema = {
-    email: Joi.string()
-      .email()
-      .required()
-      .label("Email"),
-    password: Joi.string()
-      .min(8)
-      .required()
-      .label("Password"),
-    type: Joi.string()
+    email: Joi.string().email().required().label("Email"),
+    password: Joi.string().min(8).required().label("Password"),
+    type: Joi.string(),
   };
 
   doSubmit = async () => {

@@ -1,3 +1,4 @@
+/*  N. R Yamasinghe  IT18233704 version - 01 */
 import React from "react";
 import Title from "../common/title";
 import { Buttons } from "./../table/buttons";
@@ -7,7 +8,7 @@ import { apiUrl } from "./../../config/config.json";
 const singleSiteDetails = () => {
   return (
     <ProductConsumer>
-      {value => {
+      {(value) => {
         const { singleSite, singleSiteDeveloper } = value;
         const { name, image, price, description, demoUrl } = singleSite;
         const { username, firstName } = singleSiteDeveloper;
@@ -45,7 +46,7 @@ const singleSiteDetails = () => {
                     <div className="col-4">
                       <a
                         style={{
-                          textDecoration: "none"
+                          textDecoration: "none",
                         }}
                         target="_blank"
                         href={`http://${demoUrl}/`}

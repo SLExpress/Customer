@@ -1,3 +1,4 @@
+/*  N. R Yamasinghe  IT18233704 version - 01 */
 import React from "react";
 import Form from "../common/form";
 import * as registerUser from "../../services/registerService";
@@ -16,42 +17,22 @@ class RegisterForm extends Form {
       email1: "",
       contactNo: "",
       userType: "customer",
-      confirmPassword: ""
+      confirmPassword: "",
     },
     errors: {},
     isRegisterd: false,
-    isResend: false
+    isResend: false,
   };
 
   schema = {
-    firstname: Joi.string()
-      .min(4)
-      .required()
-      .label("Firstname"),
-    lastname: Joi.string()
-      .min(4)
-      .required()
-      .label("Lastname"),
-    username: Joi.string()
-      .min(4)
-      .required()
-      .label("Username"),
-    password1: Joi.string()
-      .required()
-      .min(8)
-      .label("Password"),
-    email1: Joi.string()
-      .email()
-      .required()
-      .label("Email"),
-    contactNo: Joi.number()
-      .required()
-      .label("ContactNo"),
+    firstname: Joi.string().min(4).required().label("Firstname"),
+    lastname: Joi.string().min(4).required().label("Lastname"),
+    username: Joi.string().min(4).required().label("Username"),
+    password1: Joi.string().required().min(8).label("Password"),
+    email1: Joi.string().email().required().label("Email"),
+    contactNo: Joi.number().required().label("ContactNo"),
     userType: Joi.string(),
-    confirmPassword: Joi.string()
-      .required()
-      .min(8)
-      .label("ConfirmPassword")
+    confirmPassword: Joi.string().required().min(8).label("ConfirmPassword"),
   };
 
   doSubmit = async () => {
@@ -66,7 +47,7 @@ class RegisterForm extends Form {
           title: "Successfully Registered",
           text: "Please confirm your email address to continue",
           showConfirmButton: false,
-          timer: 1500
+          timer: 1500,
         });
         this.setState({ isRegisterd: true });
         setTimeout(() => {
@@ -76,7 +57,7 @@ class RegisterForm extends Form {
         if (ex.response && ex.response.status === 422) {
           const errors = { ...this.state.errors };
           const exResponse = ex.response.data.errors;
-          exResponse.forEach(e => {
+          exResponse.forEach((e) => {
             const param = e.param;
             const msg = e.msg;
             if (param === "email") {

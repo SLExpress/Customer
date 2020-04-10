@@ -1,3 +1,4 @@
+/*  N. R Yamasinghe  IT18233704 version - 01 */
 import React, { Component } from "react";
 import { FaDolly, FaRedo, FaDollarSign } from "react-icons/fa";
 import styled from "styled-components";
@@ -50,6 +51,7 @@ export default class servicesBanner extends Component {
   }
 }
 
+// styled component
 const ServicesWrapper = styled.section`
   background: rgba(95, 183, 234, 0.5);
   width: 1600px;

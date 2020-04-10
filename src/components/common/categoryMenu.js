@@ -1,3 +1,4 @@
+/*  N. R Yamasinghe  IT18233704 version - 01 */
 import React, { Component } from "react";
 import { Menu } from "semantic-ui-react";
 import { Link } from "react-router-dom";
@@ -17,7 +18,7 @@ class categoryMenu extends Component {
             <p>Categories</p>
           </Menu.Header>
           <Menu.Menu>
-            {categories.map(item => (
+            {categories.map((item) => (
               <Menu.Item key={item._id}>
                 <Link
                   style={{ textDecoration: "none" }}

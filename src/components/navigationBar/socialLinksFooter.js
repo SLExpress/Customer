@@ -1,3 +1,4 @@
+/*  N. R Yamasinghe  IT18233704 version - 01 */
 import React, { Component } from "react";
 import styled from "styled-components";
 import { ProductConsumer } from "../../context";
@@ -6,7 +7,7 @@ export default class socialLinksFooter extends Component {
   render() {
     return (
       <ProductConsumer>
-        {value => {
+        {(value) => {
           return (
             <FooterWrapper>
               <div className="container py-3">
@@ -18,7 +19,7 @@ export default class socialLinksFooter extends Component {
                     </p>
                   </div>
                   <div className=" col-md-6 d-flex justify-content-around">
-                    {value.socialLinks.map(item => (
+                    {value.socialLinks.map((item) => (
                       <a
                         href={item.url}
                         target="_blank"

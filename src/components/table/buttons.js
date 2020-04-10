@@ -1,3 +1,4 @@
+/*  N. R Yamasinghe  IT18233704 version - 01 */
 import React from "react";
 import styled from "styled-components";
 
@@ -29,8 +30,8 @@ const ButtonWrapper = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  border-color: ${props => props.color};
-  color: ${props => props.color};
+  border-color: ${(props) => props.color};
+  color: ${(props) => props.color};
 
   &:focus {
     outline: none;
@@ -38,7 +39,7 @@ const ButtonWrapper = styled.button`
 
   &:hover {
     color: #fff;
-    background-color: ${props => props.color};
+    background-color: ${(props) => props.color};
   }
 `;
 const ButtonStyle = styled.button`
@@ -51,8 +52,8 @@ const ButtonStyle = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  border-color: ${props => props.color};
-  color: ${props => props.color};
+  border-color: ${(props) => props.color};
+  color: ${(props) => props.color};
 
   &:focus {
     outline: none;
@@ -60,6 +61,6 @@ const ButtonStyle = styled.button`
 
   &:hover {
     color: #fff;
-    background-color: ${props => props.color};
+    background-color: ${(props) => props.color};
   }
 `;

@@ -1,3 +1,4 @@
+/*  N. R Yamasinghe  IT18233704 version - 01 */
 import React from "react";
 import { Icon, Input } from "semantic-ui-react";
 import styled from "styled-components";
@@ -21,7 +22,7 @@ export const SearchBar = ({ value, onChange }) => {
       value={value}
       group
       type="text"
-      onChange={e => onChange(e.currentTarget.value)}
+      onChange={(e) => onChange(e.currentTarget.value)}
     />
   );
 };

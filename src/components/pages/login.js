@@ -1,3 +1,4 @@
+/*  N. R Yamasinghe  IT18233704 version - 01 */
 import React, { Component } from "react";
 import LoginForm from "../loginForm/loginForm";
 import RegisterForm from "../registerForm/registerForm";
@@ -10,7 +11,7 @@ export default class login extends Component {
         style={{
           paddingTop: "5rem",
           paddingBottom: "5rem",
-          paddingLeft: "3rem"
+          paddingLeft: "3rem",
         }}
       >
         <Row>

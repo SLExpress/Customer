@@ -1,3 +1,4 @@
+/*  N. R Yamasinghe  IT18233704 version - 01 */
 import React from "react";
 import Form from "../common/form";
 import auth from "../../services/authService";
@@ -9,19 +10,13 @@ import Joi from "joi-browser";
 class LoginForm extends Form {
   state = {
     data: { email: "", password: "", type: "customer" },
-    errors: {}
+    errors: {},
   };
 
   schema = {
-    email: Joi.string()
-      .email()
-      .required()
-      .label("Email"),
-    password: Joi.string()
-      .min(8)
-      .required()
-      .label("Password"),
-    type: Joi.string()
+    email: Joi.string().email().required().label("Email"),
+    password: Joi.string().min(8).required().label("Password"),
+    type: Joi.string(),
   };
 
   doSubmit = async () => {
@@ -30,8 +25,8 @@ class LoginForm extends Form {
         title: "Logging in",
         onBeforeOpen: () => {
           Swal.showLoading();
-        }
-      }
+        },
+      },
     ]);
     try {
       const { data } = this.state;
@@ -40,8 +35,8 @@ class LoginForm extends Form {
         icon: "success",
         title: "Login Successfull",
         showConfirmButton: false,
-        timer: 1500
-      }).then(function() {
+        timer: 1500,
+      }).then(function () {
         window.location = "/landingPage";
       });
     } catch (ex) {
@@ -54,7 +49,7 @@ class LoginForm extends Form {
         Swal.fire({
           icon: "info",
           title: "Please confirm your email address",
-          showConfirmButton: true
+          showConfirmButton: true,
         });
       }
     }

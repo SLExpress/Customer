@@ -1,3 +1,4 @@
+/*  N. R Yamasinghe  IT18233704 version - 01 */
 import React from "react";
 import PayForm from "../common/payForm";
 import { getPayment } from "./../../services/paymentService";
@@ -29,63 +30,29 @@ class paymentForm extends PayForm {
       phone: "",
       address: "",
       city: "",
-      country: ""
+      country: "",
     },
-    errors: {}
+    errors: {},
   };
 
   schema = {
-    merchant_id: Joi.string()
-      .required()
-      .label("merchant_id"),
-    return_url: Joi.string()
-      .required()
-      .label("return_url"),
-    cancel_url: Joi.string()
-      .required()
-      .label("cancel_url"),
-    notify_url: Joi.string()
-      .required()
-      .label("notify_url"),
-    custom_1: Joi.string()
-      .required()
-      .label("custom_1"),
-    custom_2: Joi.string()
-      .required()
-      .label("custom_2"),
-    order_id: Joi.string()
-      .required()
-      .label("order_id"),
-    items: Joi.string()
-      .required()
-      .label("items"),
-    currency: Joi.string()
-      .required()
-      .label("currency"),
-    amount: Joi.string()
-      .required()
-      .label("amount"),
-    first_name: Joi.string()
-      .required()
-      .label("first_name"),
-    last_name: Joi.string()
-      .required()
-      .label("last_name"),
-    email: Joi.string()
-      .required()
-      .label("email"),
-    phone: Joi.string()
-      .required()
-      .label("phone"),
-    address: Joi.string()
-      .required()
-      .label("address"),
-    city: Joi.string()
-      .required()
-      .label("city"),
-    country: Joi.string()
-      .required()
-      .label("country")
+    merchant_id: Joi.string().required().label("merchant_id"),
+    return_url: Joi.string().required().label("return_url"),
+    cancel_url: Joi.string().required().label("cancel_url"),
+    notify_url: Joi.string().required().label("notify_url"),
+    custom_1: Joi.string().required().label("custom_1"),
+    custom_2: Joi.string().required().label("custom_2"),
+    order_id: Joi.string().required().label("order_id"),
+    items: Joi.string().required().label("items"),
+    currency: Joi.string().required().label("currency"),
+    amount: Joi.string().required().label("amount"),
+    first_name: Joi.string().required().label("first_name"),
+    last_name: Joi.string().required().label("last_name"),
+    email: Joi.string().required().label("email"),
+    phone: Joi.string().required().label("phone"),
+    address: Joi.string().required().label("address"),
+    city: Joi.string().required().label("city"),
+    country: Joi.string().required().label("country"),
   };
 
   async populatePayment() {
@@ -109,7 +76,7 @@ class paymentForm extends PayForm {
       merchant_id: info.data.payhereMerchantId,
       amount: info.data.price,
       currency: info.data.payhereCurrency,
-      hash: info.data.hash
+      hash: info.data.hash,
     };
   }
 

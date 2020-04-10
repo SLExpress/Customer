@@ -1,3 +1,4 @@
+/*  N. R Yamasinghe  IT18233704 version - 01 */
 import React, { Component } from "react";
 import { Table } from "semantic-ui-react";
 import _ from "lodash";
@@ -27,7 +28,7 @@ class tableBody extends Component {
                 <Table.Cell key={index}>
                   {5 * (currentPage - 1) + index + 1}
                 </Table.Cell>
-                {columns.map(column => (
+                {columns.map((column) => (
                   <Table.Cell key={this.createKey(item, column)}>
                     {this.renderCell(item, column)}
                   </Table.Cell>

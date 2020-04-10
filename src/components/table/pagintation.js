@@ -1,17 +1,18 @@
+/*  N. R Yamasinghe  IT18233704 version - 01 */
 import React from "react";
 import { Icon } from "semantic-ui-react";
 import _ from "lodash";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-const pagination = props => {
+const pagination = (props) => {
   const {
     itemCount,
     pageSize,
     currentPage,
     onPreviousPageChange,
     onPageChange,
-    onNextPageChange
+    onNextPageChange,
   } = props;
 
   const pageCount = Math.ceil(itemCount / pageSize);
@@ -32,7 +33,7 @@ const pagination = props => {
           </li>
         )}
 
-        {pages.map(page => (
+        {pages.map((page) => (
           <li className="page-item" as="a" key={page}>
             <Link
               className="page-link"
@@ -63,6 +64,6 @@ pagination.propTypes = {
   itemCount: PropTypes.number.isRequired,
   pageSize: PropTypes.number.isRequired,
   currentPage: PropTypes.number.isRequired,
-  onPageChange: PropTypes.func.isRequired
+  onPageChange: PropTypes.func.isRequired,
 };
 export default pagination;

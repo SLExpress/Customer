@@ -1,3 +1,4 @@
+/*  N. R Yamasinghe  IT18233704 version - 01 */
 import http from "./httpService";
 import { apiUrl } from "../config/config.json";
 
@@ -28,12 +29,12 @@ export function updateCustomer(
     lastname,
     username,
     email,
-    phone
+    phone,
   });
 }
 
 export function updatePassword(password) {
   return http.patch(apiEndpoint4, {
-    password
+    password,
   });
 }
