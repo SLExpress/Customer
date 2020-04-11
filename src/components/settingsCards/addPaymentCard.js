@@ -42,9 +42,9 @@ class addPaymentCard extends Form {
         window.location = "/myPayments";
       });
     } catch (ex) {
-      if (ex.response && ex.response.status === 422) {
+      if (ex.response && ex.response.status === 500) {
         const errors = { ...this.state.errors };
-        errors.cvv = ex.response.data.error;
+        errors.cvv = "Invalid types of details";
         this.setState({ errors });
       }
     }
