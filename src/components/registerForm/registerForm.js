@@ -2,7 +2,6 @@
 import React from "react";
 import Form from "../common/form";
 import * as registerUser from "../../services/registerService";
-import { Link } from "react-router-dom";
 import { MDBAnimation } from "mdbreact";
 import Joi from "joi-browser";
 import Swal from "sweetalert2";
@@ -92,16 +91,19 @@ class RegisterForm extends Form {
 
   setResendLink = () => {
     if (this.state.isResend === true) {
-      return (
-        <Link
-          style={{ textDecoration: "none" }}
-          to="/resendEmail"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <p style={{ marginBottom: "20px" }}>Resend Confirmation Email</p>
-        </Link>
-      );
+      Swal.fire({
+        title: "Email Verification",
+        text: "Do you want to resend the email",
+        icon: "Info",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes,Resend it",
+      }).then((result) => {
+        if (result.value) {
+          window.location = "/resendEmail";
+        }
+      });
     }
   };
   render() {
