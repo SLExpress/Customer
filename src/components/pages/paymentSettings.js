@@ -17,7 +17,7 @@ export default class paymentSettings extends Component {
     try {
       await getPaymentDetails();
     } catch (ex) {
-      if (ex.response && ex.response.status === 422) {
+      if (ex.response && ex.response.status === 500) {
         this.setState({ error: true });
       }
     }

@@ -54,7 +54,7 @@ export default class myPayments extends Component {
       const { data: customer } = await getPaymentDetails();
       this.setState({ customer, loading: false });
     } catch (ex) {
-      if (ex.response && ex.response.status === 422) {
+      if (ex.response && ex.response.status === 500) {
         this.setState({ error: true, loading: false });
       }
     }
