@@ -2,8 +2,10 @@
 import React from "react";
 import { Buttons } from "./../table/buttons";
 import { Link } from "react-router-dom";
-import { TiDeleteOutline } from "react-icons/ti";
+
+import { Icon } from "semantic-ui-react";
 import { deleteWebsite } from "./../../services/siteCategoryService";
+
 import Swal from "sweetalert2";
 
 const cartItem = ({ cartItem, removeItem }) => {
@@ -23,7 +25,7 @@ const cartItem = ({ cartItem, removeItem }) => {
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!",
+        confirmButtonText: "Delete",
       }).then((result) => {
         if (result.value) {
           handleDeleteWebsite(websiteId);
@@ -83,12 +85,13 @@ const cartItem = ({ cartItem, removeItem }) => {
       </div>
 
       <div className="col-10 mx-auto col-lg-2 ">
-        <TiDeleteOutline
+        <Icon
           style={{ cursor: "pointer", color: "#e60000" }}
-          className="text-danger cart-icon"
-          // onClick={() => removeItem(_id)}
           onClick={() => onDeleteWebsite(_id)}
-          size={20}
+          circular
+          inverted
+          color="red"
+          name="trash alternate outline"
         />
       </div>
 

@@ -2,22 +2,29 @@
 import React, { Component } from "react";
 import PaymentHistoryPage from "../table/paymentHistoryPage";
 import MenuBar from "./../common/menuBar";
+import { Grid } from "semantic-ui-react";
 
 class billingHistory extends Component {
   render() {
     return (
-      <div>
-        <div className="container">
-          <div className="row">
-            <div className="col-sm-4 mb-5">
-              <MenuBar />
-            </div>
-            <div className="col mt-3" style={{ marginLeft: "80px" }}>
-              <PaymentHistoryPage />
-            </div>
-          </div>
-        </div>
-      </div>
+      <Grid>
+        <Grid.Row>
+          <Grid.Column
+            width={3}
+            phone={3}
+            tablet={3}
+            computer={3}
+            style={{ marginLeft: "30px" }}
+          >
+            <MenuBar />
+          </Grid.Column>
+
+          <Grid.Column width={11} phone={11} tablet={11} computer={11}>
+            <PaymentHistoryPage />
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Column width={2} phone={2} tablet={2} computer={2}></Grid.Column>
+      </Grid>
     );
   }
 }

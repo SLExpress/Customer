@@ -1,6 +1,6 @@
 /*  N. R Yamasinghe  IT18233704 version - 01 */
 import React, { Component } from "react";
-import Tickets from "./../Inquiries/tickets";
+import Tickets from "../inquiries/tickets";
 
 class inquiries extends Component {
   state = {};

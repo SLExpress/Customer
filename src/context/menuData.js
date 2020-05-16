@@ -7,9 +7,17 @@ export const menuData = [
   {
     header: "My Account",
     list: [
-      { name: "Profile", link: "/myAccount" },
-      { name: "Change Profile", link: "/accountSettings" },
-      { name: "Change Password", link: "/accountSettings" },
+      { name: "Profile", link: "/myAccount", icon: "dashboard" },
+      {
+        name: "Change Profile",
+        link: "/accountSettings",
+        icon: "building outline",
+      },
+      {
+        name: "Change Password",
+        link: "/accountSettings",
+        icon: "volume control phone",
+      },
     ],
   },
   {
@@ -25,7 +33,7 @@ export const menuData = [
     header: "My Sites",
     list: [
       { name: "My Sites", link: "/mySites" },
-      { name: "Change Domain", link: "/domainSettings" },
+      { name: "Change Domain", link: "/domainList" },
     ],
   },
   {
@@ -44,8 +52,8 @@ export const menuData = [
     header: "Inquiries",
     list: [
       { name: "Inquiries", link: "/inquiries" },
-      { name: "FAQ", link: "/inquiries" },
-      { name: "Terms Of Service", link: "/termsOfService" },
+      { name: "Open Ticket", link: "/openNewTicket" },
+      { name: "Terms of Service", link: "/termsOfService" },
       { name: "About", link: "/aboutus" },
     ],
   },

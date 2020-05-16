@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 class paymentHistoryTable extends Component {
   columns = [
-    { path: "website.url.defaultUrl", label: "Default url" },
+    { dUrl: "website.url.defaultUrl", label: "Default url" },
     { path: "website._id", label: "Website ID" },
     { path: "payherePayment", label: "Payment ID" },
     { path: "payment", label: "Payment" },

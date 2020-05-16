@@ -8,10 +8,14 @@ import {
   getSitesByUser,
   getSites,
   createWebsite,
+  deleteCustomDomain,
+  addCustomDomain,
+  updateCustomDomain,
 } from "./../services/siteCategoryService";
 import { getTickets, viewInquiries } from "./../services/inquiryService";
 import auth from "./../services/authService";
 import _ from "lodash";
+import Swal from "sweetalert2";
 
 const ProductContext = React.createContext();
 class ProductProvider extends Component {
@@ -54,6 +58,112 @@ class ProductProvider extends Component {
     sortCusMsg: [],
     sortAdminMsg: [],
     sortAllMsg: [],
+    breadcrumb: "",
+  };
+
+  handleDeleteCustomDomain = async (websiteId) => {
+    try {
+      const data = { websiteId };
+      await deleteCustomDomain(data);
+    } catch (ex) {}
+  };
+
+  handleDelete = async (websiteId) => {
+    try {
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Delete",
+      }).then((result) => {
+        if (result.value) {
+          this.handleDeleteCustomDomain(websiteId);
+          Swal.fire({
+            icon: "success",
+            title: "Deleted!",
+            text: "custom domain has been deleted",
+            showConfirmButton: true,
+            timer: 1500,
+          }).then(function () {
+            window.location = "/domainList";
+          });
+        }
+      });
+    } catch (error) {}
+  };
+
+  handleAddCustomDomain = async (websiteId, customDomain) => {
+    try {
+      await addCustomDomain(websiteId, customDomain);
+    } catch (ex) {}
+  };
+
+  handleAdd = async (websiteId) => {
+    try {
+      Swal.fire({
+        title: "Add Custom Domain",
+
+        input: "text",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Add",
+      }).then((result) => {
+        if (result.value) {
+          const customDomain = result.value;
+          this.handleAddCustomDomain(websiteId, customDomain);
+          Swal.fire({
+            icon: "success",
+            title: "Added!",
+            text: "custom domain has been add",
+            showConfirmButton: true,
+            timer: 1500,
+          }).then(function () {
+            window.location = "/domainList";
+          });
+        }
+      });
+    } catch (error) {}
+  };
+
+  handleUpdateCustomDomain = async (customDomain, websiteId) => {
+    try {
+      await updateCustomDomain(customDomain, websiteId);
+    } catch (ex) {}
+  };
+
+  handleUpdate = async (websiteId) => {
+    try {
+      Swal.fire({
+        title: "Update Custom Domain",
+        input: "text",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Update",
+      }).then((result) => {
+        if (result.value) {
+          const customDomain = result.value;
+          this.handleUpdateCustomDomain(customDomain, websiteId);
+          Swal.fire({
+            icon: "success",
+            title: "Updated!",
+            text: "custom domain has been updated",
+            showConfirmButton: true,
+            timer: 1500,
+          }).then(function () {
+            window.location = "/domainList";
+          });
+        }
+      });
+    } catch (error) {}
+  };
+
+  getBreadcrumb = (url) => {
+    this.setState({ breadcrumb: url });
   };
 
   async populateCategories() {
@@ -622,6 +732,10 @@ class ProductProvider extends Component {
           handleNotPaidMySiteChange: this.handleNotPaidMySiteChange,
           handleCreateWebsite: this.handleCreateWebsite,
           handleInquiries: this.handleInquiries,
+          getBreadcrumb: this.getBreadcrumb,
+          handleDelete: this.handleDelete,
+          handleAdd: this.handleAdd,
+          handleUpdate: this.handleUpdate,
         }}
       >
         {this.props.children}

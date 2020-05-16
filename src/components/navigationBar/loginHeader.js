@@ -9,7 +9,7 @@ export default function Header({ currentUser }) {
   return (
     <ProductConsumer>
       {(value) => {
-        const { cartItems } = value;
+        const { cartItems, getBreadcrumb } = value;
         return (
           <div>
             <HeaderWrapper>
@@ -65,6 +65,7 @@ export default function Header({ currentUser }) {
                               <span id="middle-border">&nbsp;</span>
                               <Link
                                 to="/cartCheckOut"
+                                onClick={() => getBreadcrumb("Cart Checkout")}
                                 style={{
                                   color: "#fff",
                                   textDecoration: "none",
@@ -117,6 +118,7 @@ export default function Header({ currentUser }) {
                                     textDecoration: "none",
                                   }}
                                   to="/myAccount"
+                                  onClick={() => getBreadcrumb("Profile")}
                                 >
                                   PROFILE
                                 </Link>
@@ -128,6 +130,9 @@ export default function Header({ currentUser }) {
                                     textDecoration: "none",
                                   }}
                                   to="/myPayments"
+                                  onClick={() =>
+                                    getBreadcrumb("Payment Details")
+                                  }
                                 >
                                   PAYMENTS & BILLING
                                 </Link>
@@ -139,6 +144,7 @@ export default function Header({ currentUser }) {
                                     textDecoration: "none",
                                   }}
                                   to="/mySites"
+                                  onClick={() => getBreadcrumb("My Sites")}
                                 >
                                   MY SITES
                                 </Link>
@@ -150,6 +156,7 @@ export default function Header({ currentUser }) {
                                     textDecoration: "none",
                                   }}
                                   to="/categories"
+                                  onClick={() => getBreadcrumb("Categories")}
                                 >
                                   CATEGORIES
                                 </Link>
@@ -161,6 +168,7 @@ export default function Header({ currentUser }) {
                                     textDecoration: "none",
                                   }}
                                   to="/inquiries"
+                                  onClick={() => getBreadcrumb("Inquiries")}
                                 >
                                   INQUIRIES
                                 </Link>

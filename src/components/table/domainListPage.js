@@ -1,18 +1,18 @@
 /*  N. R Yamasinghe  IT18233704 version - 01 */
 import React, { Component } from "react";
 import Pagination from "./pagintation";
-import PurchaseTable from "./paymentHistoryTable";
+import DomainTable from "./domainListTable";
 import { paginate } from "./paginate";
 import { SearchBar } from "./icon";
 import { TableContext } from "../../context/tableContext";
 import _ from "lodash";
 
-class paymentHistoryPage extends Component {
+class domainListPage extends Component {
   static contextType = TableContext;
 
   render() {
     const {
-      paymentHistory,
+      domains,
       handlePageChange,
       handlePreviousPageChange,
       handleNextPageChange,
@@ -23,22 +23,22 @@ class paymentHistoryPage extends Component {
       handleSearch,
       sortColumn,
       handleDelete,
+      handleAdd,
+      handleUpdate,
       setSinglePaymentHistory,
     } = this.context;
 
-    const { length: count } = paymentHistory;
+    const { length: count } = domains;
 
-    let filtered = paymentHistory;
+    let filtered = domains;
     if (searchQuery)
-      filtered = paymentHistory.filter((c) =>
-        c.website.url.defaultUrl
-          .toLowerCase()
-          .startsWith(searchQuery.toLowerCase())
+      filtered = domains.filter((c) =>
+        c.url.defaultUrl.toLowerCase().startsWith(searchQuery.toLowerCase())
       );
 
     const sorted = _.orderBy(filtered, [sortColumn.path], [sortColumn.order]);
 
-    const allPurchases = paginate(sorted, currentPage, pageSize);
+    const allDomains = paginate(sorted, currentPage, pageSize);
 
     const { length: totalCount } = filtered;
 
@@ -47,17 +47,19 @@ class paymentHistoryPage extends Component {
         {count === 0 ? (
           <p>There are no transactions done so far.</p>
         ) : (
-          <p>Showing {totalCount} successful transactions with slexpress.</p>
+          <p>You have created {totalCount} websites with slexpress.</p>
         )}
 
         <SearchBar value={searchQuery} onChange={handleSearch} />
-        <PurchaseTable
-          purchases={allPurchases}
+        <DomainTable
+          domains={allDomains}
           currentPage={currentPage}
           sortColumn={sortColumn}
           onDelete={handleDelete}
           onSort={handleSort}
           onSelect={setSinglePaymentHistory}
+          onAdd={handleAdd}
+          onUpdate={handleUpdate}
         />
         <div className="mb-2">
           <Pagination
@@ -73,4 +75,4 @@ class paymentHistoryPage extends Component {
     );
   }
 }
-export default paymentHistoryPage;
+export default domainListPage;

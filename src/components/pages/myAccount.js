@@ -7,6 +7,7 @@ import Loader from "./../common/loader";
 import MenuBar from "./../common/menuBar";
 import auth from "../../services/authService";
 import { deleteCustomer, getCustomer } from "../../services/userService";
+import { Grid } from "semantic-ui-react";
 import Swal from "sweetalert2";
 
 export default class myAccount extends Component {
@@ -72,12 +73,19 @@ export default class myAccount extends Component {
     }
 
     return (
-      <div className="container">
-        <div className="row">
-          <div className="col-sm-4 mb-5">
+      <Grid>
+        <Grid.Row>
+          <Grid.Column
+            width={3}
+            phone={3}
+            tablet={3}
+            computer={3}
+            style={{ marginLeft: "30px" }}
+          >
             <MenuBar />
-          </div>
-          <div className="col" style={{ marginLeft: "-300px" }}>
+          </Grid.Column>
+
+          <Grid.Column width={11} phone={11} tablet={11} computer={11}>
             <h4 className="textBold">Profile</h4>
             <p className="card-text text-color-ash">
               Your Personal Information
@@ -88,16 +96,6 @@ export default class myAccount extends Component {
               buttonName="Edit Profile"
               customer={customer}
             />
-          </div>
-        </div>
-
-        <div className="row">
-          <div className="col-sm-4"></div>
-
-          <div
-            className="col"
-            style={{ marginLeft: "-300px", marginTop: "-500px" }}
-          >
             <h4 className="textBold">Password</h4>
             <p className="card-text text-color-ash">
               Irreversible and destructive actions
@@ -107,16 +105,6 @@ export default class myAccount extends Component {
               title="Password Reset"
               buttonName="Reset"
             />
-          </div>
-        </div>
-        <br />
-        <div className="row">
-          <div className="col-sm-4"></div>
-
-          <div
-            className="col"
-            style={{ marginLeft: "-300px", marginTop: "-275px" }}
-          >
             <h4 className="textBold">Delete Account</h4>
             <p className="card-text text-color-ash">
               Irreversible and destructive actions
@@ -126,13 +114,10 @@ export default class myAccount extends Component {
               title="Delete User"
               buttonName="Delete"
             />
-
-            <br />
-            {this.deleteMessage()}
-          </div>
-        </div>
-        <br />
-      </div>
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Column width={2} phone={2} tablet={2} computer={2}></Grid.Column>
+      </Grid>
     );
   }
 }

@@ -4,6 +4,8 @@ import { Status } from "./../table/icon";
 import { Buttons } from "./../table/buttons";
 import { ProductConsumer } from "../../context";
 import { deleteWebsite } from "./../../services/siteCategoryService";
+
+import { Button } from "semantic-ui-react";
 import { MDBView } from "mdbreact";
 import { MdUpdate } from "react-icons/md";
 import { Link } from "react-router-dom";
@@ -48,7 +50,12 @@ const singleMySiteNew = ({ site }) => {
   return (
     <ProductConsumer>
       {(value) => {
-        const { setSingleSiteSettings } = value;
+        const {
+          setSingleSiteSettings,
+          handleUpdate,
+          handleDelete,
+          handleAdd,
+        } = value;
         const datetime = new Date(site.createdDate);
         const dateString = datetime.toDateString();
 
@@ -86,6 +93,18 @@ const singleMySiteNew = ({ site }) => {
                     {dateString}
                     {site.paid && <Status name="Details" color="#40a3dc" />}
                   </p>
+
+                  <div className="ui three buttons">
+                    <Button basic color="green" onClick={handleAdd}>
+                      Add
+                    </Button>
+                    <Button basic color="black" onClick={handleUpdate}>
+                      Update
+                    </Button>
+                    <Button basic color="red" onClick={handleDelete}>
+                      Delete
+                    </Button>
+                  </div>
                 </article>
               </MDBView>
             </div>

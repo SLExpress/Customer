@@ -3,7 +3,7 @@ import React from "react";
 import Form from "./../common/form";
 import Loading from "./../common/loading";
 import MenuBar from "./../common/menuBar";
-import { Header, Icon, Segment } from "semantic-ui-react";
+import { Header, Icon, Segment, Grid } from "semantic-ui-react";
 import { ProductContext } from "./../../context";
 import { createWebsite } from "./../../services/siteCategoryService";
 import Swal from "sweetalert2";
@@ -76,33 +76,70 @@ class addDomainScreen extends Form {
       return <Loading time={this.state.time} />;
     }
     return (
-      <div style={{ marginBottom: "270px" }}>
-        <div className="col-sm-4" style={{ marginLeft: "200px" }}>
-          <MenuBar />
-        </div>
-        <Segment
-          placeholder
-          style={{
-            width: "1100px",
-            height: "550px",
-            marginLeft: "340px",
-            marginTop: "-810px",
-          }}
-        >
-          <form onSubmit={this.handleSubmit}>
-            <center>
-              <Header icon>
-                <Icon name="search" />
-              </Header>
-              {this.renderAddDomainInput("subdomain")}
-            </center>
-          </form>
-          <br />
-          <center>
-            <p>Find your perfect domain</p>
-          </center>
-        </Segment>
-      </div>
+      // <div style={{ marginBottom: "270px" }}>
+      //   <div className="col-sm-4" style={{ marginLeft: "200px" }}>
+      //     <MenuBar />
+      //   </div>
+      //   <Segment
+      //     placeholder
+      //     style={{
+      //       width: "1100px",
+      //       height: "550px",
+      //       marginLeft: "340px",
+      //       marginTop: "-810px",
+      //     }}
+      //   >
+      //     <form onSubmit={this.handleSubmit}>
+      //       <center>
+      //         <Header icon>
+      //           <Icon name="search" />
+      //         </Header>
+      //         {this.renderAddDomainInput("subdomain")}
+      //       </center>
+      //     </form>
+      //     <br />
+      //     <center>
+      //       <p>Find your perfect domain</p>
+      //     </center>
+      //   </Segment>
+      // </div>
+
+      <Grid>
+        <Grid.Row>
+          <Grid.Column
+            width={3}
+            phone={3}
+            tablet={3}
+            computer={3}
+            style={{ marginLeft: "30px" }}
+          >
+            <MenuBar />
+          </Grid.Column>
+
+          <Grid.Column width={11} phone={11} tablet={11} computer={11}>
+            <Segment
+              placeholder
+              style={{
+                height: "550px",
+              }}
+            >
+              <form onSubmit={this.handleSubmit}>
+                <center>
+                  <Header icon>
+                    <Icon name="search" />
+                  </Header>
+                  {this.renderAddDomainInput("subdomain")}
+                </center>
+              </form>
+              <br />
+              <center>
+                <p>Find your perfect domain</p>
+              </center>
+            </Segment>
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Column width={2} phone={2} tablet={2} computer={2}></Grid.Column>
+      </Grid>
     );
   }
 }

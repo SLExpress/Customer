@@ -9,7 +9,7 @@ import {
   deletePaymentDetails,
 } from "./../../services/paymentService";
 import Swal from "sweetalert2";
-import { Button, Segment } from "semantic-ui-react";
+import { Button, Segment, Grid } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
 export default class myPayments extends Component {
@@ -54,7 +54,7 @@ export default class myPayments extends Component {
       const { data: customer } = await getPaymentDetails();
       this.setState({ customer, loading: false });
     } catch (ex) {
-      if (ex.response && ex.response.status === 500) {
+      if (ex.response && ex.response.status === 422) {
         this.setState({ error: true, loading: false });
       }
     }
@@ -80,62 +80,50 @@ export default class myPayments extends Component {
       return <Loader />;
     }
     return (
-      <div className="container">
-        <div className="row">
-          <div className="col-sm-4">
+      <Grid>
+        <Grid.Row>
+          <Grid.Column
+            width={3}
+            phone={3}
+            tablet={3}
+            computer={3}
+            style={{ marginLeft: "30px" }}
+          >
             <MenuBar />
-          </div>
-          {!error && (
-            <div
-              className="col"
-              style={{ marginLeft: "-300px", marginTop: "0px" }}
-            >
-              <h4 className="textBold">Payments & Billing</h4>
-              <p className="card-text text-color-ash mb-5">
-                Your Payment Information
-              </p>
-              <PaymentCard
-                buttonType="blue"
-                title="Biiling Information"
-                buttonName="Edit"
-                customer={customer}
-                error={error}
-              />
-            </div>
-          )}
-        </div>
-        <div className="row">
-          <div className="col-sm-4"></div>
+          </Grid.Column>
 
-          {!error && (
-            <div
-              className="col"
-              style={{ marginLeft: "-300px", marginTop: "-420px" }}
-            >
-              <h4 className="textBold">Delete Info</h4>
-              <p className="card-text text-color-ash">
-                Irreversible and destructive actions
-              </p>
-              <PaymentDeleteCard
-                onDelete={this.handleDelete}
-                title="Delete Payment Info"
-                buttonName="Delete"
-                error={error}
-              />
+          <Grid.Column width={11} phone={11} tablet={11} computer={11}>
+            {!error && (
+              <div>
+                <h4 className="textBold">Payments & Billing</h4>
+                <p className="card-text text-color-ash mb-5">
+                  Your Payment Information
+                </p>
+                <PaymentCard
+                  buttonType="blue"
+                  title="Biiling Information"
+                  buttonName="Edit"
+                  customer={customer}
+                  error={error}
+                />
+                <h4 className="textBold">Delete Info</h4>
+                <p className="card-text text-color-ash">
+                  Irreversible and destructive actions
+                </p>
+                <PaymentDeleteCard
+                  onDelete={this.handleDelete}
+                  title="Delete Payment Info"
+                  buttonName="Delete"
+                  error={error}
+                />
+              </div>
+            )}
 
-              <br />
-              {this.deleteMessage()}
-            </div>
-          )}
-          {error && (
-            <div>
+            {error && (
               <Segment
                 placeholder
                 style={{
-                  width: "800px",
                   height: "550px",
-                  marginLeft: "200px",
-                  marginTop: "-810px",
                 }}
               >
                 <Link to="/addPaymentDetails">
@@ -154,11 +142,11 @@ export default class myPayments extends Component {
                   </p>
                 </center>
               </Segment>
-            </div>
-          )}
-        </div>
-        <br />
-      </div>
+            )}
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Column width={2} phone={2} tablet={2} computer={2}></Grid.Column>
+      </Grid>
     );
   }
 }

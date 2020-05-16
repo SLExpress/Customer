@@ -34,13 +34,12 @@ class tickets extends Component {
         confirmButtonText: "Yes, close it!",
       }).then((result) => {
         if (result.value) {
-          this.handleclose(ticketId);
+          this.handleClose(ticketId);
           Swal.fire({
             icon: "success",
             title: "Closed!",
             text: "Ticket has been closed successfully",
             showConfirmButton: true,
-            timer: 1500,
           }).then(function () {
             window.location = "/inquiries";
           });
@@ -49,9 +48,12 @@ class tickets extends Component {
     } catch (error) {}
   };
 
-  async handleclose(ticketId) {
+  handleClose = async (ticketId) => {
     await closeTicket(ticketId);
-  }
+  };
+  // async handleclose(ticketId) {
+  //   await closeTicket(ticketId);
+  // }
 
   renderReplies = (user, admin) => {
     let count;
@@ -67,90 +69,238 @@ class tickets extends Component {
     }
 
     return (
-      <div className="container" style={{ height: "850px" }}>
-        <Grid.Column mobile={13} tablet={13} computer={13}>
-          <div className="col-sm-4 mb-5">
+      <Grid>
+        <Grid.Row>
+          <Grid.Column
+            width={3}
+            phone={3}
+            tablet={3}
+            computer={3}
+            style={{ marginLeft: "30px" }}
+          >
             <MenuBar />
-          </div>
+          </Grid.Column>
 
-          <Grid style={{ marginTop: "-870px" }}>
-            <Grid.Column mobile={3} tablet={3} computer={3}></Grid.Column>
-            <Grid.Column mobile={10} tablet={10} computer={10}>
-              <Link to="/openNewTicket">
-                <Button
-                  content="Open new ticket"
-                  labelPosition="left"
-                  icon="plus square"
-                  primary
-                />
-              </Link>
-              {tickets.map((ticket, index) => (
-                <Card fluid key={index}>
-                  <Card.Content>
-                    <Card.Header>{ticket.title}</Card.Header>
-                  </Card.Content>
-                  <Card.Content>
-                    <Feed>
-                      <Feed.Event>
-                        <Feed.Label image="https://react.semantic-ui.com/images/avatar/small/jenny.jpg" />
-                        <Feed.Content>
-                          <Card.Meta>
-                            {
-                              <Moment fromNow ago>
-                                {ticket.time}
-                              </Moment>
-                            }
-                            ago
-                          </Card.Meta>
-                          <Feed.Summary>{ticket.ticketText}</Feed.Summary>
-                          <Link
-                            to={`/userInquiries/${ticket._id}`}
-                            onClick={() => handleInquiries(ticket._id)}
-                          >
-                            {this.renderReplies(
-                              ticket.adminReplies.length,
-                              ticket.userReplies.length
-                            )}
-                          </Link>
-                        </Feed.Content>
-                      </Feed.Event>
-                    </Feed>
+          <Grid.Column width={11} phone={11} tablet={11} computer={11}>
+            <Link to="/openNewTicket">
+              <Button
+                content="Open new ticket"
+                labelPosition="left"
+                icon="plus square"
+                primary
+              />
+            </Link>
+            <br />
+            <br />
+            <Grid>
+              <Grid.Row>
+                <Grid.Column width={8}>
+                  {tickets.map((ticket, index) => {
+                    return index % 2 === 0 ? (
+                      <Card fluid key={index}>
+                        <Card.Content>
+                          <Card.Header>{ticket.title}</Card.Header>
+                        </Card.Content>
+                        <Card.Content>
+                          <Feed>
+                            <Feed.Event>
+                              <Feed.Label image="https://react.semantic-ui.com/images/avatar/small/jenny.jpg" />
+                              <Feed.Content>
+                                <Card.Meta>
+                                  {
+                                    <Moment fromNow ago>
+                                      {ticket.time}
+                                    </Moment>
+                                  }
+                                  ago
+                                </Card.Meta>
+                                <Feed.Summary>{ticket.ticketText}</Feed.Summary>
+                                <Link
+                                  to={`/userInquiries/${ticket._id}`}
+                                  onClick={() => handleInquiries(ticket._id)}
+                                >
+                                  {this.renderReplies(
+                                    ticket.adminReplies.length,
+                                    ticket.userReplies.length
+                                  )}
+                                </Link>
+                              </Feed.Content>
+                            </Feed.Event>
+                          </Feed>
 
-                    <Card.Content extra>
-                      <div>
+                          <Card.Content extra>
+                            <div>
+                              <Link
+                                to={`/userInquiries/${ticket._id}`}
+                                onClick={() => handleInquiries(ticket._id)}
+                              >
+                                <Button basic color="green">
+                                  View
+                                </Button>
+                              </Link>
+                              {ticket.open && (
+                                <Link
+                                  onClick={() =>
+                                    this.ticketHandleclose(ticket._id)
+                                  }
+                                >
+                                  <Button basic color="red">
+                                    Close
+                                  </Button>
+                                </Link>
+                              )}
+                              {!ticket.open && (
+                                <Link onClick={this.ticketclosed}>
+                                  <Button basic color="red">
+                                    Closed
+                                  </Button>
+                                </Link>
+                              )}
+                            </div>
+                          </Card.Content>
+                        </Card.Content>
+                      </Card>
+                    ) : null;
+                  })}
+                </Grid.Column>
+                <Grid.Column width={8}>
+                  {tickets.map((ticket, index) => {
+                    return index % 2 === 1 ? (
+                      <Card fluid key={index}>
+                        <Card.Content>
+                          <Card.Header>{ticket.title}</Card.Header>
+                        </Card.Content>
+                        <Card.Content>
+                          <Feed>
+                            <Feed.Event>
+                              <Feed.Label image="https://react.semantic-ui.com/images/avatar/small/jenny.jpg" />
+                              <Feed.Content>
+                                <Card.Meta>
+                                  {
+                                    <Moment fromNow ago>
+                                      {ticket.time}
+                                    </Moment>
+                                  }
+                                  ago
+                                </Card.Meta>
+                                <Feed.Summary>{ticket.ticketText}</Feed.Summary>
+                                <Link
+                                  to={`/userInquiries/${ticket._id}`}
+                                  onClick={() => handleInquiries(ticket._id)}
+                                >
+                                  {this.renderReplies(
+                                    ticket.adminReplies.length,
+                                    ticket.userReplies.length
+                                  )}
+                                </Link>
+                              </Feed.Content>
+                            </Feed.Event>
+                          </Feed>
+
+                          <Card.Content extra>
+                            <div>
+                              <Link
+                                to={`/userInquiries/${ticket._id}`}
+                                onClick={() => handleInquiries(ticket._id)}
+                              >
+                                <Button basic color="green">
+                                  View
+                                </Button>
+                              </Link>
+                              {ticket.open && (
+                                <Link
+                                  onClick={() =>
+                                    this.ticketHandleclose(ticket._id)
+                                  }
+                                >
+                                  <Button basic color="red">
+                                    Close
+                                  </Button>
+                                </Link>
+                              )}
+                              {!ticket.open && (
+                                <Link onClick={this.ticketclosed}>
+                                  <Button basic color="red">
+                                    Closed
+                                  </Button>
+                                </Link>
+                              )}
+                            </div>
+                          </Card.Content>
+                        </Card.Content>
+                      </Card>
+                    ) : null;
+                  })}
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
+            {/* {tickets.map((ticket, index) => (
+              <Card fluid key={index}>
+                <Card.Content>
+                  <Card.Header>{ticket.title}</Card.Header>
+                </Card.Content>
+                <Card.Content>
+                  <Feed>
+                    <Feed.Event>
+                      <Feed.Label image="https://react.semantic-ui.com/images/avatar/small/jenny.jpg" />
+                      <Feed.Content>
+                        <Card.Meta>
+                          {
+                            <Moment fromNow ago>
+                              {ticket.time}
+                            </Moment>
+                          }
+                          ago
+                        </Card.Meta>
+                        <Feed.Summary>{ticket.ticketText}</Feed.Summary>
                         <Link
                           to={`/userInquiries/${ticket._id}`}
                           onClick={() => handleInquiries(ticket._id)}
                         >
-                          <Button basic color="green">
-                            View
+                          {this.renderReplies(
+                            ticket.adminReplies.length,
+                            ticket.userReplies.length
+                          )}
+                        </Link>
+                      </Feed.Content>
+                    </Feed.Event>
+                  </Feed>
+
+                  <Card.Content extra>
+                    <div>
+                      <Link
+                        to={`/userInquiries/${ticket._id}`}
+                        onClick={() => handleInquiries(ticket._id)}
+                      >
+                        <Button basic color="green">
+                          View
+                        </Button>
+                      </Link>
+                      {ticket.open && (
+                        <Link
+                          onClick={() => this.ticketHandleclose(ticket._id)}
+                        >
+                          <Button basic color="red">
+                            Close
                           </Button>
                         </Link>
-                        {ticket.open && (
-                          <Link
-                            onClick={() => this.ticketHandleclose(ticket._id)}
-                          >
-                            <Button basic color="red">
-                              Close
-                            </Button>
-                          </Link>
-                        )}
-                        {!ticket.open && (
-                          <Link onClick={this.ticketclosed}>
-                            <Button basic color="red">
-                              Closed
-                            </Button>
-                          </Link>
-                        )}
-                      </div>
-                    </Card.Content>
+                      )}
+                      {!ticket.open && (
+                        <Link onClick={this.ticketclosed}>
+                          <Button basic color="red">
+                            Closed
+                          </Button>
+                        </Link>
+                      )}
+                    </div>
                   </Card.Content>
-                </Card>
-              ))}
-            </Grid.Column>
-          </Grid>
-        </Grid.Column>
-      </div>
+                </Card.Content>
+              </Card>
+            ))} */}
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Column width={2} phone={2} tablet={2} computer={2}></Grid.Column>
+      </Grid>
     );
   }
 }

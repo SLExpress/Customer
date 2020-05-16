@@ -40,3 +40,9 @@ export const Status = () => {
 export const UnSuccessful = () => {
   return <Icon name="close" style={{ color: "#e60000" }} />;
 };
+
+export const TableIcon = ({ name, color, onSubmit }) => {
+  return (
+    <Icon onClick={onSubmit} circular inverted color={color} name={name} />
+  );
+};

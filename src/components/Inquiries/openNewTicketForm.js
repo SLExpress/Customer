@@ -1,7 +1,7 @@
 /*  N. R Yamasinghe  IT18233704 version - 01 */
 import React from "react";
-import Forms from "./../common/form";
-import { submitTicket } from "./../../services/inquiryService";
+import Forms from "../common/form";
+import { submitTicket } from "../../services/inquiryService";
 import { Form, Card, Grid } from "semantic-ui-react";
 import Joi from "joi-browser";
 import Swal from "sweetalert2";
