@@ -39,12 +39,21 @@ import DomainList from "../components/pages/domainList";
 import SiteSettingsCreate from "../components/pages/siteSettingsCreate";
 import AddDomain from "./../components/pages/addDomain";
 import SinglePaymentHistory from "./../components/pages/singlePaymentHistory";
-import UserInquiries from "../components/pages/userInquiries";
-import Tickets from "./../components/Inquiries/tickets";
+import UserInquiries from "../components/pages/customerInquiries";
+import Tickets from "./../components/inquiries/tickets";
 import AddPaymentDetails from "./../components/pages/addPaymentDetails";
 import TermsOfService from "./../components/pages/termsOfService";
 import openNewTicket from "./../components/pages/openNewTicket";
 import Expired from "../components/pages/expired";
+import SuggestBusinessQuestions from "../components/pages/suggestBusinessQuestions";
+import BusinessModel from "./../components/BusinessModel/businessModel";
+import QuestiionFormTwo from "./../components/BusinessModel/questionFormTwo";
+import QuestiionFormThree from "./../components/BusinessModel/questionFormThree";
+import QuestiionFormFour from "./../components/BusinessModel/questionFormFour";
+import QuestiionFormFive from "./../components/BusinessModel/questionFormFive";
+import QuestiionFormSix from "./../components/BusinessModel/questionFormSix";
+import QuestiionFormSeven from "./../components/BusinessModel/questionFormSeven";
+import BusinessModelTable from "./../components/BusinessModel/businessModelTable";
 
 export default class AppRouter extends Component {
   // To Get Current User Details
@@ -135,6 +144,28 @@ export default class AppRouter extends Component {
             component={SinglePaymentHistory}
           />
           <ProtectedRoute path="/openNewTicket" component={openNewTicket} />
+
+          <ProtectedRoute
+            path="/addQuestions"
+            component={SuggestBusinessQuestions}
+          />
+          <ProtectedRoute path="/businessModel" component={BusinessModel} />
+          <ProtectedRoute path="/questionTwo" component={QuestiionFormTwo} />
+          <ProtectedRoute
+            path="/questionThree"
+            component={QuestiionFormThree}
+          />
+          <ProtectedRoute path="/questionFour" component={QuestiionFormFour} />
+          <ProtectedRoute path="/questionFive" component={QuestiionFormFive} />
+          <ProtectedRoute path="/questionsix" component={QuestiionFormSix} />
+          <ProtectedRoute
+            path="/questionSeven"
+            component={QuestiionFormSeven}
+          />
+          <ProtectedRoute
+            path="/answersReview"
+            component={BusinessModelTable}
+          />
           <ProtectedRoute path="/themes/:id" component={Themes} />
           <ProtectedRoute path="/siteInfo/:id" component={SingleSiteInfo} />
           <ProtectedRoute exact path="/addDomain/:id" component={AddDomain} />

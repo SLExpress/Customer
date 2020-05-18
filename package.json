@@ -12,6 +12,7 @@
     "html2canvas": "^1.0.0-rc.5",
     "joi-browser": "^13.4.0",
     "jspdf": "^1.5.3",
+    "jspdf-autotable": "^3.5.3",
     "jwt-decode": "^2.2.0",
     "lodash": "^4.17.15",
     "mdbreact": "^4.23.1",

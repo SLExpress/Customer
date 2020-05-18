@@ -34,7 +34,7 @@ const Inputfield = styled(Input)`
 `;
 
 export const Status = () => {
-  return <Icon name="checkmark" style={{ color: "#21ba45" }} />;
+  return <Icon name="checkmark" circular inverted color="green" />;
 };
 
 export const UnSuccessful = () => {

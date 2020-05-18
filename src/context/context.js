@@ -12,7 +12,11 @@ import {
   addCustomDomain,
   updateCustomDomain,
 } from "./../services/siteCategoryService";
-import { getTickets, viewInquiries } from "./../services/inquiryService";
+import {
+  getTickets,
+  viewInquiries,
+  replyTickets,
+} from "./../services/inquiryService";
 import auth from "./../services/authService";
 import _ from "lodash";
 import Swal from "sweetalert2";
@@ -48,9 +52,11 @@ class ProductProvider extends Component {
     open: false,
     size: "",
     singleSiteDeveloper: {},
+    singleSiteCategories: [],
     siteCreatedTime: "",
     serverTime: "",
     singleMySiteSettingsScript: {},
+    singleMySiteSettingsUrl: {},
     cusMsg: [],
     tickets: [],
     openTicket: "",
@@ -235,7 +241,9 @@ class ProductProvider extends Component {
         singleSite: this.getStorageSite(),
         filteredSites: this.getStorageFilteredSites(),
         singleMySiteSettingsScript: this.getsingleMySiteSettingsScript(),
+        singleMySiteSettingsUrl: this.getsingleMySiteSettingsUrl(),
         singleSiteDeveloper: this.getStorageSiteDeveloper(),
+        singleSiteCategories: this.getStorageSiteCategories(),
         singleMySiteSettings: this.getsingleMySiteSettings(),
         singleMySiteSettingsCreate: this.getsingleMySiteSettingsCreate(),
         loading: false,
@@ -256,6 +264,11 @@ class ProductProvider extends Component {
       : {};
   };
 
+  getsingleMySiteSettingsUrl = () => {
+    return localStorage.getItem("singleMySiteSettingsUrl")
+      ? JSON.parse(localStorage.getItem("singleMySiteSettingsUrl"))
+      : {};
+  };
   getsingleMySiteSettingsCreate = () => {
     return localStorage.getItem("singleMySiteSettingsCreate")
       ? JSON.parse(localStorage.getItem("singleMySiteSettingsCreate"))
@@ -270,6 +283,12 @@ class ProductProvider extends Component {
   getStorageSiteDeveloper = () => {
     return localStorage.getItem("singleSiteDeveloper")
       ? JSON.parse(localStorage.getItem("singleSiteDeveloper"))
+      : {};
+  };
+
+  getStorageSiteCategories = () => {
+    return localStorage.getItem("singleSiteCategories")
+      ? JSON.parse(localStorage.getItem("singleSiteCategories"))
       : {};
   };
   getStorageFilteredSites = () => {
@@ -309,25 +328,17 @@ class ProductProvider extends Component {
     const { siteData } = this.state;
     let site = siteData.find((item) => item._id === id);
     localStorage.setItem("singleSite", JSON.stringify(site));
-
-    const developer = {
-      username: "Anonymous",
-      firstName: "Anonymous",
-    };
-    if (!site.developer === null) {
-      localStorage.setItem(
-        "singleSiteDeveloper",
-        JSON.stringify(site.developer)
-      );
-    } else {
-      localStorage.setItem("singleSiteDeveloper", JSON.stringify(developer));
-    }
+    localStorage.setItem("singleSiteDeveloper", JSON.stringify(site.developer));
+    localStorage.setItem(
+      "singleSiteCategories",
+      JSON.stringify(site.categories)
+    );
 
     this.setState(
       {
         singleSite: { ...site },
-        // singleSiteDeveloper: site.developer,
-        singleSiteDeveloper: localStorage.getItem("singleSiteDeveloper"),
+        singleSiteDeveloper: site.developer,
+        singleSiteCategories: site.categories,
       },
       () => console.log(this.state.singleSite)
     );
@@ -343,10 +354,12 @@ class ProductProvider extends Component {
       JSON.stringify(site.script)
     );
 
+    localStorage.setItem("singleMySiteSettingsUrl", JSON.stringify(site.url));
     this.setState(
       {
         singleMySiteSettings: { ...site },
         singleMySiteSettingsScript: site.script,
+        singleMySiteSettingsUrl: site.url,
       },
       () => console.log(this.state.singleMySiteSettings)
     );
@@ -712,6 +725,14 @@ class ProductProvider extends Component {
     } catch (ex) {}
   };
 
+  handleReply = async (msg, id) => {
+    try {
+      const res = await replyTickets(msg, id);
+      if (res.status === 200) {
+        await this.handleInquiries(id);
+      }
+    } catch (ex) {}
+  };
   render() {
     return (
       <ProductContext.Provider
@@ -736,6 +757,7 @@ class ProductProvider extends Component {
           handleDelete: this.handleDelete,
           handleAdd: this.handleAdd,
           handleUpdate: this.handleUpdate,
+          handleReply: this.handleReply,
         }}
       >
         {this.props.children}

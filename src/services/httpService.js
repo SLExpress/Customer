@@ -31,7 +31,7 @@ axios.interceptors.response.use(null, (error) => {
       icon: "error",
       title: "404 Not Found",
     });
-  } else if (error.response.status === 501) {
+  } else if (error.response.status === 500) {
     auth.logout();
     // localStorage.removeItem("token");
     window.location = "/expired";
@@ -45,16 +45,3 @@ export default {
   patch: axios.patch,
   setJwt,
 };
-// axios.interceptors.response.use(null, error => {
-//   const expectedError =
-//     error.response &&
-//     error.response.status >= 400 &&
-//     error.response.status < 500;
-
-//   if (!expectedError) {
-//     logger.log(error);
-//     toast.error("An unexpected error occurrred.");
-//   }
-
-//   return Promise.reject(error);
-// });

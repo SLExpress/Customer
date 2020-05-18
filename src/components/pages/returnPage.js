@@ -1,6 +1,6 @@
 /*  N. R Yamasinghe  IT18233704 version - 01 */
 import React, { Component } from "react";
-import PaymentReturn from "../paymentReturnScreen/paymentReturn";
+import PaymentReturn from "../paymentReturnScreen/paymentReturnReport";
 import { getPaymentStatus } from "../../services/paymentService";
 import { getCustomer } from "../../services/userService";
 import queryString from "query-string";

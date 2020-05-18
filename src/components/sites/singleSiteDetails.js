@@ -9,8 +9,9 @@ const singleSiteDetails = () => {
   return (
     <ProductConsumer>
       {(value) => {
-        const { singleSite } = value;
+        const { singleSite, singleSiteDeveloper, singleSiteCategories } = value;
         const { name, image, price, description, demoUrl } = singleSite;
+        const { username, firstName, lastName } = singleSiteDeveloper;
 
         const url = apiUrl;
         return (
@@ -28,13 +29,20 @@ const singleSiteDetails = () => {
                   <div className="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto ">
                     <Title title={name} />
                   </div>
+                  {singleSiteCategories.map((item) => {
+                    return (
+                      <p className="text-main text-capitalize  mb-4">
+                        Category : {item.name}
+                      </p>
+                    );
+                  })}
 
-                  <p className="text-main text-capitalize  mb-4">
-                    Category : Fashion Store
-                  </p>
-                  <p className=" text-muted mb-4">Developer Username: Srimal</p>
                   <p className=" text-muted mb-4">
-                    Developer Name: Yohan Srimal
+                    Developer Username: {username}
+                  </p>
+                  <p className=" text-muted mb-4">
+                    Developer Name: {firstName}
+                    {lastName}
                   </p>
                   <p className="text-color-ash mb-4">Price : Rs{price}</p>
                   <p className="text-muted mt-3">Info:</p>

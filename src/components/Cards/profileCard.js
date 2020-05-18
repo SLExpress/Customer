@@ -4,6 +4,7 @@ import { Buttons } from "../table/buttons";
 import { Link } from "react-router-dom";
 
 const profileCard = ({ title, buttonName, customer }) => {
+  localStorage.setItem("email", customer.email);
   return (
     <div className="card">
       <div className="card-header textBold">{title}</div>

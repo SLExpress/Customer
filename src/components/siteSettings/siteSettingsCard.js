@@ -3,17 +3,20 @@ import React from "react";
 import CountDown from "../common/countDown";
 import Title from "./../common/title";
 import { Status } from "../table/icon";
-import { Buttons } from "./../table/buttons";
 import { ProductConsumer } from "../../context";
-import { Link } from "react-router-dom";
 import moment from "moment";
 
 const siteSettingsCard = ({ deadline }) => {
   return (
     <ProductConsumer>
       {(value) => {
-        const { singleMySiteSettings, singleMySiteSettingsScript } = value;
-        const { url, createdDate, paid, price } = singleMySiteSettings;
+        const {
+          singleMySiteSettings,
+          singleMySiteSettingsScript,
+          singleMySiteSettingsUrl,
+        } = value;
+        const { createdDate, paid, price } = singleMySiteSettings;
+        const { defaultUrl, customUrl } = singleMySiteSettingsUrl;
         const { image, name } = singleMySiteSettingsScript;
         const time = new Date(createdDate);
         const correctTime = moment(time).add(7, "days").toDate();
@@ -35,9 +38,9 @@ const siteSettingsCard = ({ deadline }) => {
                     <a
                       target="_blank"
                       rel="noopener noreferrer"
-                      href={`http://${url}/`}
+                      href={`http://${defaultUrl}/`}
                     >
-                      <p className="text-color-ash">{url}</p>
+                      <p className="text-color-ash">{defaultUrl}</p>
                     </a>
                   </p>
                   <p className="text-color-ash">Created date:{dateString}</p>
@@ -54,14 +57,14 @@ const siteSettingsCard = ({ deadline }) => {
                       Payment unsuccessful <p></p>
                     </p>
                   )}
-                  {!paid && (
-                    <Link to="/cartCheckOut">
-                      {" "}
-                      <p className="text-color-ash">
-                        <Buttons name="Pay Now" color="#40a3dc" />
-                      </p>
-                    </Link>
-                  )}
+
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href={`http://${customUrl}/`}
+                  >
+                    <p className="text-color-ash"> Custom Domain:{customUrl}</p>
+                  </a>
                 </div>
                 <div className="col-10 mx-auto col-md-6 my-3 p-3">
                   <img

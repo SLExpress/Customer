@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 import Loader from "./../common/loader";
 import MenuBar from "./../common/menuBar";
-import { Grid, Card, Feed, Button } from "semantic-ui-react";
+import { Grid, Card, Feed, Button, Segment } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import { closeTicket } from "./../../services/inquiryService";
 import { ProductContext } from "./../../context";
@@ -82,14 +82,36 @@ class tickets extends Component {
           </Grid.Column>
 
           <Grid.Column width={11} phone={11} tablet={11} computer={11}>
-            <Link to="/openNewTicket">
-              <Button
-                content="Open new ticket"
-                labelPosition="left"
-                icon="plus square"
-                primary
-              />
-            </Link>
+            {tickets.length !== 0 && (
+              <Link to="/openNewTicket">
+                <Button
+                  content="Open new ticket"
+                  labelPosition="left"
+                  icon="plus square"
+                  primary
+                />
+              </Link>
+            )}
+
+            {tickets.length === 0 && (
+              <Segment
+                placeholder
+                style={{
+                  height: "550px",
+                }}
+              >
+                <Link to="/openNewTicket">
+                  <Button
+                    content="Open new ticket"
+                    labelPosition="left"
+                    icon="plus square"
+                    primary
+                  />
+                </Link>
+                <br />
+                <center></center>
+              </Segment>
+            )}
             <br />
             <br />
             <Grid>

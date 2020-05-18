@@ -11,7 +11,6 @@ import { Grid } from "semantic-ui-react";
 import Swal from "sweetalert2";
 
 export default class myAccount extends Component {
-  // static contextType = ProductContext;
   state = {
     customer: {},
     isDeleted: false,

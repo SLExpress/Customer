@@ -62,12 +62,12 @@ const cartItem = ({ cartItem, removeItem }) => {
       <div className="col-10 mx-auto col-lg-2 ">
         <a
           style={{ textDecoration: "none" }}
-          href={`http://${url}/`}
+          href={`http://${url.defaultUrl}/`}
           target="_blank"
           rel="noopener noreferrer"
         >
           <p className="text-color-ash">
-            <span className="d-lg-none">url :</span> {url}
+            <span className="d-lg-none">url :</span> {url.defaultUrl}
           </p>
         </a>
       </div>

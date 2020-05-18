@@ -17,12 +17,8 @@ export function viewInquiries(ticketid) {
   return http.post(apiEndpoint2, id);
 }
 
-export function replyTickets(r) {
-  console.log("ticketid", r.message, r._id);
-  const data = {
-    reply: r.message,
-    ticketId: r._id,
-  };
+export function replyTickets(msg, id) {
+  const data = { reply: msg, ticketId: id };
   return http.put(apiEndpoint3, data);
 }
 

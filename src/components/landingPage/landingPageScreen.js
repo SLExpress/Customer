@@ -22,7 +22,7 @@ const landingPageScreen = () => {
           <FaArrowAltCircleRight size={30} className="icon" />
         </div>
         <div className="col-md-auto">
-          <Link to="/categories" style={{ textDecoration: "none" }}>
+          <Link to="/businessModel" style={{ textDecoration: "none" }}>
             <button type="button"> Create Business Plan </button>
           </Link>
         </div>

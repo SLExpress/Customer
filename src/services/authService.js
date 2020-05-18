@@ -97,12 +97,16 @@ export function logout() {
   localStorage.removeItem("username");
   localStorage.removeItem("firstname");
   localStorage.removeItem("lastname");
+  localStorage.removeItem("email");
+  localStorage.removeItem("deadline");
   localStorage.removeItem("userid");
   localStorage.removeItem("filteredSites");
   localStorage.removeItem("singleSite");
-  localStorage.removeItem("singleMySiteSettingsScript");
   localStorage.removeItem("singleSiteDeveloper");
+  localStorage.removeItem("singleSiteCategories");
+  localStorage.removeItem("singleMySiteSettingsScript");
   localStorage.removeItem("singleMySiteSettings");
+  localStorage.removeItem("singleMySiteSettingsUrl");
   localStorage.removeItem("orderId");
   localStorage.removeItem("developerId");
   localStorage.removeItem("cart");
@@ -113,6 +117,40 @@ export function logout() {
   localStorage.removeItem("payment");
   localStorage.removeItem("paymentWebsite");
   localStorage.removeItem("paymentWebsiteUrl");
+  localStorage.removeItem("question1");
+  localStorage.removeItem("question1Answer");
+  localStorage.removeItem("question2");
+  localStorage.removeItem("question2Answer");
+  localStorage.removeItem("question3");
+  localStorage.removeItem("question3Answer");
+  localStorage.removeItem("question4");
+  localStorage.removeItem("question4Answer");
+  localStorage.removeItem("question5");
+  localStorage.removeItem("question5Answer");
+  localStorage.removeItem("question6");
+  localStorage.removeItem("question6Answer");
+  localStorage.removeItem("question7");
+  localStorage.removeItem("question7Answer");
+  localStorage.removeItem("question8");
+  localStorage.removeItem("question8Answer");
+  localStorage.removeItem("question9");
+  localStorage.removeItem("question9Answer");
+  localStorage.removeItem("question10");
+  localStorage.removeItem("question10Answer");
+  localStorage.removeItem("title1");
+  localStorage.removeItem("answer1");
+  localStorage.removeItem("title2");
+  localStorage.removeItem("answer2");
+  localStorage.removeItem("title3");
+  localStorage.removeItem("answer3");
+  localStorage.removeItem("title4");
+  localStorage.removeItem("answer4");
+  localStorage.removeItem("title5");
+  localStorage.removeItem("answer5");
+  localStorage.removeItem("title6");
+  localStorage.removeItem("answer6");
+  localStorage.removeItem("title7");
+  localStorage.removeItem("answer7");
 }
 
 export default {

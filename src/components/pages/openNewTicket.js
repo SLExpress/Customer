@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 import { Card, Grid } from "semantic-ui-react";
 import MenuBar from "./../common/menuBar";
-import OpenNewTicketForm from "./../Inquiries/openNewTicketForm";
+import OpenNewTicketForm from "./../inquiries/openNewTicketForm";
 
 class openNewTicket extends Component {
   render() {

@@ -41,20 +41,22 @@ export const menuData = [
     list: [
       { name: "Categories", link: "/categories" },
       { name: "All Categories", link: "/allThemes" },
+      { name: "Cart Checkout", link: "/cartCheckOut" },
     ],
   },
 
-  {
-    header: "Cart",
-    list: [{ name: "Cart Checkout", link: "/cartCheckOut" }],
-  },
   {
     header: "Inquiries",
     list: [
       { name: "Inquiries", link: "/inquiries" },
       { name: "Open Ticket", link: "/openNewTicket" },
-      { name: "Terms of Service", link: "/termsOfService" },
-      { name: "About", link: "/aboutus" },
+    ],
+  },
+  {
+    header: "Business Model",
+    list: [
+      { name: "Suggest Questions", link: "/addQuestions" },
+      { name: "Business Model", link: "/businessModel" },
     ],
   },
 ];
