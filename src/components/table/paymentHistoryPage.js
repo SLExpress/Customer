@@ -137,7 +137,12 @@ class paymentHistoryPage extends Component {
           <p>Showing {totalCount} successful transactions with slexpress.</p>
         )}
         <MDBAnimation type="fadeIn">
-          <Button animated onClick={this.generatePdf} color="green">
+          <Button
+            animated
+            onClick={this.generatePdf}
+            color="green"
+            floated="right"
+          >
             <Button.Content visible>Generate</Button.Content>
             <Button.Content hidden>
               <Icon inverted color="" name="file pdf" />

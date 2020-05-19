@@ -95,13 +95,25 @@ const singleMySiteNew = ({ site }) => {
                   </p>
 
                   <div className="ui three buttons">
-                    <Button basic color="green" onClick={handleAdd}>
+                    <Button
+                      basic
+                      color="green"
+                      onClick={() => handleAdd(site._id)}
+                    >
                       Add
                     </Button>
-                    <Button basic color="black" onClick={handleUpdate}>
+                    <Button
+                      basic
+                      color="black"
+                      onClick={() => handleUpdate(site._id)}
+                    >
                       Update
                     </Button>
-                    <Button basic color="red" onClick={handleDelete}>
+                    <Button
+                      basic
+                      color="red"
+                      onClick={() => handleDelete(site._id)}
+                    >
                       Delete
                     </Button>
                   </div>

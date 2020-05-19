@@ -103,7 +103,13 @@ class paymentReturnReport extends Component {
                 </Header.Content>
               </Header>
               <MDBAnimation type="fadeIn">
-                <Button animated onClick={this.generatePdf} color="green">
+                <Button
+                  animated
+                  onClick={this.generatePdf}
+                  color="green"
+                  floated="right"
+                  style={{ marginBottom: "10px" }}
+                >
                   <Button.Content visible>Generate</Button.Content>
                   <Button.Content hidden>
                     <Icon inverted color="" name="file pdf" />
@@ -127,25 +133,12 @@ class paymentReturnReport extends Component {
                 </Table>
                 <Feed>
                   <Feed.Event
-                    icon="pencil"
                     date="Payhere ID"
                     summary={this.props.payherePaymentId}
                   />
-                  <Feed.Event
-                    icon="pencil"
-                    date="Order ID"
-                    summary={this.props.orderId}
-                  />
-                  <Feed.Event
-                    icon="pencil"
-                    date="Email"
-                    summary={this.props.email}
-                  />
-                  <Feed.Event
-                    icon="pencil"
-                    date="Date"
-                    summary={this.props.day}
-                  />
+                  <Feed.Event date="Order ID" summary={this.props.orderId} />
+                  <Feed.Event date="Email" summary={this.props.email} />
+                  <Feed.Event date="Date" summary={this.props.day} />
                 </Feed>
               </MDBAnimation>
             </Grid.Column>

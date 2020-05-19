@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { Grid, Table, Button, Icon } from "semantic-ui-react";
 import MenuBar from "./../common/menuBar";
 import { submitBusinessModel } from "./../../services/businessService";
+import { Grid, Table, Button, Icon } from "semantic-ui-react";
+import Swal from "sweetalert2";
 
 class businessModelTable extends Component {
   state = {
@@ -99,7 +100,12 @@ class businessModelTable extends Component {
     };
 
     await submitBusinessModel(arr);
-    console.log("submittted");
+    Swal.fire({
+      icon: "success",
+      title: "Answers submitted successfully",
+      showConfirmButton: false,
+      timer: 1500,
+    }).then(function () {});
   };
 
   render() {
