@@ -43,7 +43,7 @@ import UserInquiries from "../components/pages/customerInquiries";
 import Tickets from "./../components/inquiries/tickets";
 import AddPaymentDetails from "./../components/pages/addPaymentDetails";
 import TermsOfService from "./../components/pages/termsOfService";
-import openNewTicket from "./../components/pages/openNewTicket";
+import OpenNewTicket from "./../components/pages/openNewTicket";
 import Expired from "../components/pages/expired";
 import SuggestBusinessQuestions from "../components/pages/suggestBusinessQuestions";
 import BusinessModel from "./../components/BusinessModel/businessModel";
@@ -143,7 +143,7 @@ export default class AppRouter extends Component {
             path="/singlePaymentHistory/:id"
             component={SinglePaymentHistory}
           />
-          <ProtectedRoute path="/openNewTicket" component={openNewTicket} />
+          <ProtectedRoute path="/openNewTicket" component={OpenNewTicket} />
 
           <ProtectedRoute
             path="/addQuestions"
