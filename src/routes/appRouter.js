@@ -3,9 +3,8 @@ import React, { Component } from "react";
 import { Switch, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import auth from "../services/authService";
-import ProtectedRoute from "./../components/common/protectedRoute";
-// React Toastify CSS
 import "react-toastify/dist/ReactToastify.css";
+import ProtectedRoute from "./../components/common/protectedRoute";
 import AboutUs from "../components/pages/aboutus";
 import AccountSettings from "../components/pages/accountSettings";
 import CartCheckOut from "../components/pages/cartCheckOut";
@@ -46,14 +45,17 @@ import TermsOfService from "./../components/pages/termsOfService";
 import OpenNewTicket from "./../components/pages/openNewTicket";
 import Expired from "../components/pages/expired";
 import SuggestBusinessQuestions from "../components/pages/suggestBusinessQuestions";
-import BusinessModel from "./../components/BusinessModel/businessModel";
-import QuestiionFormTwo from "./../components/BusinessModel/questionFormTwo";
-import QuestiionFormThree from "./../components/BusinessModel/questionFormThree";
-import QuestiionFormFour from "./../components/BusinessModel/questionFormFour";
-import QuestiionFormFive from "./../components/BusinessModel/questionFormFive";
-import QuestiionFormSix from "./../components/BusinessModel/questionFormSix";
-import QuestiionFormSeven from "./../components/BusinessModel/questionFormSeven";
-import BusinessModelTable from "./../components/BusinessModel/businessModelTable";
+import BusinessModel from "./../components/businessModel/businessModel";
+import QuestiionFormTwo from "./../components/businessModel/questionFormTwo";
+import QuestiionFormThree from "./../components/businessModel/questionFormThree";
+import QuestiionFormFour from "./../components/businessModel/questionFormFour";
+import QuestiionFormFive from "./../components/businessModel/questionFormFive";
+import QuestiionFormSix from "./../components/businessModel/questionFormSix";
+import QuestiionFormSeven from "./../components/businessModel/questionFormSeven";
+import QuestiionFormEight from "./../components/businessModel/questionFormEight";
+import QuestiionFormNine from "./../components/businessModel/questionFormNine";
+import QuestiionFormTen from "./../components/businessModel/questionFormTen";
+import BusinessModelTable from "./../components/businessModel/businessModelTable";
 
 export default class AppRouter extends Component {
   // To Get Current User Details
@@ -157,7 +159,13 @@ export default class AppRouter extends Component {
           />
           <ProtectedRoute path="/questionFour" component={QuestiionFormFour} />
           <ProtectedRoute path="/questionFive" component={QuestiionFormFive} />
-          <ProtectedRoute path="/questionsix" component={QuestiionFormSix} />
+          <ProtectedRoute path="/questionSix" component={QuestiionFormSix} />
+          <ProtectedRoute
+            path="/questionEight"
+            component={QuestiionFormEight}
+          />
+          <ProtectedRoute path="/questionNine" component={QuestiionFormNine} />
+          <ProtectedRoute path="/questionTen" component={QuestiionFormTen} />
           <ProtectedRoute
             path="/questionSeven"
             component={QuestiionFormSeven}

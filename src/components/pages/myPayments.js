@@ -1,7 +1,7 @@
 /*  N. R Yamasinghe  IT18233704 version - 01 */
 import React, { Component } from "react";
-import PaymentCard from "../Cards/paymentCard";
-import PaymentDeleteCard from "../Cards/paymentDeleteCard";
+import PaymentCard from "../cards/paymentCard";
+import PaymentDeleteCard from "../cards/paymentDeleteCard";
 import MenuBar from "./../common/menuBar";
 import Loader from "./../common/loader";
 import {

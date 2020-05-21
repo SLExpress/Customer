@@ -21,6 +21,7 @@ class questiionFormOne extends Component {
 
   componentDidMount = async () => {
     const { data } = await getBusinessQuestions();
+    console.log(data);
     this.setState({
       title: data[0].title,
       question: data[0]._id,

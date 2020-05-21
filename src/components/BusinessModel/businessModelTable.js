@@ -34,6 +34,18 @@ class businessModelTable extends Component {
     question7Answer: "",
     question7ID: "",
     question7AnswerID: "",
+    question8: "",
+    question8Answer: "",
+    question8ID: "",
+    question8AnswerID: "",
+    question9: "",
+    question9Answer: "",
+    question9ID: "",
+    question9AnswerID: "",
+    question10: "",
+    question10Answer: "",
+    question10ID: "",
+    question10AnswerID: "",
   };
 
   componentDidMount = () => {
@@ -53,7 +65,7 @@ class businessModelTable extends Component {
       question4: localStorage.getItem("title4"),
       question4Answer: localStorage.getItem("answer4"),
       question4ID: localStorage.getItem("question4"),
-      question4AnswerID: localStorage.getItem(" question4Answer"),
+      question4AnswerID: localStorage.getItem("question4Answer"),
       question5: localStorage.getItem("title5"),
       question5Answer: localStorage.getItem("answer5"),
       question5ID: localStorage.getItem("question5"),
@@ -66,6 +78,18 @@ class businessModelTable extends Component {
       question7Answer: localStorage.getItem("answer7"),
       question7ID: localStorage.getItem("question7"),
       question7AnswerID: localStorage.getItem("question7Answer"),
+      question8: localStorage.getItem("title8"),
+      question8Answer: localStorage.getItem("answer8"),
+      question8ID: localStorage.getItem("question8"),
+      question8AnswerID: localStorage.getItem("question8Answer"),
+      question9: localStorage.getItem("title9"),
+      question9Answer: localStorage.getItem("answer9"),
+      question9ID: localStorage.getItem("question9"),
+      question9AnswerID: localStorage.getItem("question9Answer"),
+      question10: localStorage.getItem("title10"),
+      question10Answer: localStorage.getItem("answer10"),
+      question10ID: localStorage.getItem("question10"),
+      question10AnswerID: localStorage.getItem("question10Answer"),
     });
   };
 
@@ -85,6 +109,12 @@ class businessModelTable extends Component {
       question6AnswerID,
       question7ID,
       question7AnswerID,
+      question8ID,
+      question8AnswerID,
+      question9ID,
+      question9AnswerID,
+      question10ID,
+      question10AnswerID,
     } = this.state;
 
     const arr = {
@@ -96,9 +126,12 @@ class businessModelTable extends Component {
         { question: question5ID, answer: question5AnswerID },
         { question: question6ID, answer: question6AnswerID },
         { question: question7ID, answer: question7AnswerID },
+        { question: question8ID, answer: question8AnswerID },
+        { question: question9ID, answer: question9AnswerID },
+        { question: question10ID, answer: question10AnswerID },
       ],
     };
-
+    console.log("array", arr);
     await submitBusinessModel(arr);
     Swal.fire({
       icon: "success",
@@ -124,6 +157,12 @@ class businessModelTable extends Component {
       question6Answer,
       question7,
       question7Answer,
+      question8,
+      question8Answer,
+      question9,
+      question9Answer,
+      question10,
+      question10Answer,
     } = this.state;
     const array = [
       { id: 1, a: question1, b: question1Answer },
@@ -133,6 +172,9 @@ class businessModelTable extends Component {
       { id: 5, a: question5, b: question5Answer },
       { id: 6, a: question6, b: question6Answer },
       { id: 7, a: question7, b: question7Answer },
+      { id: 8, a: question8, b: question8Answer },
+      { id: 9, a: question9, b: question9Answer },
+      { id: 10, a: question10, b: question10Answer },
     ];
     return (
       <Grid>

@@ -12,7 +12,6 @@ export async function login(email, password, type) {
     password,
     type,
   });
-
   localStorage.setItem("token", data.token);
   localStorage.setItem("username", data.username);
   localStorage.setItem("firstname", data.firstName);
@@ -151,6 +150,12 @@ export function logout() {
   localStorage.removeItem("answer6");
   localStorage.removeItem("title7");
   localStorage.removeItem("answer7");
+  localStorage.removeItem("title8");
+  localStorage.removeItem("answer8");
+  localStorage.removeItem("title9");
+  localStorage.removeItem("answer9");
+  localStorage.removeItem("title10");
+  localStorage.removeItem("answer10");
 }
 
 export default {

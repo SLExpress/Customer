@@ -40,6 +40,7 @@ const singleSiteDetails = () => {
                   <p className=" text-muted mb-4">
                     Developer Username: {username}
                   </p>
+
                   <p className=" text-muted mb-4">
                     Developer Name: {firstName}
                     {lastName}
@@ -47,7 +48,6 @@ const singleSiteDetails = () => {
                   <p className="text-color-ash mb-4">Price : Rs{price}</p>
                   <p className="text-muted mt-3">Info:</p>
                   <p>{description}</p>
-
                   <div className="row">
                     <div className="col-4">
                       <a

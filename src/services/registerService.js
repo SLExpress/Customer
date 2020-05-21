@@ -2,12 +2,12 @@
 import http from "./httpService";
 import { apiUrl } from "../config/config.json";
 
-const apiEndpoint = apiUrl + "/user/sign-up";
+const apiEndpoint1 = apiUrl + "/user/sign-up";
 const apiEndpoint2 = apiUrl + "/account/resendConfirmationEmail";
 
 // Registering new user
 export function register(user) {
-  return http.put(apiEndpoint, {
+  return http.put(apiEndpoint1, {
     firstname: user.firstname,
     lastname: user.lastname,
     username: user.username,

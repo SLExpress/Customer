@@ -34,5 +34,4 @@ const Inputfield = styled(Input)`
   &&.ui.input > input {
     border-radius: 500rem !important;
   }import addDomain from './../pages/addDomain';
-
 `;

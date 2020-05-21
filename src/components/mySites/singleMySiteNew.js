@@ -29,7 +29,7 @@ const singleMySiteNew = ({ site }) => {
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!",
+        confirmButtonText: "Delete",
       }).then((result) => {
         if (result.value) {
           handleDeleteWebsite(websiteId);
@@ -91,7 +91,8 @@ const singleMySiteNew = ({ site }) => {
                   <p className="mysite-info">
                     <MdUpdate />
                     {dateString}
-                    {site.paid && <Status name="Details" color="#40a3dc" />}
+
+                    {site.paid && <Status />}
                   </p>
 
                   <div className="ui three buttons">

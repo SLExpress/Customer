@@ -33,7 +33,6 @@ axios.interceptors.response.use(null, (error) => {
     });
   } else if (error.response.status === 501) {
     auth.logout();
-    // localStorage.removeItem("token");
     window.location = "/expired";
   } else return Promise.reject(error);
 });

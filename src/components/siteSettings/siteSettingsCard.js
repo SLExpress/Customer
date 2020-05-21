@@ -58,13 +58,18 @@ const siteSettingsCard = ({ deadline }) => {
                     </p>
                   )}
 
-                  <a
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    href={`http://${customUrl}/`}
-                  >
-                    <p className="text-color-ash"> Custom Domain:{customUrl}</p>
-                  </a>
+                  {customUrl && (
+                    <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      href={`http://${customUrl}/`}
+                    >
+                      <p className="text-color-ash">
+                        {" "}
+                        Custom Domain:{customUrl}
+                      </p>
+                    </a>
+                  )}
                 </div>
                 <div className="col-10 mx-auto col-md-6 my-3 p-3">
                   <img

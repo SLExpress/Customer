@@ -55,7 +55,7 @@ class questiionFormSeven extends Component {
 
     localStorage.setItem("question7", question);
     localStorage.setItem("question7Answer", selectedOption);
-    window.location = "/answersReview";
+    window.location = "/questionEight";
   };
 
   render() {

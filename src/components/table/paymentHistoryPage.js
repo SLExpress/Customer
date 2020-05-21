@@ -61,9 +61,10 @@ class paymentHistoryPage extends Component {
     doc.text(40, 235, "Time: " + time);
 
     doc.setFontSize(15);
-    const headers = [["WEBSITE NAME", "PAYMENT", "DATE"]];
+    const headers = [["NO", "WEBSITE NAME", "PAYMENT", "DATE"]];
 
-    const data = this.context.paymentHistory.map((site) => [
+    const data = this.context.paymentHistory.map((site, index) => [
+      index + 1,
       site.website.url.defaultUrl,
       site.payment,
       new Date(site.datePurchased),

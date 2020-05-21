@@ -301,7 +301,7 @@ class ProductProvider extends Component {
     let tempSites = [...siteData];
 
     const sites = tempSites.filter((item) =>
-      item.categories.some((c) => c === category)
+      item.categories.some((c) => c._id === category)
     );
 
     localStorage.setItem("filteredSites", JSON.stringify(sites));
@@ -583,7 +583,9 @@ class ProductProvider extends Component {
     if (search.length > 0) {
       tempMySites = tempMySites.filter((item) => {
         let tempSearch = search.toLowerCase();
-        let tempTitle = item.url.toLowerCase().slice(0, search.length);
+        let tempTitle = item.url.defaultUrl
+          .toLowerCase()
+          .slice(0, search.length);
         if (tempSearch === tempTitle) {
           return item;
         }
@@ -618,7 +620,9 @@ class ProductProvider extends Component {
     if (search.length > 0) {
       tempMySites = tempMySites.filter((item) => {
         let tempSearch = search.toLowerCase();
-        let tempTitle = item.url.toLowerCase().slice(0, search.length);
+        let tempTitle = item.url.defaultUrl
+          .toLowerCase()
+          .slice(0, search.length);
         if (tempSearch === tempTitle) {
           return item;
         }
@@ -653,7 +657,9 @@ class ProductProvider extends Component {
     if (search.length > 0) {
       tempMySites = tempMySites.filter((item) => {
         let tempSearch = search.toLowerCase();
-        let tempTitle = item.url.toLowerCase().slice(0, search.length);
+        let tempTitle = item.url.defaultUrl
+          .toLowerCase()
+          .slice(0, search.length);
         if (tempSearch === tempTitle) {
           return item;
         }
@@ -703,25 +709,6 @@ class ProductProvider extends Component {
       var sortaMsg = _.orderBy(concatArr, ["replyId.time", "time"], ["asc"]);
       this.setState({ sortAllMsg: sortaMsg });
       this.setOpen(this.state.openTicket);
-      // var UserMsg = _.orderBy(
-      //   this.state.inquiry.userReplies,
-      //   ["time"],
-      //   ["asc"]
-      // );
-      // var AdminMsg = _.orderBy(
-      //   this.state.inquiry.adminReplies,
-      //   ["time"],
-      //   ["asc"]
-      // );
-      // this.setState({ sortUserMsg: UserMsg });
-      // this.setState({ sortAdminMsg: AdminMsg });
-      // const user = this.state.sortUserMsg;
-      // const admin = this.state.sortAdminMsg;
-
-      // const concatArr = [...user, ...admin];
-      // console.log("concatArr", concatArr);
-      // var sortaMsg = _.orderBy(concatArr, ["replyId.time", "time"], ["asc"]);
-      // this.setState({ sortAllMsg: sortaMsg });
     } catch (ex) {}
   };
 

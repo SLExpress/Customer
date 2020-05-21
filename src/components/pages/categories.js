@@ -4,6 +4,7 @@ import CategoryScreen from "./../categoryScreen/categoryScreen";
 import CategoryMenu from "../common/categoryMenu";
 import { ProductContext } from "../../context";
 import Loader from "./../common/loader";
+import { Grid } from "semantic-ui-react";
 
 export default class categories extends Component {
   static contextType = ProductContext;
@@ -13,19 +14,24 @@ export default class categories extends Component {
       return <Loader />;
     }
     return (
-      <div className="container">
-        <div className="row">
-          <div className="col-sm-4 mt-4">
-            <CategoryMenu />
-          </div>
-          <div
-            className="col-sm-8"
-            style={{ marginLeft: "-80px", marginTop: "-15px" }}
+      <Grid>
+        <Grid.Row>
+          <Grid.Column
+            width={3}
+            phone={3}
+            tablet={3}
+            computer={3}
+            style={{ marginLeft: "30px" }}
           >
+            <CategoryMenu />
+          </Grid.Column>
+
+          <Grid.Column width={11} phone={11} tablet={11} computer={11}>
             <CategoryScreen />
-          </div>
-        </div>
-      </div>
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Column width={2} phone={2} tablet={2} computer={2}></Grid.Column>
+      </Grid>
     );
   }
 }

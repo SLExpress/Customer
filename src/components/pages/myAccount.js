@@ -1,8 +1,8 @@
 /*  N. R Yamasinghe  IT18233704 version - 01 */
 import React, { Component } from "react";
-import ProfileCard from "../Cards/profileCard";
-import DeleteCard from "../Cards/deleteCard";
-import PasswordCard from "../Cards/passwordCard";
+import ProfileCard from "../cards/profileCard";
+import DeleteCard from "../cards/deleteCard";
+import PasswordCard from "../cards/passwordCard";
 import Loader from "./../common/loader";
 import MenuBar from "./../common/menuBar";
 import auth from "../../services/authService";

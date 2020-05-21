@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 import { Buttons } from "../table/buttons";
 import { Link } from "react-router-dom";
-import { ProductContext } from "./../../context";
+import { ProductContext } from "../../context/context";
 
 class deleteCard extends Component {
   static contextType = ProductContext;

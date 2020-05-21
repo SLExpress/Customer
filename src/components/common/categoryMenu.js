@@ -12,7 +12,7 @@ class categoryMenu extends Component {
     const { categories, filterSites } = this.context;
 
     return (
-      <Menu vertical style={{ marginLeft: "-180px" }} className="menu">
+      <Menu vertical className="menu">
         <Menu.Item>
           <Menu.Header>
             <p>Categories</p>

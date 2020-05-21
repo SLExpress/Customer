@@ -1,8 +1,9 @@
 import React from "react";
-import { Grid, Form } from "semantic-ui-react";
 import FormsBusiness from "./../common/formsBusiness";
 import { submitQuestion } from "./../../services/businessService";
 import MenuBar from "./../common/menuBar";
+import { Grid, Form } from "semantic-ui-react";
+import Swal from "sweetalert2";
 import Joi from "joi-browser";
 
 class questionAdding extends FormsBusiness {
@@ -31,12 +32,14 @@ class questionAdding extends FormsBusiness {
     //call the server
     try {
       const { data } = this.state;
-      console.log(data);
       const answers = [data.answer1, data.answer2, data.answer3, data.answer4];
-      console.log(answers);
-
       await submitQuestion(data.title, data.total, answers);
-      console.log("submit");
+      Swal.fire({
+        icon: "success",
+        title: "Sugesstions added successfully",
+        showConfirmButton: false,
+        timer: 1500,
+      }).then(function () {});
     } catch (ex) {}
   };
   render() {
@@ -136,5 +139,4 @@ class questionAdding extends FormsBusiness {
     );
   }
 }
-
 export default questionAdding;
