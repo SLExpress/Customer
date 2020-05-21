@@ -31,7 +31,7 @@ class tickets extends Component {
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#008000",
-        confirmButtonText: "Yes, close it!",
+        confirmButtonText: "Close",
       }).then((result) => {
         if (result.value) {
           this.handleClose(ticketId);

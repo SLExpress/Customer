@@ -26,21 +26,56 @@ class addPaymentCard extends Form {
   doSubmit = async () => {
     try {
       const { data } = this.state;
-      await addPaymentDetails(
-        data.cardNo,
-        data.nameOnCard,
-        data.cvv,
-        data.expDate
-      );
-      Swal.fire({
-        icon: "success",
-        title: "Successful",
-        text: "Payment info added successfully",
-        showConfirmButton: false,
-        timer: 1500,
-      }).then(function () {
-        window.location = "/myPayments";
-      });
+      if (
+        data.nameOnCard === "" ||
+        data.expDate === "" ||
+        data.cardNo === "" ||
+        data.cardNo === null ||
+        data.cardNo.length < 16 ||
+        data.cvv === "" ||
+        data.cvv === null ||
+        data.cvv.length < 3
+      ) {
+        const errors = { ...this.state.errors };
+        if (data.nameOnCard === null || data.nameOnCard === "") {
+          errors.nameOnCard = `"NameOnCard" can not be empty`;
+        }
+        if (data.expDate === null || data.expDate === "") {
+          errors.expDate = `"ExpDate" can not be empty`;
+        }
+
+        if (data.cardNo.length < 16) {
+          errors.cardNo = `"CardNo" length must be at least 16 characters long`;
+        }
+
+        if (data.cardNo === "" || data.cardNo === null) {
+          errors.cardNo = `"CardNo" can not be empty`;
+        }
+        if (data.cvv.length < 3) {
+          errors.cvv = `"Cvv" length must be at least 3 characters long`;
+        }
+
+        if (data.cvv === null || data.cvv === "") {
+          errors.cvv = `"Cvv" can not be empty`;
+        }
+        this.setState({ errors });
+      } else {
+        await addPaymentDetails(
+          data.cardNo,
+          data.nameOnCard,
+          data.cvv,
+          data.expDate
+        );
+        Swal.fire({
+          icon: "success",
+          title: "Successful",
+          text: "Payment info added successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        }).then(function () {
+          window.location = "/myPayments";
+        });
+      }
     } catch (ex) {
       if (ex.response && ex.response.status === 500) {
         const errors = { ...this.state.errors };

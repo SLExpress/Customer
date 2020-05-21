@@ -37,6 +37,10 @@ export const Status = () => {
   return <Icon name="checkmark" circular inverted color="green" />;
 };
 
+export const StatusNoCircular = () => {
+  return <Icon name="checkmark" style={{ color: "#228B22" }} />;
+};
+
 export const UnSuccessful = () => {
   return <Icon name="close" style={{ color: "#e60000" }} />;
 };

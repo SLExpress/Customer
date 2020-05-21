@@ -29,7 +29,7 @@ export default class myPayments extends Component {
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!",
+        confirmButtonText: "Delete",
       }).then((result) => {
         if (result.value) {
           this.deletePaymentInfo();

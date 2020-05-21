@@ -3,6 +3,8 @@ import MenuBar from "./../common/menuBar";
 import { submitBusinessModel } from "./../../services/businessService";
 import { Grid, Table, Button, Icon } from "semantic-ui-react";
 import Swal from "sweetalert2";
+import jsPDF from "jspdf";
+import "jspdf-autotable";
 
 class businessModelTable extends Component {
   state = {
@@ -141,6 +143,112 @@ class businessModelTable extends Component {
     }).then(function () {});
   };
 
+  generatePdf = () => {
+    const {
+      question1,
+      question1Answer,
+      question2,
+      question2Answer,
+      question3,
+      question3Answer,
+      question4,
+      question4Answer,
+      question5,
+      question5Answer,
+      question6,
+      question6Answer,
+      question7,
+      question7Answer,
+      question8,
+      question8Answer,
+      question9,
+      question9Answer,
+      question10,
+      question10Answer,
+    } = this.state;
+
+    const array = [
+      { id: 1, a: question1, b: question1Answer },
+      { id: 2, a: question2, b: question2Answer },
+      { id: 3, a: question3, b: question3Answer },
+      { id: 4, a: question4, b: question4Answer },
+      { id: 5, a: question5, b: question5Answer },
+      { id: 6, a: question6, b: question6Answer },
+      { id: 7, a: question7, b: question7Answer },
+      { id: 8, a: question8, b: question8Answer },
+      { id: 9, a: question9, b: question9Answer },
+      { id: 10, a: question10, b: question10Answer },
+    ];
+
+    var doc = new jsPDF("p", "pt");
+    doc.rect(
+      20,
+      20,
+      doc.internal.pageSize.width - 40,
+      doc.internal.pageSize.height - 40,
+      "S"
+    );
+
+    doc.setTextColor(47, 167, 217);
+    doc.setFontSize(32);
+    doc.text(30, 55, "SLExpress");
+    doc.setFontSize(12);
+    doc.text(415, 40, "Email: admin@slexpress.lk");
+    doc.text(440, 60, "Call Us: 077 714 5020");
+    doc.line(20, 70, 575, 70);
+
+    doc.setTextColor(0, 0, 0);
+    doc.setFontSize(28);
+    doc.setFontType("bold");
+    doc.text(190, 140, "Answers Analysis ");
+
+    var tempDate = new Date();
+    var date =
+      tempDate.getFullYear() +
+      "-" +
+      (tempDate.getMonth() + 1) +
+      "-" +
+      tempDate.getDate();
+
+    var time =
+      +" " +
+      tempDate.getHours() +
+      ":" +
+      tempDate.getMinutes() +
+      ":" +
+      tempDate.getSeconds();
+
+    doc.setFontSize(10);
+    doc.setFontType("normal");
+    doc.text(40, 190, "Email: " + localStorage.getItem("email"));
+    doc.text(40, 205, "Username: " + localStorage.getItem("username"));
+    doc.text(40, 220, "Date: " + date);
+    doc.text(40, 235, "Time: " + time);
+
+    doc.setFontSize(15);
+    const headers = [["NO", "QUESTION", "ANSWER"]];
+
+    const data = array.map((arr, index) => [index + 1, arr.a, arr.b]);
+
+    let content = {
+      startY: 270,
+      head: headers,
+      body: data,
+    };
+
+    doc.autoTable(content);
+
+    const totalQuestions = array.length;
+    const totalAnswers = array.length;
+
+    doc.setFontSize(12);
+    let finalY = doc.lastAutoTable.finalY; // The y position on the page
+    doc.text(41, finalY + 50, "Total questions:" + totalQuestions);
+    doc.text(41, finalY + 80, "Total Answers: " + totalAnswers);
+
+    doc.save("SLExpres Answers Analysis.pdf");
+  };
+
   render() {
     const {
       question1,
@@ -196,6 +304,19 @@ class businessModelTable extends Component {
             computer={11}
             style={{ marginTop: "20px" }}
           >
+            <Button
+              animated
+              onClick={this.generatePdf}
+              color="green"
+              floated="right"
+            >
+              <Button.Content visible>Generate</Button.Content>
+              <Button.Content hidden>
+                <Icon inverted color="" name="file pdf" />
+              </Button.Content>
+            </Button>
+            <br />
+            <br />
             <Table definition>
               <Table.Header>
                 <Table.Row>

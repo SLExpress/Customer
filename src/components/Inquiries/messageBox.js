@@ -33,8 +33,26 @@ class messageBox extends Forms {
 
   doSubmit = async () => {
     try {
+      const { data } = this.state;
       const UserMsg = this.state.data;
-      this.props.handleReply(UserMsg.message, UserMsg._id);
+      if (
+        data.message === "" ||
+        data.message.length < 4 ||
+        data.message === null
+      ) {
+        const errors = { ...this.state.errors };
+
+        if (data.message.length < 4) {
+          errors.message = `"Message"  length must be at least 4 characters long`;
+        }
+        if (data.message === "" || data.message === null) {
+          errors.message = `"Message" can not be empty`;
+        }
+
+        this.setState({ errors });
+      } else {
+        this.props.handleReply(UserMsg.message, UserMsg._id);
+      }
     } catch (ex) {
       if (ex.response && ex.response.status === 422) {
         const errors = { ...this.state.errors };

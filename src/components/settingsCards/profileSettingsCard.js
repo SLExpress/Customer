@@ -21,8 +21,8 @@ class profileSettingsCard extends Form {
 
   schema = {
     id: Joi.string(),
-    firstname: Joi.string().min(4).required().label("Firstname"),
-    lastname: Joi.string().min(4).required().label("Lastname"),
+    firstname: Joi.string().required().label("Firstname"),
+    lastname: Joi.string().required().label("Lastname"),
     username: Joi.string().min(4).required().label("Username"),
     email: Joi.string().email().required().label("Email"),
     contactNo: Joi.number().required().label("ContactNo"),
@@ -57,29 +57,64 @@ class profileSettingsCard extends Form {
       const Jwt = auth.getCurrentUserID();
       const id = Jwt.userId;
       const { data } = this.state;
-      await updateCustomer(
-        id,
-        data.firstname,
-        data.lastname,
-        data.username,
-        data.email,
-        data.contactNo
-      );
 
-      localStorage.setItem("lastname", data.lastname);
-      localStorage.setItem("firstname", data.firstname);
-      localStorage.setItem("username", data.username);
-      this.setState({ isUpdated: true });
+      if (
+        data.contactNo === null ||
+        data.firstname === "" ||
+        data.username === "" ||
+        data.lastname === "" ||
+        data.email === "" ||
+        data.contactNo === "" ||
+        data.username.length < 4
+      ) {
+        const errors = { ...this.state.errors };
+        if (data.contactNo === null || data.contactNo === "") {
+          errors.contactNo = `"ContactNo" can not be empty`;
+        }
+        if (data.firstname === "" || data.firstname === null) {
+          errors.firstname = `"Firstname" can not be empty`;
+        }
+        if (data.lastname === "" || data.lastname === null) {
+          errors.lastname = `"Lastname" can not be empty`;
+        }
 
-      Swal.fire({
-        icon: "success",
-        title: "Successful",
-        text: "Your profile updated successfully",
-        showConfirmButton: false,
-        timer: 1500,
-      }).then(function () {
-        window.location = "/myAccount";
-      });
+        if (data.username.length < 4) {
+          errors.username = `"Username" length must be at least 4 characters long`;
+        }
+        if (data.username === "" || data.username === null) {
+          errors.username = `"Username" can not be empty`;
+        }
+
+        if (data.email === "" || data.email === null) {
+          errors.email = `"Email" can not be empty`;
+        }
+
+        this.setState({ errors });
+      } else {
+        await updateCustomer(
+          id,
+          data.firstname,
+          data.lastname,
+          data.username,
+          data.email,
+          data.contactNo
+        );
+
+        localStorage.setItem("lastname", data.lastname);
+        localStorage.setItem("firstname", data.firstname);
+        localStorage.setItem("username", data.username);
+        this.setState({ isUpdated: true });
+
+        Swal.fire({
+          icon: "success",
+          title: "Successful",
+          text: "Your profile updated successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        }).then(function () {
+          window.location = "/myAccount";
+        });
+      }
     } catch (ex) {}
   };
 

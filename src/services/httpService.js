@@ -31,7 +31,7 @@ axios.interceptors.response.use(null, (error) => {
       icon: "error",
       title: "404 Not Found",
     });
-  } else if (error.response.status === 501) {
+  } else if (error.response.status === 500) {
     auth.logout();
     window.location = "/expired";
   } else return Promise.reject(error);

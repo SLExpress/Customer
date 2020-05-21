@@ -2,8 +2,8 @@
 import React, { Component } from "react";
 import { Switch, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import auth from "../services/authService";
 import "react-toastify/dist/ReactToastify.css";
+import auth from "../services/authService";
 import ProtectedRoute from "./../components/common/protectedRoute";
 import AboutUs from "../components/pages/aboutus";
 import AccountSettings from "../components/pages/accountSettings";

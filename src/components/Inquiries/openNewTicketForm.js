@@ -23,16 +23,41 @@ class openNewTicketForm extends Forms {
   doSubmit = async () => {
     try {
       const { data } = this.state;
-      await submitTicket(data.title, data.ticketText);
-      Swal.fire({
-        icon: "success",
-        title: "Successful",
-        text: "Ticket open successfully",
-        showConfirmButton: false,
-        timer: 1500,
-      }).then(function () {
-        window.location = "/inquiries";
-      });
+      if (
+        data.title === "" ||
+        data.title.length < 4 ||
+        data.ticketText === "" ||
+        data.ticketText.length < 4
+      ) {
+        const errors = { ...this.state.errors };
+
+        if (data.title.length < 4) {
+          errors.title = `"Title"  length must be at least 4 characters long`;
+        }
+        if (data.title === "" || data.title === null) {
+          errors.title = `"Title" can not be empty`;
+        }
+
+        if (data.ticketText.length < 4) {
+          errors.ticketText = `"TicketText"length must be at least 4 characters long`;
+        }
+        if (data.ticketText === "" || data.ticketText === null) {
+          errors.ticketText = `"TicketText" can not be empty`;
+        }
+
+        this.setState({ errors });
+      } else {
+        await submitTicket(data.title, data.ticketText);
+        Swal.fire({
+          icon: "success",
+          title: "Successful",
+          text: "Ticket open successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        }).then(function () {
+          window.location = "/inquiries";
+        });
+      }
     } catch (ex) {
       if (ex.response && ex.response.status === 422) {
         const errors = { ...this.state.errors };

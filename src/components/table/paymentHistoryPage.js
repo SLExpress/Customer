@@ -10,6 +10,7 @@ import { Button, Icon } from "semantic-ui-react";
 import _ from "lodash";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
+import moment from "moment";
 
 class paymentHistoryPage extends Component {
   static contextType = TableContext;
@@ -67,7 +68,8 @@ class paymentHistoryPage extends Component {
       index + 1,
       site.website.url.defaultUrl,
       site.payment,
-      new Date(site.datePurchased),
+      // new Date(site.datePurchased),
+      moment(site.datePurchased).format("YYYY-MM-DD"),
     ]);
 
     let content = {

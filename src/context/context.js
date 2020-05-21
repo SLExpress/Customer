@@ -67,6 +67,7 @@ class ProductProvider extends Component {
     breadcrumb: "",
   };
 
+  // handle delete custom domain
   handleDeleteCustomDomain = async (websiteId) => {
     try {
       const data = { websiteId };
@@ -101,6 +102,7 @@ class ProductProvider extends Component {
     } catch (error) {}
   };
 
+  // handle add custom domain
   handleAddCustomDomain = async (websiteId, customDomain) => {
     try {
       await addCustomDomain(websiteId, customDomain);
@@ -135,6 +137,7 @@ class ProductProvider extends Component {
     } catch (error) {}
   };
 
+  // handle update custom domain
   handleUpdateCustomDomain = async (customDomain, websiteId) => {
     try {
       await updateCustomDomain(customDomain, websiteId);
@@ -168,10 +171,12 @@ class ProductProvider extends Component {
     } catch (error) {}
   };
 
+  // breadcumb
   getBreadcrumb = (url) => {
     this.setState({ breadcrumb: url });
   };
 
+  // populate categories
   async populateCategories() {
     try {
       if (auth.getCurrentUser()) {
@@ -186,6 +191,7 @@ class ProductProvider extends Component {
     } catch (ex) {}
   }
 
+  // populate sites of a particular user
   async populateSitesByUser() {
     try {
       if (auth.getCurrentUser()) {
@@ -208,6 +214,7 @@ class ProductProvider extends Component {
     } catch (ex) {}
   }
 
+  // polpulate all the templates
   async populateSites() {
     try {
       if (auth.getCurrentUser()) {
@@ -218,6 +225,7 @@ class ProductProvider extends Component {
     } catch (ex) {}
   }
 
+  // handle create website
   handleCreateWebsite = async (domain, id) => {
     try {
       const { data } = await createWebsite(domain, id);
@@ -230,6 +238,7 @@ class ProductProvider extends Component {
     } catch (ex) {}
   };
 
+  // component did mount
   componentDidMount = async () => {
     await this.populateCategories();
     await this.populateSites();
@@ -252,6 +261,7 @@ class ProductProvider extends Component {
     );
   };
 
+  // handle data when refreshing the page
   getsingleMySiteSettings = () => {
     return localStorage.getItem("singleMySiteSettings")
       ? JSON.parse(localStorage.getItem("singleMySiteSettings"))
@@ -296,6 +306,8 @@ class ProductProvider extends Component {
       ? JSON.parse(localStorage.getItem("filteredSites"))
       : {};
   };
+
+  // filter sites according to the category
   filterSites = (category) => {
     const { siteData } = this.state;
     let tempSites = [...siteData];
@@ -311,6 +323,7 @@ class ProductProvider extends Component {
     );
   };
 
+  // filter sites all
   filterSitesAll = (category) => {
     const { siteData } = this.state;
 
@@ -324,6 +337,7 @@ class ProductProvider extends Component {
     }
   };
 
+  // get single site details
   setSingleSite = (id) => {
     const { siteData } = this.state;
     let site = siteData.find((item) => item._id === id);

@@ -1,6 +1,6 @@
 /*  N. R Yamasinghe  IT18233704 version - 01 */
 import React from "react";
-import { Status } from "./../table/icon";
+import { StatusNoCircular } from "./../table/icon";
 import { Buttons } from "./../table/buttons";
 import { ProductConsumer } from "../../context";
 import { deleteWebsite } from "./../../services/siteCategoryService";
@@ -92,7 +92,7 @@ const singleMySiteNew = ({ site }) => {
                     <MdUpdate />
                     {dateString}
 
-                    {site.paid && <Status />}
+                    {site.paid && <StatusNoCircular />}
                   </p>
 
                   <div className="ui three buttons">
