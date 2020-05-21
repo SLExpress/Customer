@@ -109,7 +109,12 @@ class tickets extends Component {
                   />
                 </Link>
                 <br />
-                <center></center>
+                <center>
+                  <p style={{ fontWeight: "bold" }}>
+                    Once you open new ticket, you'll find your tickets
+                    information and details from SLExpress right here.
+                  </p>
+                </center>
               </Segment>
             )}
             <br />
@@ -256,69 +261,6 @@ class tickets extends Component {
                 </Grid.Column>
               </Grid.Row>
             </Grid>
-            {/* {tickets.map((ticket, index) => (
-              <Card fluid key={index}>
-                <Card.Content>
-                  <Card.Header>{ticket.title}</Card.Header>
-                </Card.Content>
-                <Card.Content>
-                  <Feed>
-                    <Feed.Event>
-                      <Feed.Label image="https://react.semantic-ui.com/images/avatar/small/jenny.jpg" />
-                      <Feed.Content>
-                        <Card.Meta>
-                          {
-                            <Moment fromNow ago>
-                              {ticket.time}
-                            </Moment>
-                          }
-                          ago
-                        </Card.Meta>
-                        <Feed.Summary>{ticket.ticketText}</Feed.Summary>
-                        <Link
-                          to={`/userInquiries/${ticket._id}`}
-                          onClick={() => handleInquiries(ticket._id)}
-                        >
-                          {this.renderReplies(
-                            ticket.adminReplies.length,
-                            ticket.userReplies.length
-                          )}
-                        </Link>
-                      </Feed.Content>
-                    </Feed.Event>
-                  </Feed>
-
-                  <Card.Content extra>
-                    <div>
-                      <Link
-                        to={`/userInquiries/${ticket._id}`}
-                        onClick={() => handleInquiries(ticket._id)}
-                      >
-                        <Button basic color="green">
-                          View
-                        </Button>
-                      </Link>
-                      {ticket.open && (
-                        <Link
-                          onClick={() => this.ticketHandleclose(ticket._id)}
-                        >
-                          <Button basic color="red">
-                            Close
-                          </Button>
-                        </Link>
-                      )}
-                      {!ticket.open && (
-                        <Link onClick={this.ticketclosed}>
-                          <Button basic color="red">
-                            Closed
-                          </Button>
-                        </Link>
-                      )}
-                    </div>
-                  </Card.Content>
-                </Card.Content>
-              </Card>
-            ))} */}
           </Grid.Column>
         </Grid.Row>
         <Grid.Column width={2} phone={2} tablet={2} computer={2}></Grid.Column>

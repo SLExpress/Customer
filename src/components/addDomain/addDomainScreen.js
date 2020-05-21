@@ -121,7 +121,16 @@ class addDomainScreen extends Component {
                 icon="plus square"
                 color="green"
               />
-              <center></center>
+              <br />
+              <center>
+                <p style={{ fontWeight: "bold" }}>
+                  Add your preferred domain name to create and host the website
+                  on SLExpress server.
+                </p>
+                <p style={{ fontWeight: "bold" }}>
+                  domain name must be at least four charcters long.
+                </p>
+              </center>
             </Segment>
           </Grid.Column>
         </Grid.Row>

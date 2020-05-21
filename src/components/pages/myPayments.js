@@ -136,7 +136,7 @@ export default class myPayments extends Component {
                 </Link>
                 <br />
                 <center>
-                  <p>
+                  <p style={{ fontWeight: "bold" }}>
                     Once you add payment information, you'll find your payment
                     information and details from SLExpress right here.
                   </p>

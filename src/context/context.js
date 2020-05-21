@@ -358,6 +358,7 @@ class ProductProvider extends Component {
     );
   };
 
+  // single site settings
   setSingleSiteSettings = (id) => {
     const { mySiteData } = this.state;
     let site = mySiteData.find((item) => item._id === id);
@@ -379,6 +380,7 @@ class ProductProvider extends Component {
     );
   };
 
+  // set single site when creating website
   setSingleSiteSettingsCreate = (id) => {
     const { siteData } = this.state;
     let site = siteData.find((item) => item._id === id);
@@ -391,6 +393,7 @@ class ProductProvider extends Component {
     );
   };
 
+  // get cart storage
   getStorageCart = () => {
     let cart;
     if (localStorage.getItem("cart")) {
@@ -405,6 +408,7 @@ class ProductProvider extends Component {
     localStorage.setItem("cart", JSON.stringify(this.state.cart));
   };
 
+  // calculate cart totals
   getTotals = () => {
     let subTotal = 0;
     let cartItems = this.state.cart.length;
@@ -425,6 +429,7 @@ class ProductProvider extends Component {
     };
   };
 
+  // add cart totals
   addTotals = () => {
     const totals = this.getTotals();
     this.setState(
@@ -440,6 +445,7 @@ class ProductProvider extends Component {
     );
   };
 
+  // add to cart method
   addToCart = (id) => {
     let tempCart = [...this.state.cart];
     let tempSites = [...this.state.siteData];
@@ -469,6 +475,7 @@ class ProductProvider extends Component {
     );
   };
 
+  // remove item from cart
   removeItem = (id) => {
     let tempCart = [...this.state.cart];
     tempCart = tempCart.filter((item) => {
@@ -488,6 +495,7 @@ class ProductProvider extends Component {
     );
   };
 
+  // clear cart
   clearCart = () => {
     this.setState(
       {
@@ -611,6 +619,7 @@ class ProductProvider extends Component {
     });
   };
 
+  // handle paid my site change
   handlePaidMySiteChange = (event) => {
     const name = event.target.name;
 
@@ -648,6 +657,7 @@ class ProductProvider extends Component {
     });
   };
 
+  // handle not paid my site change
   handleNotPaidMySiteChange = (event) => {
     const name = event.target.name;
 
@@ -685,6 +695,7 @@ class ProductProvider extends Component {
     });
   };
 
+  // get ticket list
   async ticketsList() {
     if (auth.getCurrentUser()) {
       const { data: ticketsList } = await getTickets();
@@ -694,6 +705,7 @@ class ProductProvider extends Component {
     }
   }
 
+  // handle inquiries
   handleInquiries = async (ticket) => {
     try {
       const { data: inquiries } = await viewInquiries(ticket);
@@ -726,6 +738,7 @@ class ProductProvider extends Component {
     } catch (ex) {}
   };
 
+  // handle reply to tickets
   handleReply = async (msg, id) => {
     try {
       const res = await replyTickets(msg, id);

@@ -25,6 +25,8 @@ axios.interceptors.response.use(null, (error) => {
       title: "Oops...",
       text: "Something went wrong!",
     });
+    window.location = "/landingPage";
+    auth.logout();
   } else if (error.response.status === 404) {
     Swal.close();
     Swal.fire({
