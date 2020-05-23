@@ -58,7 +58,7 @@ import QuestiionFormTen from "./../components/businessModel/questionFormTen";
 import BusinessModelTable from "./../components/businessModel/businessModelTable";
 
 export default class AppRouter extends Component {
-  // To get current logged in user details
+  // to get current logged in user details
   state = {};
   componentDidMount = () => {
     try {
