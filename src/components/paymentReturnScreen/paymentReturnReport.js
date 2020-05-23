@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Grid, Table, Feed } from "semantic-ui-react";
+import { Grid, Table } from "semantic-ui-react";
 import { MDBAnimation } from "mdbreact";
 import { Header, Icon, Button } from "semantic-ui-react";
 import MenuBar from "./../common/menuBar";
@@ -92,14 +92,12 @@ class paymentReturnReport extends Component {
               <MenuBar />
               <br />
             </Grid.Column>
-            <Grid.Column width={12}>
+            <Grid.Column width={10} style={{ marginTop: "20px" }}>
               <Header as="h2" centered>
                 <Icon name="chart line" />
                 <Header.Content>
                   Payment Summary
-                  <Header.Subheader>
-                    payment reciept for the purchase.
-                  </Header.Subheader>
+                  <Header.Subheader></Header.Subheader>
                 </Header.Content>
               </Header>
               <MDBAnimation type="fadeIn">
@@ -131,15 +129,11 @@ class paymentReturnReport extends Component {
                     </Table.Row>
                   </Table.Body>
                 </Table>
-                <Feed>
-                  <Feed.Event
-                    date="Payhere ID"
-                    summary={this.props.payherePaymentId}
-                  />
-                  <Feed.Event date="Order ID" summary={this.props.orderId} />
-                  <Feed.Event date="Email" summary={this.props.email} />
-                  <Feed.Event date="Date" summary={this.props.day} />
-                </Feed>
+                <br />
+                <br />
+                <p>Order ID: {this.props.orderId}</p>
+                <p>Email: {this.props.email}</p>
+                <p>Date: {this.props.day}</p>
               </MDBAnimation>
             </Grid.Column>
           </Grid>
