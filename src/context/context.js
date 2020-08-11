@@ -67,7 +67,7 @@ class ProductProvider extends Component {
     breadcrumb: "",
   };
 
-  // handle delete custom domain
+  // handle delete custom domain function
   handleDeleteCustomDomain = async (websiteId) => {
     try {
       const data = { websiteId };
